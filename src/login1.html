@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Log In</title>
     <link rel="stylesheet" href="../dist/output.css">
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -47,7 +47,7 @@
                     <input type="email" id="email" name="email" placeholder="Enter your email" class="input-text mb-4">
                     <label for="password" class="block text-black text-sm font-medium poppins mb-2 mt-3">Password</label>
                     <input type="password" id="password" name="password" placeholder="Enter your password" class="input-text mb-4">
-                    <button type="submit" class="px-174 py-2 mt-8 bg-dlr text-white rounded-lg transition hover:bg-green-600 focus:bg-green-600 focus:outline-none poppins">Sign In</button>
+                    <button type="submit" class="px-174 py-2 mt-8 bg-dlr text-white rounded-lg transition hover:bg-green-600 focus:bg-green-600 focus:outline-none poppins" onclick="redirectToHomePage()">Sign In</button>
                 </form>
                 <div class="text-center mt-6">
                     <p class="text-abu poppins text-xs">Don't have an account? <a href="create.html" class="text-green-600">Create account!</a></p>
@@ -62,5 +62,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function redirectToHomePage() {
+            window.location.href = 'home1.html';
+        }
+    </script>
 </body>
 </html>

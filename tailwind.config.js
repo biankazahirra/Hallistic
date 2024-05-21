@@ -12,7 +12,8 @@ module.exports = {
       colors: {
         'dla': '#073937', // Tambahkan warna dla dengan kode warna yang diinginkan
         'dlr': '#588157',
-        'abu': '#636364'
+        'abu': '#636364',
+        'white': '#ffffff',
       },
     },
   },
