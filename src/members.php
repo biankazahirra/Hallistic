@@ -67,7 +67,7 @@
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
-            <a href="members.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="members.php" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Members
             </a>
@@ -127,7 +127,7 @@
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
                 </a>
-                <a href="members.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+                <a href="members.php" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                     <i class="fas fa-sticky-note mr-3"></i>
                     Members
                 </a>
@@ -225,9 +225,6 @@
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>
-
-
-
                     </table>
                 </div>
 
@@ -235,8 +232,6 @@
         </div>
 
     </div>
-
-
 
 
     <script>
@@ -248,12 +243,12 @@
             tr = table.getElementsByTagName("tr");
 
             for (i = 1; i < tr.length; i++) {
-                tr[i].style.display = "none"; // Sembunyikan semua baris terlebih dahulu
-                td = tr[i].getElementsByTagName("td")[1]; // Ambil kolom kedua yang berisi nama
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td")[1];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = ""; // Tampilkan baris jika nama cocok
+                        tr[i].style.display = "";
                     }
                 }
             }
