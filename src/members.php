@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment</title>
-    <meta name="author" content="David Grzyb">
-    <meta name="description" content="">
+    <title>Members</title>
+
 
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../public/asset/admin.ico" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -49,7 +51,6 @@
             background: #F3ECDC;
         }
     </style>
-    <link rel="shortcut icon" href="../public/asset/admin.ico" type="image/x-icon">
 </head>
 
 <body class="bg-gray-100 font-family-karla flex">
@@ -66,7 +67,7 @@
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
-            <a href="members.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="members.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Members
             </a>
@@ -75,7 +76,7 @@
                 <i class="fas fa-table mr-3"></i>
                 Building
             </a>
-            <a href="payment.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="payment.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-align-left mr-3"></i>
                 Payment
             </a>
@@ -126,8 +127,7 @@
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
                 </a>
-                <a href="members.html"
-                    class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <a href="members.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                     <i class="fas fa-sticky-note mr-3"></i>
                     Members
                 </a>
@@ -136,7 +136,8 @@
                     <i class="fas fa-table mr-3"></i>
                     Building
                 </a>
-                <a href="payment.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                <a href="payment.html"
+                    class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-align-left mr-3"></i>
                     Payment
                 </a>
@@ -160,6 +161,10 @@
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Sign Out
                 </a>
+                <button
+                    class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                    <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
+                </button>
             </nav>
             <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Report
@@ -168,7 +173,17 @@
 
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Payment</h1>
+                <h1 class="text-3xl text-black pb-6">Customer Information</h1>
+
+                <!-- Input Pencarian -->
+                <div class="mb-4">
+                    <span class="absolute left-8 top-40 items-center text-xl">
+                        <i class='bx bx-search opacity-50'></i>
+                    </span>
+                    <input type="text" id="searchInput" placeholder="Search for names.."
+                        class="border px-8 py-3 rounded-lg w-full">
+                </div>
+
 
                 <!-- Content goes here! 😁 -->
 
@@ -176,73 +191,43 @@
                     <table class="min-w-full bg-white">
                         <thead class="bg-gray-800 text-white">
                             <tr>
-                                <th class="text-center py-3 px-3 w-20 uppercase font-semibold text-sm">Payment ID</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Date</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Check In</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Check Out</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Status</th>
+                                <th class="text-center py-3 px-3 w-25 uppercase font-semibold text-sm">Customer ID</th>
+                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Customer Name</th>
+                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Password</th>
                                 <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <td class="text-center py-3 px-3 w-25 uppercase font-semibold text-sm">01</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Verified</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm"></td>
+                            <?php
+                            include "koneksi.php";
+
+                            $sql = "SELECT * FROM daftar_akun";
+                            $rs = mysqli_query($koneksi, $sql);
+                            $i = 1;
+                            while ($row = mysqli_fetch_assoc($rs)):
+                                ?>
+                                <tr class="">
+                                    <td class="text-center py-3 px-3 w-25 uppercase font-semibold text-sm">
+                                        <?php echo $i++ ?>
+                                    </td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                        <?php echo $row["nama_penyewa"] ?>
+                                    </td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                        <?php echo $row["email_penyewa"] ?>
+                                    </td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                        <div class="flex justify-center w-full">
+                                            <input class="w-8 outline-none" type="password" value="halodunia" readonly>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
                         </tbody>
 
-                        <!-- <tbody class="text-gray-700">
-                            <tr>
-                                <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr>
-                                <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr>
-                                <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr>
-                                <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                        </tbody> -->
+
+
                     </table>
                 </div>
 
@@ -250,6 +235,7 @@
         </div>
 
     </div>
+
 
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
