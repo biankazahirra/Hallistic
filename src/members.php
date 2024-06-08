@@ -181,14 +181,14 @@
                         <i class='bx bx-search opacity-50'></i>
                     </span>
                     <input type="text" id="searchInput" placeholder="Search for names.."
-                        class="border px-8 py-3 rounded-lg w-full">
+                        class="border px-8 py-3 rounded-lg w-full" onkeyup="searchTable()">
                 </div>
 
 
                 <!-- Content goes here! 😁 -->
 
                 <div class="bg-white overflow-auto">
-                    <table class="min-w-full bg-white">
+                    <table id="customerTable" class="min-w-full bg-white">
                         <thead class="bg-gray-800 text-white">
                             <tr>
                                 <th class="text-center py-3 px-3 w-25 uppercase font-semibold text-sm">Customer ID</th>
@@ -236,6 +236,29 @@
 
     </div>
 
+
+
+
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("customerTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none"; // Sembunyikan semua baris terlebih dahulu
+                td = tr[i].getElementsByTagName("td")[1]; // Ambil kolom kedua yang berisi nama
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = ""; // Tampilkan baris jika nama cocok
+                    }
+                }
+            }
+        }
+    </script>
 
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
