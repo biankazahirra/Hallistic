@@ -225,8 +225,12 @@
                                                 <input class="w-8 outline-none" type="password" value="halodunia" readonly>
                                             </div>
                                         </td>
-                                        <td class="text-center py-3 px-4 font-semibold text-sm">
-                                            <img src="" alt="">
+                                        <td class="text-lg px-5">
+                                            <div class="flex items-center justify-center gap-x-2.5">
+                                                <a href="edit.php"><i class="fas fa-edit text-blue-600"></i></a>
+                                                <a href="delete.php"><i class="fas fa-trash text-red-600"></i></a>
+                                            </div>
+
                                         </td>
                                     </tr>
                                 <?php endwhile; ?>
