@@ -8,9 +8,10 @@
 
 
     <!-- Tailwind -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> -->
     <link rel="shortcut icon" href="../public/asset/admin.ico" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="output.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -68,7 +69,7 @@
                 Dashboard
             </a>
             <a href="members.php" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
-                <i class="fas fa-sticky-note mr-3"></i>
+                <i class="fas fa-user mr-3"></i>
                 Members
             </a>
             <a href="building.html"
@@ -188,46 +189,52 @@
 
                 <!-- Content goes here! 😁 -->
 
-                <div class="bg-white overflow-auto">
-                    <table id="customerTable" class="min-w-full bg-white">
-                        <thead class="bg-gray-800 text-white">
-                            <tr>
-                                <th class="text-center py-3 px-3 w-25 uppercase font-semibold text-sm">Customer ID</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Customer Name</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Email</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Password</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include "koneksi.php";
-
-                            $sql = "SELECT * FROM daftar_akun";
-                            $rs = mysqli_query($koneksi, $sql);
-                            $i = 1;
-                            while ($row = mysqli_fetch_assoc($rs)):
-                                ?>
-                                <tr class="">
-                                    <td class="text-center py-3 px-3 w-25 uppercase font-semibold text-sm">
-                                        <?php echo $i++ ?>
-                                    </td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
-                                        <?php echo $row["nama_penyewa"] ?>
-                                    </td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
-                                        <?php echo $row["email_penyewa"] ?>
-                                    </td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
-                                        <div class="flex justify-center w-full">
-                                            <input class="w-8 outline-none" type="password" value="halodunia" readonly>
-                                        </div>
-                                    </td>
+                <div class="bg-white">
+                    <div class="flex overflow-auto h-[490px]">
+                        <table id="customerTable" class="min-w-full table-auto bg-white border-collapse">
+                            <thead class="text-black">
+                                <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
+                                    <th class="text-center px-3 py-5 w-25 font-bold text-lg">Customer ID</th>
+                                    <th class="text-center px-3 py-5 font-bold text-lg">Customer Name</th>
+                                    <th class="text-center px-3 py-5 font-bold text-lg">Email</th>
+                                    <th class="text-center px-3 py-5 font-bold text-lg">Password</th>
+                                    <th class="text-center px-3 py-5 font-bold text-lg">Action</th>
                                 </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                include "koneksi.php";
+
+                                $sql = "SELECT * FROM daftar_akun";
+                                $rs = mysqli_query($koneksi, $sql);
+                                $i = 1;
+                                while ($row = mysqli_fetch_assoc($rs)):
+                                    ?>
+                                    <tr class="border-b">
+                                        <td class="text-center py-5 px-3 w-25 font-semibold text-sm">
+                                            <?php echo $i++ ?>
+                                        </td>
+                                        <td class="text-center py-3 px-4 font-semibold text-sm">
+                                            <?php echo $row["nama_penyewa"] ?>
+                                        </td>
+                                        <td class="text-center py-3 px-4 font-semibold text-sm">
+                                            <?php echo $row["email_penyewa"] ?>
+                                        </td>
+                                        <td class="text-center py-3 px-4 font-semibold text-sm">
+                                            <div class="flex justify-center w-full">
+                                                <input class="w-8 outline-none" type="password" value="halodunia" readonly>
+                                            </div>
+                                        </td>
+                                        <td class="text-center py-3 px-4 font-semibold text-sm">
+                                            <img src="" alt="">
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
 
             </main>
         </div>
