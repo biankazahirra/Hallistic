@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $stmt->store_result();
 
+
+
     // Jika email ditemukan
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($stored_email, $stored_password);
@@ -20,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Verifikasi password
         if (password_verify($password, $stored_password)) {
             $_SESSION['email_penyewa'] = $stored_email;
-            header("Location: home1.html"); // Ganti dengan halaman beranda Anda
+
+            header("Location: home1.php"); // Ganti dengan halaman beranda Anda
             exit();
         } else {
             // Redirect ke halaman login dengan parameter error
@@ -36,4 +39,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: login.html");
     exit();
 }
+
 ?>
