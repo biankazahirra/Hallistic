@@ -102,7 +102,7 @@
                 </button>
                 <button x-show="isOpen" @click="isOpen = false"
                     class="h-full w-full fixed inset-0 cursor-default"></button>
-                <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
+                <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16 z-10">
                     <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
                     <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
                     <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
@@ -111,7 +111,7 @@
         </header>
 
         <!-- Mobile Header & Nav -->
-        <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
+        <header x-data="{ isOpen: false }" class="w-full bg-slate-600 py-5 px-6 sm:hidden">
             <div class="flex items-center justify-between">
                 <a href="dashboard.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300"></a>
                 <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
@@ -176,13 +176,14 @@
                 <h1 class="text-3xl text-black pb-6">Customer Information</h1>
 
                 <!-- Input Pencarian -->
-                <div class="mb-4">
-                    <span class="absolute left-8 top-40 items-center text-xl">
+                <div class="mb-4 relative">
+                    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-xl">
                         <i class='bx bx-search opacity-50'></i>
                     </span>
-                    <input type="text" id="searchInput" placeholder="Search for names.."
-                        class="border px-8 py-3 rounded-lg w-full" onkeyup="searchTable()">
+                    <input type="text" id="searchInput" placeholder="Search for names..."
+                        class="border pl-12 pr-2 py-3 rounded-lg w-full" onkeyup="searchTable()">
                 </div>
+
 
 
                 <!-- Content goes here! 😁 -->
