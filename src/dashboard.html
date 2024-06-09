@@ -88,7 +88,7 @@
             <div class="w-1/2"></div>
             <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = !isOpen"
-                    class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
+                    class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-green-700  focus:border-green-500 focus:outline-none">
                     <img src="../public/asset/admin.ico" alt="">
                 </button>
                 <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default">
@@ -183,35 +183,42 @@
                 <!-- card -->
                 <div class="flex items-center gap-x-60">
                     <!-- simpan didiv biar gampang ngasih jarak -->
-                    <div class="flex items-center">
-                        <div class="bg-green-100 rounded-full p-4">
-                            <img src="../public/asset/profil2.svg" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-lg font-semibold">Member</p>
-                            <p class="text-3xl font-bold">100</p>
-                        </div>
+                    <div>
+                        <a href="members.php" class="flex items-center">
+                            <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
+                                <img src="../public/asset/profil2.svg" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-lg font-semibold">Member</p>
+                                <p class="text-3xl font-bold">100</p>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="flex items-center">
-                        <div class="bg-green-100 rounded-full p-4">
-                            <img src="../public/asset/building.svg" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-lg font-semibold">Member</p>
-                            <p class="text-3xl font-bold">100</p>
-                        </div>
+                    <div>
+                        <a href="building.html" class="flex items-center">
+                            <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
+                                <img src="../public/asset/building.svg" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-lg font-semibold">Building</p>
+                                <p class="text-3xl font-bold">100</p>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="flex items-center">
-                        <div class="bg-green-100 rounded-full p-4">
+                    <div>
+                        <a href="payment.html" class="flex items-center">
+                        <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
                             <img src="../public/asset/payment.svg" alt="">
                         </div>
                         <div class="ml-4">
-                            <p class="text-lg font-semibold">Member</p>
+                            <p class="text-lg font-semibold">Payment</p>
                             <p class="text-3xl font-bold">100</p>
                         </div>
+                        </a>
                     </div>
+
                 </div>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg w-full">
