@@ -67,7 +67,7 @@
                 Dashboard
             </a>
             <a href="members.php" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-sticky-note mr-3"></i>
+                <i class="fas fa-user mr-3"></i>
                 Members
             </a>
             <a href="building.html"
@@ -76,7 +76,7 @@
                 Building
             </a>
             <a href="payment.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-align-left mr-3"></i>
+                <i class="fas fa-money-check mr-3"></i>
                 Payment
             </a>
         </nav>`
@@ -120,17 +120,17 @@
                 </a>
                 <a href="members.html"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-sticky-note mr-3"></i>
+                    <i class="fas fa-user mr-3"></i>
                     Members
                 </a>
                 <a href="building.html"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-table mr-3"></i>
+                    <i class="fas fa-building mr-3"></i>
                     Building
                 </a>
                 <a href="payment.html"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-align-left mr-3"></i>
+                    <i class="fas fa-money-check mr-3"></i>
                     Payment
                 </a>
                 <!-- <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
@@ -175,15 +175,15 @@
 
         <!-- thismycodde -->
         <!-- Main Content -->
-        <div class=" mx-16 -mt-8 h-72">
+        <div class="mx-16 -mt-8 h-auto lg:h-96 overflow-auto">
             <div class="flex items-center mb-8 text-dla">
                 <h1 class="text-3xl font-bold">Dashboard</h1>
             </div>
-            <div class="bg-white mb-8  py-10 rounded-3xl shadow-md flex items-center px-10">
+            <div class="bg-white mb-8 py-10 rounded-3xl shadow-md flex flex-wrap lg:flex-nowrap items-center px-10">
                 <!-- card -->
-                <div class="flex items-center gap-x-60">
-                    <!-- simpan didiv biar gampang ngasih jarak -->
-                    <div>
+                <div class="flex flex-col lg:flex-row items-center gap-x-60 lg:gap-x-60 w-full lg:w-auto">
+                    <!-- simpan di div biar gampang ngasih jarak -->
+                    <div class="mb-6 lg:mb-0">
                         <a href="members.php" class="flex items-center">
                             <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
                                 <img src="../public/asset/profil2.svg" alt="">
@@ -194,8 +194,8 @@
                             </div>
                         </a>
                     </div>
-
-                    <div>
+        
+                    <div class="mb-6 lg:mb-0">
                         <a href="building.html" class="flex items-center">
                             <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
                                 <img src="../public/asset/building.svg" alt="">
@@ -206,19 +206,19 @@
                             </div>
                         </a>
                     </div>
-
-                    <div>
+        
+                    <div class="mb-6 lg:mb-0">
                         <a href="payment.html" class="flex items-center">
-                        <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
-                            <img src="../public/asset/payment.svg" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-lg font-semibold">Payment</p>
-                            <p class="text-3xl font-bold">100</p>
-                        </div>
+                            <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
+                                <img src="../public/asset/payment.svg" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-lg font-semibold">Payment</p>
+                                <p class="text-3xl font-bold">100</p>
+                            </div>
                         </a>
                     </div>
-
+        
                 </div>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg w-full">
@@ -226,7 +226,7 @@
                 <canvas id="revenueSalesChart" height="60"></canvas>
             </div>
         </div>
-    </div>
+        
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <script>
         const ctx = document.getElementById('revenueSalesChart').getContext('2d');

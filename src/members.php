@@ -74,11 +74,11 @@
             </a>
             <a href="building.html"
                 class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-table mr-3"></i>
+                <i class="fas fa-building mr-3"></i>
                 Building
             </a>
             <a href="payment.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-align-left mr-3"></i>
+                <i class="fas fa-money-check mr-3"></i>
                 Payment
             </a>
             <!-- <a href="tabs.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
