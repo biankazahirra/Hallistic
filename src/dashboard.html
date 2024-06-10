@@ -9,6 +9,7 @@
     <!-- Tailwind -->
     <link href="/tailwind.config.js" rel="stylesheet">
     <link rel="stylesheet" href="output.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> -->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -135,7 +136,7 @@
                 </a>
                 <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
-                    Sign Out
+                    Log-Out
                 </a>
 
             </nav>
@@ -157,12 +158,15 @@
                 <h1 class="text-3xl font-semibold">Dashboard</h1>
                 <div class="relative">
                     <a href="#" id="adminButton" class="text-2xl font-semibold">Admin</a>
-                    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-10">
-                        <a href="#" class="block px-4 py-2 text-lg font-semibold text-dla hover:bg-slate-500 hover:rounded-xl hover:mx-2" >Log-Out</a>
+                    <div id="dropdownMenu"
+                        class="hidden absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg py-2 z-10">
+                        <a href="#" id="logoutButton"
+                            class="block px-4 py-2 text-lg font-semibold text-dla hover:bg-dla hover:rounded-xl hover:mx-2 hover:text-white">Log-Out</a>
                     </div>
                 </div>
             </div>
-            <div class="bg-white mb-8 mt-10 py-10 rounded-3xl shadow-md flex flex-wrap lg:flex-nowrap items-center px-10 ">
+            <div
+                class="bg-white mb-8 mt-10 py-10 rounded-3xl shadow-md flex flex-wrap lg:flex-nowrap items-center px-10 ">
                 <!-- card -->
                 <div class="flex flex-col lg:flex-row items-center gap-x-60  w-full lg:w-auto">
                     <!-- simpan di div biar gampang ngasih jarak -->
@@ -192,13 +196,13 @@
 
                     <div>
                         <a href=" payment.html" class="flex items-center">
-                        <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
-                            <img src="../public/asset/payment.svg" alt="">
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-lg font-semibold">Payment</p>
-                            <p class="text-3xl font-bold">100</p>
-                        </div>
+                            <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
+                                <img src="../public/asset/payment.svg" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-lg font-semibold">Payment</p>
+                                <p class="text-3xl font-bold">100</p>
+                            </div>
                         </a>
                     </div>
 
@@ -247,21 +251,38 @@
         </script>
 
         <script>
-             //fungsi dropdown admin
-            document.getElementById('adminButton').addEventListener('click', function(event) {
+            //fungsi dropdown admin
+            document.getElementById('adminButton').addEventListener('click', function (event) {
                 event.preventDefault();
                 var dropdown = document.getElementById('dropdownMenu');
                 dropdown.classList.toggle('hidden');
             });
-        
-            //kalok klik luar, batal
-            document.addEventListener('click', function(event) {
-                var isClickInside = document.getElementById('adminButton').contains(event.target) || document.getElementById('dropdownMenu').contains(event.target);
+
+            document.addEventListener('click', function (event) {
+                var isClickInside = document.getElementById('adminButton').contains(event.target) || document
+                    .getElementById('dropdownMenu').contains(event.target);
                 if (!isClickInside) {
                     document.getElementById('dropdownMenu').classList.add('hidden');
                 }
             });
+
+            document.getElementById('logoutButton').addEventListener('click', function (event) {
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Apakah Anda yakin ingin keluar?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, keluar!',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Arahkan ke halaman logout atau lakukan aksi logout di sini
+                        window.location.href = 'logout.php';
+                    }
+                });
+            });
         </script>
+
 
 
 
