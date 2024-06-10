@@ -94,58 +94,63 @@
           Hasil Pencarian
         </div>
         <div class="rounded-t-[30px] border-[1px_solid_#9C9C9C] bg-[#FFFBF2] m-[0_107px_0_107px] flex flex-row justify-between p-[9px_24px_9px_27.8px] w-[1226px] box-sizing-border">
-            <div class="m-[5px_0_5px_0] flex flex-row w-[721.3px] h-[fit-content] box-sizing-border">
-              <div class="m-[12.8px_22.8px_12.8px_0] flex w-[22.5px] h-[22.5px] box-sizing-border">
-                <img class="w-[22.5px] h-[22.5px]" src="../public/asset/search1.svg" />
-              </div>
-              <div class="flex flex-row justify-between w-[676px] box-sizing-border">
-                <div class="m-[10px_14px_10px_0] inline-block w-[270px] break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
-                  <input type="text" placeholder="Pilih Kota yang dituju" class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded" />
-                </div>
-                <div class="border-l-[1px_solid_#A3B18A] border-r-[1px_solid_#A3B18A]  flex p-[10px_10.2px_9px_0] w-[392px] box-sizing-border">
-                  <div class=" flex flex-row box-sizing-border">
-                    <div class="m-[2px_21.3px_0_0] inline-block break-words font-['Font_Awesome_6_Free','Roboto_Condensed'] font-black text-[23.7px] text-[var(--secondary,#A3B18A)]">
-                      <img src="../public/asset/calseacrh.svg">
-                    </div>
-                    <div class="m-[0_0_1px_0] flex box-sizing-border">
-                      <input type="date" placeholder="Check-out" class="p-[5px] border-[1px_solid_#9C9C9C] rounded" />
-                    </div>
-                  </div>
-                  <div class=" left-[154.1px] bottom-[10px] flex box-sizing-border">
-                    <input type="date" placeholder="Check-in" class="p-[5px] border-[1px_solid_#9C9C9C] rounded" />
-                  </div>
-                </div>
-              </div>
+  
+          <!-- Kota Dituju -->
+          <div class="flex flex-row items-center">
+            <div class="m-[12.8px_22.8px_12.8px_0] flex w-[22.5px] h-[22.5px] box-sizing-border">
+              <img class="w-[22.5px] h-[22.5px]" src="../public/asset/search1.svg" />
             </div>
-            <div class="flex flex-row box-sizing-border">
-              <div class="m-[15px_52px_15px_0] flex flex-row box-sizing-border">
-                <div class="m-[2px_19.1px_2px_0] flex w-[24px] h-[24px] box-sizing-border">
-                  <img class="w-[24px] h-[24px]" src="../public/asset/profiluser.svg" />
-                </div>
-                <div class="m-[0_25.1px_0_0] flex box-sizing-border">
-                  <span class="break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
-                    Orang
-                  </span>
-                </div>
-                <div class="m-[14px_25.4px_12.5px_0] flex w-[12px] h-[1.5px] box-sizing-border">
-                  <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
-                </div>
-                <div class="m-[0_19.4px_0_0] flex box-sizing-border">
-                  <span id="guestCount" class="break-words font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D]">
-                    0
-                  </span>
-                </div>
-                <div class="m-[2px_0_2px_0] flex w-[24px] h-[24px] box-sizing-border">
-                  <button class="bg-[#4D4D4D] w-[24px] h-[24px] text-white" onclick="incrementGuests()">+</button>
-                </div>
-              </div>
-              <div class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[141px] box-sizing-border">
-                <button href="searchresult.html" class="w-full text-center break-words font-['Inter'] font-bold text-[15px] leading-[1.86] text-[#F3ECDC]">
-                  Cari
-                </button>
-              </div>
+            <div class="m-[10px_14px_10px_0] inline-block w-[180px] break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
+              <input type="text" placeholder="Pilih Kota yang dituju" class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" />
             </div>
           </div>
+        
+          <!-- Separator -->
+          <div class="flex items-center justify-center mx-[10px]">
+            <span class="text-[12px] text-[#4D4D4D]">|</span>
+          </div>
+        
+          <!-- Check-in/Check-out -->
+          <div class="flex flex-row items-center border-l-[1px_solid_#A3B18A] border-r-[1px_solid_#A3B18A] p-[10px_10.2px_9px_0] box-sizing-border">
+            <div class="flex items-center mr-[20px]">
+              <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
+              <label for="checkin-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-in:</label>
+              <input id="checkin-date" type="date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent" />
+            </div>
+            <div class="flex items-center">
+              <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
+              <label for="checkout-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-out:</label>
+              <input id="checkout-date" type="date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent" />
+            </div>
+          </div>
+        
+          <!-- Separator -->
+          <div class="flex items-center justify-center mx-[10px]">
+            <span class="text-[12px] text-[#4D4D4D]">|</span>
+          </div>
+        
+          <!-- Jumlah Orang -->
+          <div class="flex flex-row items-center">
+            <div class="m-[15px_52px_15px_0] flex flex-row box-sizing-border items-center">
+              <div class="flex items-center mr-[19.1px]">
+                <img class="w-[24px] h-[24px]" src="../public/asset/profiluser.svg" />
+              </div>
+              <div class="mr-[25.1px]">
+                <span class="break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">Orang</span>
+              </div>
+              <div class="flex items-center">
+                <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
+                <span id="guestCount" class="mx-[10px] break-words font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D]">0</span>
+                <button class="bg-[#4D4D4D] w-[24px] h-[24px] text-white" onclick="incrementGuests()">+</button>
+              </div>
+            </div>
+            <div class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center">
+              <a href="searchresult.html" class="text-center break-words font-['Inter'] font-bold text-[15px] text-[#F3ECDC]">Cari</a>
+            </div>
+          </div>
+        
+        </div>
+        
           
           <script>
             let guestCount = 0;
