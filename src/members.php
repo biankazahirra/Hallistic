@@ -81,20 +81,17 @@
                 <i class="fas fa-money-check mr-3"></i>
                 Payment
             </a>
-            <!-- <a href="tabs.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-tablet-alt mr-3"></i>
-                Tabbed Content
+            <a href="#" id="logoutButton"
+                class="flex items-center mt-[15rem] text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-sign-out-alt mr-3"></i>
+                Log-Out
             </a>
-            <a href="calendar.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-calendar mr-3"></i>
-                Calendar
-            </a> -->
         </nav>
     </aside>
 
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden bg-customBeige">
         <!-- Desktop Header -->
-        <header class="w-full items-center py-2 px-6 hidden sm:flex">
+        <!-- <header class="w-full items-center py-2 px-6 hidden sm:flex">
             <div class="w-1/2"></div>
             <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = !isOpen"
@@ -109,7 +106,7 @@
                     <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
                 </div>
             </div>
-        </header>
+        </header> -->
 
         <!-- Mobile Header & Nav -->
         <header x-data="{ isOpen: false }" class="w-full bg-slate-600 py-5 px-6 sm:hidden">
@@ -142,39 +139,30 @@
                     <i class="fas fa-align-left mr-3"></i>
                     Payment
                 </a>
-                <!-- <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-tablet-alt mr-3"></i>
-                    Tabbed Content
-                </a>
-                <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-calendar mr-3"></i>
-                    Calendar
-                </a> -->
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-cogs mr-3"></i>
-                    Support
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-user mr-3"></i>
-                    My Account
-                </a>
                 <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Sign Out
                 </a>
-                <button
-                    class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
-                </button>
             </nav>
-            <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
+
         </header>
 
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Customer Information</h1>
+                <div class="flex items-center justify-between mt-2">
+                    <h1 class="text-3xl text-dla font-semibold pb-6">Customer Information</h1>
+                    <div class="relative">
+                        <a href="#" id="adminButton" class="text-2xl font-semibold ">Admin</a>
+                        <div id="dropdownMenu"
+                            class="hidden absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg py-2 z-10">
+                            <a href="#" id="logoutButton"
+                                class="block px-4 py-2 text-lg font-semibold text-dla hover:bg-dla hover:rounded-xl hover:mx-2 hover:text-white">Log-Out</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
 
                 <!-- Input Pencarian -->
                 <div class="mb-4 relative">
@@ -189,8 +177,8 @@
 
                 <!-- Content goes here! 😁 -->
                 <div class="bg-white">
-                    <div class="flex overflow-auto h-[490px] ">
-                        <table id="customerTable" class="min-w-full table-auto bg-white border-collapse ">
+                    <div class="flex overflow-y-auto h-[530px] ">
+                        <table id="customerTable" class="w-full table-auto bg-white border-collapse ">
                             <thead class="text-black">
                                 <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
                                     <th class="text-center px-3 py-5 w-25 font-bold text-lg">Customer ID</th>
@@ -447,6 +435,40 @@
 
                             document.getElementById("customerTable").style.height = tableHeight + "px";
                         }
+                    </script>
+
+                    <script>
+                        //fungsi dropdown admin
+                        document.getElementById('adminButton').addEventListener('click', function (event) {
+                            event.preventDefault();
+                            var dropdown = document.getElementById('dropdownMenu');
+                            dropdown.classList.toggle('hidden');
+                        });
+
+                        document.addEventListener('click', function (event) {
+                            var isClickInside = document.getElementById('adminButton').contains(event.target) || document
+                                .getElementById('dropdownMenu').contains(event.target);
+                            if (!isClickInside) {
+                                document.getElementById('dropdownMenu').classList.add('hidden');
+                            }
+                        });
+
+                        document.getElementById('logoutButton').addEventListener('click', function (event) {
+                            event.preventDefault();
+                            Swal.fire({
+                                title: 'Apakah Anda yakin ingin keluar?',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Ya, keluar!',
+                                confirmButtonColor: 'red',
+                                cancelButtonText: 'Tidak'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // Arahkan ke halaman logout atau lakukan aksi logout di sini
+                                    window.location.href = 'logout.php';
+                                }
+                            });
+                        });
                     </script>
 
                     <!-- AlpineJS -->
