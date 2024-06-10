@@ -55,7 +55,7 @@
 <body class="bg-beige-100 font-family-karla flex">
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
-        <div class="p-7 flex items-center ">
+        <div class="p-8 flex items-center ">
             <a href="dashboard.html" class="text-black text-3xl font-semibold uppercase hover:text-gray-300">
                 <img src="../public/asset/logo.png" alt="">
             </a>
@@ -84,7 +84,7 @@
 
     <div class="w-full flex flex-col h-screen overflow-y-hidden bg-customBeige">
         <!-- Desktop Header -->
-        <header class="w-full items-center py-2 px-6 hidden sm:flex">
+        <!-- <header class="w-full items-center py-2 px-6 hidden sm:flex">
             <div class="w-1/2"></div>
             <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = !isOpen"
@@ -99,7 +99,7 @@
                     <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
                 </div>
             </div>
-        </header>
+        </header> -->
 
         <!-- Mobile Header & Nav -->
         <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
@@ -133,36 +133,13 @@
                     <i class="fas fa-money-check mr-3"></i>
                     Payment
                 </a>
-                <!-- <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-tablet-alt mr-3"></i>
-                    Tabbed Content
-                </a>
-                <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-calendar mr-3"></i>
-                    Calendar
-                </a> -->
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-cogs mr-3"></i>
-                    Support
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-user mr-3"></i>
-                    My Account
-                </a>
                 <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Sign Out
                 </a>
-                <button
-                    class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
-                </button>
-            </nav>
-            <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
-        </header>
 
+            </nav>
+        </header>
 
         <!-- AlpineJS -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -175,15 +152,21 @@
 
         <!-- thismycodde -->
         <!-- Main Content -->
-        <div class="mx-16 -mt-8 overflow-auto  ">
-            <div class="flex items-center mb-8 text-dla">
-                <h1 class="text-3xl font-bold">Dashboard</h1>
+        <div class="mx-16 mt-8 overflow-auto  ">
+            <div class="flex items-center justify-between text-dla">
+                <h1 class="text-3xl font-semibold">Dashboard</h1>
+                <div class="relative">
+                    <a href="#" id="adminButton" class="text-2xl font-semibold">Admin</a>
+                    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-10">
+                        <a href="#" class="block px-4 py-2 text-lg font-semibold text-dla hover:bg-slate-500 hover:rounded-xl hover:mx-2" >Log-Out</a>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white mb-8 py-10 rounded-3xl shadow-md flex flex-wrap lg:flex-nowrap items-center px-10 ">
+            <div class="bg-white mb-8 mt-10 py-10 rounded-3xl shadow-md flex flex-wrap lg:flex-nowrap items-center px-10 ">
                 <!-- card -->
                 <div class="flex flex-col lg:flex-row items-center gap-x-60  w-full lg:w-auto">
                     <!-- simpan di div biar gampang ngasih jarak -->
-                    <div class="mb-6  ">
+                    <div>
                         <a href="members.php" class="flex items-center">
                             <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
                                 <img src="../public/asset/profil2.svg" alt="">
@@ -195,7 +178,7 @@
                         </a>
                     </div>
 
-                    <div class="mb-6 ">
+                    <div>
                         <a href="building.html" class="flex items-center">
                             <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
                                 <img src="../public/asset/building.svg" alt="">
@@ -207,7 +190,7 @@
                         </a>
                     </div>
 
-                    <div class="mb-6 "">
+                    <div>
                         <a href=" payment.html" class="flex items-center">
                         <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
                             <img src="../public/asset/payment.svg" alt="">
@@ -259,6 +242,23 @@
                             beginAtZero: true
                         }
                     }
+                }
+            });
+        </script>
+
+        <script>
+             //fungsi dropdown admin
+            document.getElementById('adminButton').addEventListener('click', function(event) {
+                event.preventDefault();
+                var dropdown = document.getElementById('dropdownMenu');
+                dropdown.classList.toggle('hidden');
+            });
+        
+            //kalok klik luar, batal
+            document.addEventListener('click', function(event) {
+                var isClickInside = document.getElementById('adminButton').contains(event.target) || document.getElementById('dropdownMenu').contains(event.target);
+                if (!isClickInside) {
+                    document.getElementById('dropdownMenu').classList.add('hidden');
                 }
             });
         </script>
