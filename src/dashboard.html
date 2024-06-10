@@ -80,6 +80,11 @@
                 <i class="fas fa-money-check mr-3"></i>
                 Payment
             </a>
+            <a href="#" id="logoutButton" class="flex items-center mt-[15rem] text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-sign-out-alt mr-3"></i>
+                Log-Out
+            </a>
+           
         </nav>`
     </aside>
 
@@ -134,10 +139,12 @@
                     <i class="fas fa-money-check mr-3"></i>
                     Payment
                 </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="#" id="logoutButton"
+                    class="items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Log-Out
                 </a>
+            </nav>
 
             </nav>
         </header>
@@ -273,6 +280,7 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Ya, keluar!',
+                    confirmButtonColor: 'red',
                     cancelButtonText: 'Tidak'
                 }).then((result) => {
                     if (result.isConfirmed) {
