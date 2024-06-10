@@ -7,7 +7,9 @@
     <title>Building</title>
 
     <!-- Tailwind -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -142,9 +144,7 @@
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Sign Out
                 </a>
-
             </nav>
-
         </header>
 
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col mt-2 ">
@@ -166,7 +166,7 @@
                         <table class="min-w-full bg-white">
                             <thead class="bg-white text-black ">
                                 <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
-                                    <th class="text-center px-3 py-5  font-bold text-lg">Building ID
+                                    <th class="text-center px-3 py-5 w-25 font-bold text-lg">Building ID
                                     </th>
                                     <th class="text-center px-3 py-5  font-bold text-lg">Building Name</th>
                                     <th class="text-center px-3 py-5  font-bold text-lg">Description</th>
@@ -177,39 +177,39 @@
                             </thead>
                             <tbody class="text-gray-700">
                                 <tr class="border-b">
-                                <td class="text-center py-3 px-4 w-20 uppercase font-semibold text-sm">01</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
-                                    blablabla</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>    
-                                <td class="text-lg px-5">
-                                    <div class="flex items-center justify-center gap-x-2.5">
-                                        <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                class="fas fa-edit text-blue-600"></i></a>
-                                        <a href="#" class="delete-btn"
-                                            data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                class="fas fa-trash text-red-600"></i></a>
-                                    </div>
-                                </td>
+                                    <td class="text-center py-3 px-4 w-20 uppercase font-semibold text-sm">01</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
+                                        blablabla</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>
+                                    <td class="text-lg px-5">
+                                        <div class="flex items-center justify-center gap-x-2.5">
+                                            <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
+                                                    class="fas fa-edit text-blue-600"></i></a>
+                                            <a href="#" class="delete-btn"
+                                                data-id="<?php echo $row['id_penyewa']; ?>"><i
+                                                    class="fas fa-trash text-red-600"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                <td class="text-center py-3 px-4 w-20 uppercase font-semibold text-sm">01</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
-                                    blablabla</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>    
-                                <td class="text-lg px-5">
-                                    <div class="flex items-center justify-center gap-x-2.5">
-                                        <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                class="fas fa-edit text-blue-600"></i></a>
-                                        <a href="#" class="delete-btn"
-                                            data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                class="fas fa-trash text-red-600"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                                    <td class="text-center py-3 px-4 w-20 uppercase font-semibold text-sm">01</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
+                                        blablabla</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>
+                                    <td class="text-lg px-5">
+                                        <div class="flex items-center justify-center gap-x-2.5">
+                                            <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
+                                                    class="fas fa-edit text-blue-600"></i></a>
+                                            <a href="#" class="delete-btn"
+                                                data-id="<?php echo $row['id_penyewa']; ?>"><i
+                                                    class="fas fa-trash text-red-600"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

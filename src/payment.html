@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment</title>
+    <title>Payment Information</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
 
@@ -50,6 +50,9 @@
         }
     </style>
     <link rel="shortcut icon" href="../public/asset/admin.ico" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="output.css">
 </head>
 
 <body class="bg-gray-100 font-family-karla flex">
@@ -79,20 +82,18 @@
                 <i class="fas fa-money-check mr-3"></i>
                 Payment
             </a>
-            <!-- <a href="tabs.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-tablet-alt mr-3"></i>
-                Tabbed Content
+            <a href="#" id="logoutButton"
+                class="flex items-center mt-[15rem] text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-sign-out-alt mr-3"></i>
+                Log-Out
             </a>
-            <a href="calendar.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-calendar mr-3"></i>
-                Calendar
-            </a> -->
+
         </nav>
     </aside>
 
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden bg-customBeige">
         <!-- Desktop Header -->
-        <header class="w-full items-center py-2 px-6 hidden sm:flex">
+        <!-- <header class="w-full items-center py-2 px-6 hidden sm:flex">
             <div class="w-1/2"></div>
             <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = !isOpen"
@@ -107,7 +108,7 @@
                     <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
                 </div>
             </div>
-        </header>
+        </header> -->
 
         <!-- Mobile Header & Nav -->
         <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
@@ -140,57 +141,81 @@
                     <i class="fas fa-align-left mr-3"></i>
                     Payment
                 </a>
-                <!-- <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-tablet-alt mr-3"></i>
-                    Tabbed Content
-                </a>
-                <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-calendar mr-3"></i>
-                    Calendar
-                </a> -->
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-cogs mr-3"></i>
-                    Support
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-user mr-3"></i>
-                    My Account
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="#" id="logoutButton"
+                    class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Sign Out
                 </a>
             </nav>
-            <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
         </header>
 
-        <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+        <div class="w-full h-screen overflow-x-hidden border-t flex flex-col mt-2">
             <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Payment</h1>
+                <div class="flex items-center justify-between text-dla">
+                    <h1 class="text-3xl font-semibold pb-6">Payment Information</h1>
+                    <div class="relative">
+                        <a href="#" id="adminButton" class="text-2xl font-semibold ">Admin</a>
+                        <div id="dropdownMenu"
+                            class="hidden absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg py-2 z-10">
+                            <a href="#" id="logoutButton"
+                                class="block px-4 py-2 text-lg font-semibold text-dla hover:bg-dla hover:rounded-xl hover:mx-2 hover:text-white">Log-Out</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Pencarian -->
+                <div class="mb-4 relative">
+                    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-xl">
+                        <i class='bx bx-search opacity-50'></i>
+                    </span>
+                    <input type="text" id="searchInput" placeholder="Search for names..."
+                        class="border pl-12 pr-2 py-3 rounded-lg w-full" onkeyup="searchTable()">
+                </div>
 
                 <!-- Content goes here! 😁 -->
 
                 <div class="bg-white overflow-auto">
                     <table class="min-w-full bg-white">
-                        <thead class="bg-gray-800 text-white">
-                            <tr>
-                                <th class="text-center py-3 px-3 w-20 uppercase font-semibold text-sm">Payment ID</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Date</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Check In</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Check Out</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Status</th>
-                                <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Action</th>
+                        <thead class="bg-white text-black">
+                            <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
+                                <th class="text-center px-3 py-5 w-25 font-bold text-lg">Payment ID</th>
+                                <th class="text-center px-3 py-5  font-bold text-lg">Date</th>
+                                <th class="text-center px-3 py-5  font-bold text-lg">Check In</th>
+                                <th class="text-center px-3 py-5  font-bold text-lg">Check Out</th>
+                                <th class="text-center px-3 py-5  font-bold text-lg">Status</th>
+                                <th class="text-center px-3 py-5  font-bold text-lg">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <td class="text-center py-3 px-3 w-25 uppercase font-semibold text-sm">01</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Verified</td>
-                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm"></td>
+                            <tr class="border-b">
+                                <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
+                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
+                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
+                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
+                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Verified</td>
+                                <td class="text-center">
+                                    <div class="flex items-center justify-center">
+                                        <button
+                                            class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">Verifikasi
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
+                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
+                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
+                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
+                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum Terverifikasi
+                                </td>
+                                <td class="text-center">
+                                    <div class="flex items-center justify-center">
+                                        <button
+                                            class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">Verifikasi
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
 
                         <!-- <tbody class="text-gray-700">
