@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 09:21 AM
+-- Generation Time: Jun 11, 2024 at 08:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -77,6 +77,28 @@ CREATE TABLE `daftar_pembayaran` (
   `status_pembayaran` enum('Sudah Terverifikasi','Belum Terverifikasi','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `daftar_pesan`
+--
+
+CREATE TABLE `daftar_pesan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subjek` varchar(255) DEFAULT NULL,
+  `pesan` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `daftar_pesan`
+--
+
+INSERT INTO `daftar_pesan` (`id`, `nama`, `email`, `subjek`, `pesan`) VALUES
+(3, 'mitha', 'mitha@gmail.com', 'harga', 'bisa nego gak kak?'),
+(4, 'Bianka', 'biankazipper@gmail.com', 'bangunan', 'bisa ga kalo gedungnya gaada di aplikasi?');
+
 --
 -- Indexes for dumped tables
 --
@@ -100,6 +122,12 @@ ALTER TABLE `daftar_pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`);
 
 --
+-- Indexes for table `daftar_pesan`
+--
+ALTER TABLE `daftar_pesan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -108,6 +136,12 @@ ALTER TABLE `daftar_pembayaran`
 --
 ALTER TABLE `daftar_akun`
   MODIFY `id_penyewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `daftar_pesan`
+--
+ALTER TABLE `daftar_pesan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
