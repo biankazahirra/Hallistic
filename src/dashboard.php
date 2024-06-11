@@ -1,3 +1,58 @@
+<?php
+include "koneksi.php";
+
+
+$query = "SELECT COUNT(*) AS total_user FROM daftar_akun";
+$result = mysqli_query($koneksi, $query);
+
+// Periksa apakah query berhasil dieksekusi
+if ($result) {
+    // Ambil hasil query
+    $row = mysqli_fetch_assoc($result);
+    $total_user = $row['total_user'];
+} else {
+    // Jika terjadi kesalahan, atur total user menjadi 0 atau tampilkan pesan kesalahan
+    $total_user = 0;
+    // Tampilkan pesan error jika diperlukan
+    // echo "Error: " . mysqli_error($conn);
+}
+
+
+$query2 = "SELECT COUNT(*) AS total_gedung FROM daftar_gedung";
+$result2 = mysqli_query($koneksi, $query2);
+
+// Periksa apakah query berhasil dieksekusi
+if ($result2) {
+    // Ambil hasil query
+    $row2 = mysqli_fetch_assoc($result2);
+    $total_gedung = $row2['total_gedung'];
+} else {
+    // Jika terjadi kesalahan, atur total user menjadi 0 atau tampilkan pesan kesalahan
+    $total_gedung = 0;
+    // Tampilkan pesan error jika diperlukan
+    // echo "Error: " . mysqli_error($conn);
+}
+
+$query3 = "SELECT COUNT(*) AS total_pembayaran FROM daftar_pembayaran";
+$result3 = mysqli_query($koneksi, $query3);
+
+// Periksa apakah query berhasil dieksekusi
+if ($result3) {
+    // Ambil hasil query
+    $row3 = mysqli_fetch_assoc($result3);
+    $total_pembayaran = $row3['total_pembayaran'];
+} else {
+    // Jika terjadi kesalahan, atur total user menjadi 0 atau tampilkan pesan kesalahan
+    $total_pemabayaran = 0;
+    // Tampilkan pesan error jika diperlukan
+    // echo "Error: " . mysqli_error($conn);
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,13 +112,13 @@
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-8 flex items-center ">
-            <a href="dashboard.html" class="text-black text-3xl font-semibold uppercase hover:text-gray-300">
+            <a href="dashboard.php" class="text-black text-3xl font-semibold uppercase hover:text-gray-300">
                 <img src="../public/asset/logo.png" alt="">
             </a>
         </div>
 
         <nav class="text-dla text-base font-semibold pt-3">
-            <a href="dashboard.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="dashboard.php" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
@@ -71,20 +126,20 @@
                 <i class="fas fa-user mr-3"></i>
                 Members
             </a>
-            <a href="building.html"
-                class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="building.php" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-building mr-3"></i>
                 Building
             </a>
-            <a href="payment.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="payment.php" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-money-check mr-3"></i>
                 Payment
             </a>
-            <a href="#" id="logoutButton" class="flex items-center mt-[15rem] text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="#" id="logoutButton"
+                class="flex items-center mt-[15rem] text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-sign-out-alt mr-3"></i>
                 Log-Out
             </a>
-           
+
         </nav>`
     </aside>
 
@@ -139,7 +194,7 @@
                     <i class="fas fa-money-check mr-3"></i>
                     Payment
                 </a>
-                <a href="#" id="logoutButton"
+                <a href="#" onclick="logout()"
                     class="items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Log-Out
@@ -167,7 +222,7 @@
                     <a href="#" id="adminButton" class="text-2xl font-semibold">Admin</a>
                     <div id="dropdownMenu"
                         class="hidden absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg py-2 z-10">
-                        <a href="#" id="logoutButton"
+                        <a href="#" onclick="logout()"
                             class="block px-4 py-2 text-lg font-semibold text-dla hover:bg-dla hover:rounded-xl hover:mx-2 hover:text-white">Log-Out</a>
                     </div>
                 </div>
@@ -184,7 +239,7 @@
                             </div>
                             <div class="ml-4">
                                 <p class="text-lg font-semibold">Member</p>
-                                <p class="text-3xl font-bold">100</p>
+                                <p class="text-3xl font-bold"><?php echo $total_user; ?></p>
                             </div>
                         </a>
                     </div>
@@ -196,7 +251,7 @@
                             </div>
                             <div class="ml-4">
                                 <p class="text-lg font-semibold">Building</p>
-                                <p class="text-3xl font-bold">100</p>
+                                <p class="text-3xl font-bold"><?php echo $total_gedung; ?></p>
                             </div>
                         </a>
                     </div>
@@ -208,7 +263,7 @@
                             </div>
                             <div class="ml-4">
                                 <p class="text-lg font-semibold">Payment</p>
-                                <p class="text-3xl font-bold">100</p>
+                                <p class="text-3xl font-bold"><?php echo $total_pembayaran ?> </p>
                             </div>
                         </a>
                     </div>
@@ -231,19 +286,19 @@
                         'Dec'
                     ],
                     datasets: [{
-                            label: 'Revenue',
-                            data: [500, 700, 400, 800, 900, 600, 700, 1100, 1200, 800, 900, 1000],
-                            borderColor: 'green',
-                            fill: true,
-                            backgroundColor: 'rgba(0, 119, 255, 0.1)'
-                        },
-                        {
-                            label: 'Sales',
-                            data: [300, 500, 600, 700, 800, 500, 600, 900, 1000, 700, 800, 900],
-                            borderColor: 'red',
-                            fill: true,
-                            backgroundColor: 'rgba(255, 205 , 0, 0.1)'
-                        }
+                        label: 'Revenue',
+                        data: [500, 700, 400, 800, 900, 600, 700, 1100, 1200, 800, 900, 1000],
+                        borderColor: 'green',
+                        fill: true,
+                        backgroundColor: 'rgba(0, 119, 255, 0.1)'
+                    },
+                    {
+                        label: 'Sales',
+                        data: [300, 500, 600, 700, 800, 500, 600, 900, 1000, 700, 800, 900],
+                        borderColor: 'red',
+                        fill: true,
+                        backgroundColor: 'rgba(255, 205 , 0, 0.1)'
+                    }
                     ]
                 },
                 options: {
@@ -289,6 +344,24 @@
                     }
                 });
             });
+        </script>
+
+        <script>
+            function logout() {
+                Swal.fire({
+                    title: 'Apakah Anda yakin ingin keluar?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, keluar!',
+                    confirmButtonColor: 'red',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Arahkan ke halaman logout atau lakukan aksi logout di sini
+                        window.location.href = 'logout.php';
+                    }
+                });
+            }
         </script>
 
 

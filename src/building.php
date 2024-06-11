@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +12,7 @@
     <!-- Tailwind -->
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -62,7 +66,7 @@
             </a>
         </div>
         <nav class="text-black text-base font-semibold pt-3">
-            <a href="dashboard.html"
+            <a href="dashboard.php"
                 class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
@@ -71,11 +75,11 @@
                 <i class="fas fa-user mr-3"></i>
                 Members
             </a>
-            <a href="tables.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="building.php" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-building mr-3"></i>
                 Building
             </a>
-            <a href="payment.html" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="payment.php" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-money-check mr-3"></i>
                 Payment
             </a>
@@ -139,7 +143,7 @@
                     <i class="fas fa-money-check mr-3"></i>
                     Payment
                 </a>
-                <a href="#" id="logoutButton"
+                <a href="#" onclick="logout()"
                     class=" items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Sign Out
@@ -235,8 +239,59 @@
 
             </main>
         </div>
-
     </div>
+
+    <script>
+        //fungsi dropdown admin
+        document.getElementById('adminButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            var dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function (event) {
+            var isClickInside = document.getElementById('adminButton').contains(event.target) || document
+                .getElementById('dropdownMenu').contains(event.target);
+            if (!isClickInside) {
+                document.getElementById('dropdownMenu').classList.add('hidden');
+            }
+        });
+
+        document.getElementById('logoutButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin keluar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, keluar!',
+                confirmButtonColor: 'red',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Arahkan ke halaman logout atau lakukan aksi logout di sini
+                    window.location.href = 'logout.php';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function logout() {
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin keluar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, keluar!',
+                confirmButtonColor: 'red',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Arahkan ke halaman logout atau lakukan aksi logout di sini
+                    window.location.href = 'logout.php';
+                }
+            });
+        }
+    </script>
 
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
