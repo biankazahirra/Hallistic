@@ -135,7 +135,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </nav>
     </aside>
-
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden bg-customBeige">
         <!-- Desktop Header -->
         <!-- <header class="w-full items-center py-2 px-6 hidden sm:flex">
@@ -209,26 +208,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
-                <div class="flex items-center mt-14 text-3xl font-semibold text-dla ml-3">
+                <a href="building.php">
+                    <div
+                        class="inline-flex items-center mt-4 text-xl bg-green-800 py-2 px-2 w-24 rounded-lg font-semibold text-white hover:bg-green-900 ml-3">
+                        Kembali
+                    </div>
+                </a>
+
+                <div class="flex items-center mt-2 text-3xl font-semibold text-dla ml-3">
                     Add A Building
                 </div>
 
-                <section class="u-clearfix u-section-1 bg-gray-100 py-8" id="sec-12fd">
+                <section class="u-clearfix u-section-1 mt-2" id="sec-12fd">
                     <div class="container mx-auto px-4">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
                             <h4 class="text-lg font-semibold text-gray-800 py-4 px-6">Tambah Data Gedung</h4>
-                            <form  method="post" enctype="multipart/form-data" class="p-6">
+                            <form method="post" enctype="multipart/form-data" class="p-6">
                                 <div class="mb-4">
                                     <label for="id_gedung" class="block text-gray-700 font-semibold mb-2">ID</label>
                                     <input type="text" id="id_gedung" name="id_gedung" placeholder="Masukkan ID gedung"
-                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
                                         required>
                                 </div>
                                 <div class="mb-4">
                                     <label for="nama_gedung" class="block text-gray-700 font-semibold mb-2">Nama</label>
                                     <input type="text" id="nama_gedung" name="nama_gedung"
                                         placeholder="Masukkan nama gedung"
-                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
                                         required>
                                 </div>
                                 <div class="mb-4">
@@ -236,14 +242,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         class="block text-gray-700 font-semibold mb-2">Deskripsi</label>
                                     <textarea id="deskripsi_gedung" name="deskripsi_gedung" rows="4"
                                         placeholder="Masukkan deskripsi gedung"
-                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
                                         required></textarea>
                                 </div>
                                 <div class="mb-4">
                                     <label for="status_gedung"
                                         class="block text-gray-700 font-semibold mb-2">Status</label>
                                     <select id="status_gedung" name="status_gedung"
-                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
                                         required>
                                         <option value="Available">Available</option>
                                         <option value="Unavailable">Unavailable</option>
@@ -253,12 +259,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <label for="image" class="block text-gray-700 font-semibold mb-2">Unggah
                                         Foto</label>
                                     <input type="file" id="image" name="image"
-                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
                                         required>
                                 </div>
                                 <div class="mb-4">
                                     <button type="submit"
-                                        class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md">
+                                        class="bg-green-800 hover:bg-green-900 text-white font-semibold py-2 px-4 rounded-md">
                                         Tambah Gedung
                                     </button>
                                 </div>
@@ -266,11 +272,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                 </section>
-
-
             </main>
         </div>
     </div>
+
     <!-- Skrip JavaScript untuk Menampilkan SweetAlert2 -->
     <?php if (isset($pesan) && $pesan === "sukses"): ?>
         <script>
