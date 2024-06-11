@@ -1,10 +1,17 @@
+<?php
+
+include "ceklogin.php";
+include 'koneksi.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SearchResultAfterLogin</title>
+    <title>TransactionAfterLogin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@400&display=swap" rel="stylesheet">
@@ -51,122 +58,59 @@
 </head>
 <body>
 
-    <header class="fixed w-full">
-        <nav class="bg-[#588157] border-dlr-200 py-4 navbar fixed top-0 w-full">
-            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto ml-[90px]">
-                <a href="#" class="flex items-center">
-                    <img src="../public/asset/logobar.svg" class="h-6 mr-3 sm:h-9" alt="Halistic Logo" />
-                </a>
-                <div class="flex items-center lg:order-2  mr-[90px] gap-[30px]">
-                    
-                    <!-- <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a> -->
-                    <a href="login.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">HI, ERIC!</a>
-                    <a href="login.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">LOGOUT</a>
-                    
-                </div>
-                <div class="mr-[60px] items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                        <li>
-                          <a href="home1.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">HOME</a>
-                        </li>
-                        <li>
-                          <a href="about1.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">ABOUT US</a>
-                        </li>
-                        <li>
-                            <a href="contact1.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" >CONTACT</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 opensans font-semibold text-white rounded lg:bg-transparent lg:p-0  tracking-widest" aria-current="page">SEARCH</a>
-                        </li>
-                        <li>
-                            <a href="transaciton1.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">TRANSACTION</a>
-                        </li>
-                    </ul>
-                </div>
+  <header class="fixed w-full">
+    <nav class="bg-[#588157] border-dlr-200 py-4 navbar fixed top-0 w-full">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto ml-[90px]">
+            <a href="#" class="flex items-center">
+                <img src="../public/asset/logobar.svg" class="h-6 mr-3 sm:h-9" alt="Halistic Logo" />
+            </a>
+            <div class="flex items-center lg:order-2  mr-[90px] gap-[30px]">
+                
+                <!-- <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a> -->
+                <a href="home1.php"
+                  class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                  Hi, <?php 
+                  echo isset($_SESSION['nama_penyewa']) ? explode(' ', $_SESSION['nama_penyewa'])[0] : 'Pengguna'; ?>!</a>
+                <a href="login.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">LOGOUT</a>
+                
             </div>
-        </nav>
-    </header>
+            <div class="mr-[60px] items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                    <li>
+                      <a href="home1.php" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">HOME</a>
+                    </li>
+                    <li>
+                      <a href="about1.php" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">ABOUT US</a>
+                    </li>
+                    <li>
+                        <a href="contact1.php" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" >CONTACT</a>
+                    </li>
+                    <li>
+                        <a href="search1.php" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">SEARCH</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 pl-3 pr-4 opensans font-semibold text-white rounded lg:bg-transparent lg:p-0  tracking-widest" aria-current="page">TRANSACTION</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <section class="bg-[#F3ECDC] flex flex-col items-center p-[0_0_48px_0] w-[1440px] box-sizing-border pt-[120px] mx-auto">
     <div>
       <div class="flex flex-col items-center w-[1440px] box-sizing-border">
         <div class="m-[0_0_55px_0] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-big,400)] text-[45px] text-[var(--heading,#2D2D2D)]">
-          Hasil Pencarian
+          Riwayat Pemesanan
         </div>
-        <div class="rounded-t-[30px] border-[1px_solid_#9C9C9C] bg-[#FFFBF2] m-[0_107px_0_107px] flex flex-row justify-between p-[9px_24px_9px_27.8px] w-[1226px] box-sizing-border">
-  
-          <!-- Kota Dituju -->
-          <div class="flex flex-row items-center">
-            <div class="m-[12.8px_22.8px_12.8px_0] flex w-[22.5px] h-[22.5px] box-sizing-border">
-              <img class="w-[22.5px] h-[22.5px]" src="../public/asset/search1.svg" />
-            </div>
-            <div class="m-[10px_14px_10px_0] inline-block w-[180px] break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
-              <input type="text" placeholder="Pilih Kota yang dituju" class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" />
-            </div>
-          </div>
-        
-          <!-- Separator -->
-          <div class="flex items-center justify-center mx-[10px]">
-            <span class="text-[12px] text-[#4D4D4D]">|</span>
-          </div>
-        
-          <!-- Check-in/Check-out -->
-          <div class="flex flex-row items-center border-l-[1px_solid_#A3B18A] border-r-[1px_solid_#A3B18A] p-[10px_10.2px_9px_0] box-sizing-border">
-            <div class="flex items-center mr-[20px]">
-              <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
-              <label for="checkin-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-in:</label>
-              <input id="checkin-date" type="date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent" />
-            </div>
-            <div class="flex items-center">
-              <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
-              <label for="checkout-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-out:</label>
-              <input id="checkout-date" type="date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent" />
-            </div>
-          </div>
-        
-          <!-- Separator -->
-          <div class="flex items-center justify-center mx-[10px]">
-            <span class="text-[12px] text-[#4D4D4D]">|</span>
-          </div>
-        
-          <!-- Jumlah Orang -->
-          <div class="flex flex-row items-center">
-            <div class="m-[15px_52px_15px_0] flex flex-row box-sizing-border items-center">
-              <div class="flex items-center mr-[19.1px]">
-                <img class="w-[24px] h-[24px]" src="../public/asset/profiluser.svg" />
-              </div>
-              <div class="mr-[25.1px]">
-                <span class="break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">Orang</span>
-              </div>
-              <div class="flex items-center">
-                <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
-                <span id="guestCount" class="mx-[10px] break-words font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D]">0</span>
-                <button class="bg-[#4D4D4D] w-[24px] h-[24px] text-white" onclick="incrementGuests()">+</button>
-              </div>
-            </div>
-            <div class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center">
-              <a href="searchresult.html" class="text-center break-words font-['Inter'] font-bold text-[15px] text-[#F3ECDC]">Cari</a>
-            </div>
-          </div>
-        
+        <div class="m-[0_0.6px_0_0] flex flex-row justify-between w-[199.4px] box-sizing-border">
+          <span class="m-[0_10px_0_0] w-[120px] break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[#000000]">
+            SEKARANG
+          </span>
+          <span class="break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[#588157]">
+            SELESAI
+          </span>
         </div>
-        
-          
-          <script>
-            let guestCount = 0;
-          
-            function incrementGuests() {
-              guestCount++;
-              document.getElementById('guestCount').innerText = guestCount;
-            }
-          
-            function decrementGuests() {
-              if (guestCount > 1) {
-                guestCount--;
-                document.getElementById('guestCount').innerText = guestCount;
-              }
-            }
-          </script>
       </div>
     </div>
     <div class="bg-[#F3ECDC] flex justify-center p-[46px_0_69px_0] w-full box-sizing-border">
@@ -266,17 +210,27 @@
                 </div>
               </div>
             </div>
-            <div class="m-[0_9.4px_0_0] flex flex-col self-center w-[150.6px] box-sizing-border">
-                <div class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] flex justify-center items-center p-[2px_0] w-[108.6px] h-[40px] box-sizing-border transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800" style="margin-left: 20px">
-                  <a href="booking.html" class="break-words font-['Inter'] font-normal text-center leading-[1.561] text-[#F3ECDC] hover:text-[#EAECE2]">
-                    Book Now
-                  </a>
-                </div>
-                <a href="detail.html" class="break-words font-['Inter'] font-normal text-center  text-[#588157] hover:text-green-800">
-                    Lihat Selengkapnya
-                  </a>
-              </div>
+            
           </div>
+        </div>
+        <div class="m-[0_0_30px_0] flex flex-col w-[fit-content] box-sizing-border pt-[54px]">
+            <label class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
+                Rating (1-5)
+            </label>
+            <input type="text" class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_75px_20px] w-[800px] h-[20px] box-sizing-border" placeholder="1-5">
+        </div>
+        <div class="m-[0_0_30px_0] flex flex-col w-[fit-content] box-sizing-border">
+            <label class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
+                Ulasan
+            </label>
+            <textarea class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_75px_20px] w-[800px] box-sizing-border" placeholder="Ketik ulasan disini..."></textarea>
+        </div>
+        <div class="flex justify-center w-full">
+            <a class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] flex justify-center items-center p-[12px_0_12px_0.7px] w-[91.6px] box-sizing-border transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800" href="#">
+                <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.561] text-[#F3ECDC]">
+                    Save
+                </span>
+            </a>
         </div>
       </div>
     </div>
