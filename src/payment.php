@@ -1,3 +1,12 @@
+<?php
+include "koneksi.php";
+
+$query = "SELECT * FROM daftar_pembayaran";
+$result = mysqli_query($koneksi, $query);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -165,12 +174,12 @@
                     <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-xl">
                         <i class='bx bx-search opacity-50'></i>
                     </span>
-                    <input type="text" id="searchInput" placeholder="Search for names..."
+                    <input type="text" id="searchInput" placeholder="Search for dates..."
                         class="border pl-12 pr-2 py-3 rounded-lg w-full" onkeyup="searchTable()">
                 </div>
 
                 <!-- Content goes here! 😁 -->
-                <div class="w-full mt-3 bg-white max-h-screen h-[400px]">
+                <div class="w-full mt-3 bg-white max-h-screen h-[560px]">
                     <div class="overflow-auto">
                         <table class="min-w-full bg-white p-6 table-auto" id="payment_table">
                             <thead class="bg-white text-black">
@@ -184,43 +193,43 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border-b">
-                                    <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum
-                                        Terverifikasi
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="flex items-center justify-center">
-                                            <button class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">
-                                                Verifikasi
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum
-                                        Terverifikasi
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="flex items-center justify-center">
-                                            <button
-                                                class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">Verifikasi
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                                    <tr class="border-b">
+                                        <form action="verifikasi_pembayaran.php" method="post">
+                                            <input type="hidden" name="id_pembayaran"
+                                                value="<?php echo $row['id_pembayaran']; ?>">
+                                            <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">
+                                                <?php echo $row['id_pembayaran'] ?>
+                                            </td>
+                                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                                <?php echo $row['tgl_pembayaran'] ?>
+                                            </td>
+                                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                                <?php echo $row['tgl_checkin'] ?>
+                                            </td>
+                                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                                <?php echo $row['tgl_checkout'] ?>
+                                            </td>
+                                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                                <?php echo $row['status_pembayaran'] ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <?php if ($row['status_pembayaran'] !== 'Terverifikasi'): ?>
+                                                    <button type="submit" name="verifikasi"
+                                                        class="bg-green-800 rounded-md py-2 px-3 text-white uppercase hover:bg-green-900">
+                                                        Verifikasi
+                                                    </button>
+                                                <?php else: ?>
+                                                    <span class="text-green-800 uppercase font-semibold">Terverifikasi</span>
+                                                <?php endif; ?>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                <?php endwhile; ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </main>
         </div>
 
@@ -231,6 +240,7 @@
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
 
     <script>
         //fungsi dropdown admin
