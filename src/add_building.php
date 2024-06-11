@@ -11,13 +11,15 @@
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 6.11.6, nicepage.com">
     <meta name="referrer" content="origin">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-theme-google-font" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
 
     <!-- Tailwind -->
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -119,7 +121,7 @@
         <!-- Mobile Header & Nav -->
         <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
             <div class="flex items-center justify-between">
-                <a href="dashboard.html"
+                <a href="dashboard.php"
                     class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
                 <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
                     <i x-show="!isOpen" class="fas fa-bars"></i>
@@ -129,7 +131,7 @@
 
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-                <a href="dashboard.html"
+                <a href="dashboard.php"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
@@ -139,7 +141,7 @@
                     <i class="fas fa-user mr-3"></i>
                     Members
                 </a>
-                <a href="tables.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+                <a href="building.php" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                     <i class="fas fa-building mr-3"></i>
                     Building
                 </a>
@@ -156,11 +158,10 @@
             </nav>
         </header>
 
-        <div class="w-full h-screen overflow-x-hidden border-t flex flex-col mt-2 ">
+        <div class="w-full border flex flex-col">
             <main class="w-full flex-grow p-6">
-                <div
-                    class="flex items-center justify-between text-dla sticky top-0 z-10 bg-white bg-opacity-0 backdrop-blur-sm w-full ">
-                    <h1 class="text-3xl font-semibold mb-5 flex items-center">Building</h1>
+                <div class="flex items-center justify-between text-dla mt-3 mx-2">
+                    <h3 class="text-2xl font-semibold flex items-center">Building Information</h3>
                     <div class="relative">
                         <a href="#" id="adminButton" class="text-2xl font-semibold ">Admin</a>
                         <div id="dropdownMenu"
@@ -171,62 +172,154 @@
                     </div>
                 </div>
 
-                <!-- Input Pencarian -->
-                <div class="my-4 relative">
-                    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-xl">
-                        <i class='bx bx-search opacity-50'></i>
-                    </span>
-                    <input type="text" id="searchInput" placeholder="Search for names..."
-                        class="border pl-12 pr-2 py-3 rounded-lg w-full" onkeyup="searchTable()">
+                <div class="flex items-center mt-14 text-3xl font-semibold text-dla ml-3">
+                    Add A Building
                 </div>
+
+
+
                 <section class="u-clearfix u-section-1" id="sec-12fd">
-                    <div class="u-clearfix u-sheet u-sheet-1">
+                    <div class="u-clearfix u-sheet u-sheet-1 overflow-auto">
                         <div class="u-container-style u-group u-shape-rectangle u-white u-group-1">
-                        <div class="u-container-layout u-container-layout-1">
-                            <h4 class="u-text u-text-default u-text-1">Tambah Data Gedung<span style="font-weight: 700;"></span>
-                            </h4>
-                            <div class="u-form u-form-1">
-                            <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form" style="padding: 10px;">
-                                <div class="u-form-group u-form-name">
-                                <label for="name-54c6" class="u-label u-label-1">ID</label>
-                                <input type="text" placeholder="Masukkan ID gedung" id="name-54c6" name="id_gedung" class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-1" required="">
+                            <div class="u-container-layout u-container-layout-1">
+                                <h4 class="u-text u-text-default u-text-1">Tambah Data Gedung<span
+                                        style="font-weight: 700;"></span>
+                                </h4>
+                                <div class="u-form u-form-1">
+                                    <form action="https://forms.nicepagesrv.com/v2/form/process"
+                                        class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email"
+                                        name="form" style="padding: 10px;">
+                                        <div class="u-form-group u-form-name">
+                                            <label for="name-54c6" class="u-label u-label-1">ID</label>
+                                            <input type="text" placeholder="Masukkan ID gedung" id="name-54c6"
+                                                name="id_gedung"
+                                                class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-1"
+                                                required="">
+                                        </div>
+                                        <div class="u-form-group">
+                                            <label for="email-54c6" class="u-label u-label-2">Nama</label>
+                                            <input type="text" placeholder="Masukkan nama gedung" id="email-54c6"
+                                                name="nama_gedung"
+                                                class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-2"
+                                                required="required">
+                                        </div>
+                                        <div class="u-form-group u-form-message">
+                                            <label for="message-54c6" class="u-label u-label-3">Deskripsi</label>
+                                            <textarea placeholder="Masukkan deskripsi gedung" rows="4" cols="50"
+                                                id="message-54c6" name="deskripsi_gedung"
+                                                class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-3"
+                                                required=""></textarea>
+                                        </div>
+                                        <div
+                                            class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-4">
+                                            <label for="select-bf12" class="u-label u-label-4">Status</label>
+                                            <div class="u-form-select-wrapper">
+                                                <select id="select-bf12" name="status_gedung"
+                                                    class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-4"
+                                                    required="required">
+                                                    <option value="Available" data-calc="Available">Available</option>
+                                                    <option value="Unavailable" data-calc="Unavailable">Unavailable
+                                                    </option>
+                                                </select>
+                                                <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    width="16px" height="16px" viewBox="0 0 16 16"
+                                                    style="fill:currentColor;" xml:space="preserve">
+                                                    <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-4">
+                                            <label for="url-b7cb" class="u-label u-label-5">Unggah Foto</label>
+                                            <input type="file" id="upload-image" name="image"
+                                                class="u-border-2 u-border-grey-25 u-input u-input-rectangle u-radius u-input-4"
+                                                required="required">
+                                        </div>
+                                        <div class="u-align-left u-form-group u-form-submit">
+                                            <a href="#"
+                                                class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-radius u-btn-1">Tambah
+                                                Gedung</a>
+                                            <input type="submit" value="submit" class="u-form-control-hidden">
+                                        </div>
+                                        <div class="u-form-send-message u-form-send-success"> Thank you! Your message
+                                            has been sent. </div>
+                                        <div class="u-form-send-error u-form-send-message"> Unable to send your message.
+                                            Please fix errors then try again. </div>
+                                        <input type="hidden" value="" name="recaptchaResponse">
+                                        <input type="hidden" name="formServices"
+                                            value="ef042633-b5e1-2143-32b9-b984b939a6f4">
+                                    </form>
                                 </div>
-                                <div class="u-form-group">
-                                <label for="email-54c6" class="u-label u-label-2">Nama</label>
-                                <input type="text" placeholder="Masukkan nama gedung" id="email-54c6" name="nama_gedung" class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-2" required="required">
-                                </div>
-                                <div class="u-form-group u-form-message">
-                                <label for="message-54c6" class="u-label u-label-3">Deskripsi</label>
-                                <textarea placeholder="Masukkan deskripsi gedung" rows="4" cols="50" id="message-54c6" name="deskripsi_gedung" class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-3" required=""></textarea>
-                                </div>
-                                <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-4">
-                                <label for="select-bf12" class="u-label u-label-4">Status</label>
-                                <div class="u-form-select-wrapper">
-                                    <select id="select-bf12" name="status_gedung" class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-4" required="required">
-                                    <option value="Available" data-calc="Available">Available</option>
-                                    <option value="Unavailable" data-calc="Unavailable">Unavailable</option>
-                                    </select>
-                                    <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
-                                </div>
-                                </div>
-                                <div class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-4">
-                                <label for="url-b7cb" class="u-label u-label-5">Unggah Foto</label>
-                                <input type="file" id="upload-image" name="image" class="u-border-2 u-border-grey-25 u-input u-input-rectangle u-radius u-input-4" required="required">
-                                </div>
-                                <div class="u-align-left u-form-group u-form-submit">
-                                <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-radius u-btn-1">Tambah Gedung</a>
-                                <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-                                <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                                <input type="hidden" name="formServices" value="ef042633-b5e1-2143-32b9-b984b939a6f4">
-                            </form>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </section>
+    
+                <!-- <div class="flex my-10 items-center">
+                    <div class="bg-green-800 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
+                        <i class='bx bx-plus mr-2 text-lg'></i>
+                        Add A Building
+                    </div>
+                </div> -->
+
+
+
+                <!-- <div class="w-full mt-3 bg-white ">
+                    <div class=" overflow-auto max-h-screen h-[400px] p-3 mx-2">
+                        <table class="min-w-full bg-white " id="building_table">
+                            <thead class="bg-white text-black ">
+                                <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm ">
+                                    <th class="text-center px-3 py-2 w-25 font-bold text-lg">Building ID
+                                    </th>
+                                    <th class="text-center px-3 py-2 font-bold text-lg">Building Name</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Description</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Status</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Image</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <tr class="border-b ">
+                                    <td class="text-center py-5 px-4 w-20 uppercase font-semibold text-sm">01</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
+                                        blablabla</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>
+                                    <td class="text-lg px-5">
+                                        <div class="flex items-center justify-center gap-x-2.5">
+                                            <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
+                                                    class="fas fa-edit text-blue-600"></i></a>
+                                            <a href="#" class="delete-btn"
+                                                data-id="<?php echo $row['id_penyewa']; ?>"><i
+                                                    class="fas fa-trash text-red-600"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="text-center py-6 px-4 w-20 uppercase font-semibold text-sm">01</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
+                                        blablabla</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>
+                                    <td class="text-lg px-5">
+                                        <div class="flex items-center justify-center gap-x-2.5">
+                                            <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
+                                                    class="fas fa-edit text-blue-600"></i></a>
+                                            <a href="#" class="delete-btn"
+                                                data-id="<?php echo $row['id_penyewa']; ?>"><i
+                                                    class="fas fa-trash text-red-600"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> -->
+
             </main>
         </div>
     </div>

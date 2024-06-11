@@ -1,3 +1,9 @@
+<?php
+include "koneksi.php";
+
+$query = "SELECT * FROM daftar_gedung";
+$result = mysqli_query($koneksi, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +16,8 @@
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -121,7 +129,7 @@
 
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-                <a href="dashboard.html"
+                <a href="dashboard.php"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
@@ -131,7 +139,7 @@
                     <i class="fas fa-user mr-3"></i>
                     Members
                 </a>
-                <a href="tables.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+                <a href="building.php" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                     <i class="fas fa-building mr-3"></i>
                     Building
                 </a>
@@ -173,10 +181,12 @@
                 </div>
 
                 <div class="flex my-10 items-center">
-                    <div class="bg-green-800 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
-                        <i class='bx bx-plus mr-2 text-lg'></i>
-                        Add A Building
-                    </div>
+                    <a href="add_building.php">
+                        <div class="bg-green-800 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
+                            <i class='bx bx-plus mr-2 text-lg'></i>
+                            Add A Building
+                        </div>
+                    </a>
                 </div>
 
 
@@ -196,40 +206,42 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700">
-                                <tr class="border-b ">
-                                    <td class="text-center py-5 px-4 w-20 uppercase font-semibold text-sm">01</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
-                                        blablabla</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>
-                                    <td class="text-lg px-5">
-                                        <div class="flex items-center justify-center gap-x-2.5">
-                                            <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                    class="fas fa-edit text-blue-600"></i></a>
-                                            <a href="#" class="delete-btn"
-                                                data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                    class="fas fa-trash text-red-600"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="text-center py-6 px-4 w-20 uppercase font-semibold text-sm">01</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
-                                        blablabla</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>
-                                    <td class="text-lg px-5">
-                                        <div class="flex items-center justify-center gap-x-2.5">
-                                            <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                    class="fas fa-edit text-blue-600"></i></a>
-                                            <a href="#" class="delete-btn"
-                                                data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                    class="fas fa-trash text-red-600"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                                    <tr class="border-b ">
+                                        <td class="text-center py-5 px-4 w-20 uppercase font-semibold text-sm">
+                                            <?php echo $row['id_gedung'] ?>
+                                        </td>
+                                        <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                            <?php echo $row['nama_gedung'] ?>
+                                        </td>
+                                        <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                            <?php echo $row['deskripsi_gedung'] ?>
+                                        </td>
+                                        <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                            <?php echo $row['status_gedung'] ?>
+                                        </td>
+                                        <td class="flex items-center justify-center py-3 px-4 ">
+                                            <?php
+
+
+                                            ?>
+                                            <style>
+                                                .gambar {
+                                                    width: 100px;
+                                                    height: 100px;
+                                                    object-fit: cover;
+                                                    object-position: center;
+                                                }
+                                            </style>
+                                        </td>
+                                        <td class="text-lg px-5">
+                                            <div class="flex items-center justify-center gap-x-2.5">
+                                                <a href="#" class=" "><i class="fas fa-edit text-blue-600"></i></a>
+                                                <a href="#" class=""><i class="fas fa-trash text-red-600"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
                             </tbody>
                         </table>
                     </div>
