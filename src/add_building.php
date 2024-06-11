@@ -176,8 +176,6 @@
                     Add A Building
                 </div>
 
-
-
                 <section class="u-clearfix u-section-1" id="sec-12fd">
                     <div class="u-clearfix u-sheet u-sheet-1 overflow-auto">
                         <div class="u-container-style u-group u-shape-rectangle u-white u-group-1">
