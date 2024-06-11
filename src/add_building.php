@@ -1,10 +1,47 @@
+<?php
+// Mengambil koneksi ke database
+include "koneksi.php";
+// Inisialisasi pesan default
+$pesan = "";
+
+// Memeriksa apakah ada data yang dikirim dari form
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mengambil nilai-nilai dari form
+    $id_gedung = $_POST['id_gedung'];
+    $nama_gedung = $_POST['nama_gedung'];
+    $deskripsi_gedung = $_POST['deskripsi_gedung'];
+    $status_gedung = $_POST['status_gedung'];
+    $image = $_FILES['image']['name'];
+    $target_dir = "uploads/";
+    $target_file = $target_dir . basename($image);
+
+
+    // Pindahkan file yang diunggah ke direktori tujuan
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+        // Query untuk menambah data ke database
+        $sql = "INSERT INTO daftar_gedung (id_gedung, nama_gedung, deskripsi_gedung, status_gedung, gambar_gedung)
+            VALUES ('$id_gedung', '$nama_gedung', '$deskripsi_gedung', '$status_gedung', '$image')";
+
+        if ($koneksi->query($sql) === TRUE) {
+            $pesan = "sukses";
+        } else {
+            $pesan = "gagal";
+        }
+    } else {
+        $pesan = "gagal";
+    }
+    $koneksi->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building</title>
+    <title>Add Building</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="add_building.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -176,88 +213,92 @@
                     Add A Building
                 </div>
 
-                <section class="u-clearfix u-section-1" id="sec-12fd">
-                    <div class="u-clearfix u-sheet u-sheet-1 overflow-auto">
-                        <div class="u-container-style u-group u-shape-rectangle u-white u-group-1">
-                            <div class="u-container-layout u-container-layout-1">
-                                <h4 class="u-text u-text-default u-text-1">Tambah Data Gedung<span
-                                        style="font-weight: 700;"></span>
-                                </h4>
-                                <div class="u-form u-form-1">
-                                    <form action="https://forms.nicepagesrv.com/v2/form/process"
-                                        class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email"
-                                        name="form" style="padding: 10px;">
-                                        <div class="u-form-group u-form-name">
-                                            <label for="name-54c6" class="u-label u-label-1">ID</label>
-                                            <input type="text" placeholder="Masukkan ID gedung" id="name-54c6"
-                                                name="id_gedung"
-                                                class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-1"
-                                                required="">
-                                        </div>
-                                        <div class="u-form-group">
-                                            <label for="email-54c6" class="u-label u-label-2">Nama</label>
-                                            <input type="text" placeholder="Masukkan nama gedung" id="email-54c6"
-                                                name="nama_gedung"
-                                                class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-2"
-                                                required="required">
-                                        </div>
-                                        <div class="u-form-group u-form-message">
-                                            <label for="message-54c6" class="u-label u-label-3">Deskripsi</label>
-                                            <textarea placeholder="Masukkan deskripsi gedung" rows="4" cols="50"
-                                                id="message-54c6" name="deskripsi_gedung"
-                                                class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-3"
-                                                required=""></textarea>
-                                        </div>
-                                        <div
-                                            class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-4">
-                                            <label for="select-bf12" class="u-label u-label-4">Status</label>
-                                            <div class="u-form-select-wrapper">
-                                                <select id="select-bf12" name="status_gedung"
-                                                    class="u-border-2 u-border-black u-grey-5 u-input u-input-rectangle u-radius u-input-4"
-                                                    required="required">
-                                                    <option value="Available" data-calc="Available">Available</option>
-                                                    <option value="Unavailable" data-calc="Unavailable">Unavailable
-                                                    </option>
-                                                </select>
-                                                <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    width="16px" height="16px" viewBox="0 0 16 16"
-                                                    style="fill:currentColor;" xml:space="preserve">
-                                                    <polygon class="st0" points="8,12 2,4 14,4 "></polygon>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="u-form-group u-form-partition-factor-2 u-form-select u-form-group-4">
-                                            <label for="url-b7cb" class="u-label u-label-5">Unggah Foto</label>
-                                            <input type="file" id="upload-image" name="image"
-                                                class="u-border-2 u-border-grey-25 u-input u-input-rectangle u-radius u-input-4"
-                                                required="required">
-                                        </div>
-                                        <div class="u-align-left u-form-group u-form-submit">
-                                            <a href="upload.php"
-                                                class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-radius u-btn-1 flex w-40 items-center justify-center texl-lg font-semibold ">Tambah
-                                                Gedung</a>
-                                            <input type="submit" value="submit" class="u-form-control-hidden">
-                                        </div>
-                                        <div class="u-form-send-message u-form-send-success"> Thank you! Your message
-                                            has been sent. </div>
-                                        <div class="u-form-send-error u-form-send-message"> Unable to send your message.
-                                            Please fix errors then try again. </div>
-                                        <input type="hidden" value="" name="recaptchaResponse">
-                                        <input type="hidden" name="formServices"
-                                            value="ef042633-b5e1-2143-32b9-b984b939a6f4">
-                                    </form>
+                <section class="u-clearfix u-section-1 bg-gray-100 py-8" id="sec-12fd">
+                    <div class="container mx-auto px-4">
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <h4 class="text-lg font-semibold text-gray-800 py-4 px-6">Tambah Data Gedung</h4>
+                            <form  method="post" enctype="multipart/form-data" class="p-6">
+                                <div class="mb-4">
+                                    <label for="id_gedung" class="block text-gray-700 font-semibold mb-2">ID</label>
+                                    <input type="text" id="id_gedung" name="id_gedung" placeholder="Masukkan ID gedung"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        required>
                                 </div>
-                            </div>
+                                <div class="mb-4">
+                                    <label for="nama_gedung" class="block text-gray-700 font-semibold mb-2">Nama</label>
+                                    <input type="text" id="nama_gedung" name="nama_gedung"
+                                        placeholder="Masukkan nama gedung"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="deskripsi_gedung"
+                                        class="block text-gray-700 font-semibold mb-2">Deskripsi</label>
+                                    <textarea id="deskripsi_gedung" name="deskripsi_gedung" rows="4"
+                                        placeholder="Masukkan deskripsi gedung"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        required></textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="status_gedung"
+                                        class="block text-gray-700 font-semibold mb-2">Status</label>
+                                    <select id="status_gedung" name="status_gedung"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        required>
+                                        <option value="Available">Available</option>
+                                        <option value="Unavailable">Unavailable</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="image" class="block text-gray-700 font-semibold mb-2">Unggah
+                                        Foto</label>
+                                    <input type="file" id="image" name="image"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-indigo-500"
+                                        required>
+                                </div>
+                                <div class="mb-4">
+                                    <button type="submit"
+                                        class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md">
+                                        Tambah Gedung
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </section>
 
+
             </main>
         </div>
     </div>
+    <!-- Skrip JavaScript untuk Menampilkan SweetAlert2 -->
+    <?php if (isset($pesan) && $pesan === "sukses"): ?>
+        <script>
+            Swal.fire({
+                title: 'Sukses!',
+                text: 'Gedung berhasil ditambahkan.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'building.php';
+                }
+            });
+        </script>
+    <?php elseif (isset($pesan) && $pesan === "gagal"): ?>
+        <script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Gagal menambahkan gedung.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'add_building.php';
+                }
+            });
+        </script>
+    <?php endif; ?>
 
     <script>
         //fungsi dropdown admin

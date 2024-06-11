@@ -158,8 +158,7 @@ $result = mysqli_query($koneksi, $query);
 
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col mt-2 ">
             <main class="w-full flex-grow p-6">
-                <div
-                    class="flex items-center justify-between text-dla sticky top-0 z-10 bg-white bg-opacity-0 backdrop-blur-sm w-full ">
+                <div class="flex items-center justify-between text-dla ">
                     <h1 class="text-3xl font-semibold mb-5 flex items-center">Building</h1>
                     <div class="relative">
                         <a href="#" id="adminButton" class="text-2xl font-semibold ">Admin</a>
@@ -191,8 +190,8 @@ $result = mysqli_query($koneksi, $query);
 
 
 
-                <div class="w-full mt-3 bg-white ">
-                    <div class=" overflow-auto max-h-screen h-[400px] p-3 mx-2">
+                <div class="w-full mt-3 bg-white">
+                    <div class=" overflow-auto max-h-[50rem] h-[30rem]  mx-2">
                         <table class="min-w-full bg-white " id="building_table">
                             <thead class="bg-white text-black ">
                                 <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm ">
@@ -207,31 +206,26 @@ $result = mysqli_query($koneksi, $query);
                             </thead>
                             <tbody class="text-gray-700">
                                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                                    <tr class="border-b ">
-                                        <td class="text-center py-5 px-4 w-20 uppercase font-semibold text-sm">
+                                    <tr class="border-b  ">
+                                        <td
+                                            class="break-words  text-center py-3 w-1 max-w-2 uppercase font-semibold text-sm">
                                             <?php echo $row['id_gedung'] ?>
                                         </td>
-                                        <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                        <td class="text-center py-3 max-w-1.5 uppercase font-semibold text-sm">
                                             <?php echo $row['nama_gedung'] ?>
                                         </td>
-                                        <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                        <td class="break-words max-w-2.5 text-center py-3 uppercase font-semibold text-sm">
                                             <?php echo $row['deskripsi_gedung'] ?>
                                         </td>
-                                        <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                        <td class="text-center py-3 uppercase font-semibold text-sm">
                                             <?php echo $row['status_gedung'] ?>
                                         </td>
-                                        <td class="flex items-center justify-center py-3 px-4 ">
-                                            <img src="" alt="">
-                                            <style>
-                                                .gambar {
-                                                    width: 100px;
-                                                    height: 100px;
-                                                    object-fit: cover;
-                                                    object-position: center;
-                                                }
-                                            </style>
                                         </td>
-                                        <td class="text-lg px-5">
+                                        <td class="flex items-center justify-center py-3">
+                                            <img class="w-40 h-30" src="uploads/<?php echo $row['gambar_gedung']; ?>"
+                                                alt="<?php echo $row['nama_gedung']; ?>" class="w-16 h-16 object-cover">
+                                        </td>
+                                        <td class="text-lg py-14 px-4 w-2">
                                             <div class="flex items-center justify-center gap-x-2.5">
                                                 <a href="#" class=" "><i class="fas fa-edit text-blue-600"></i></a>
                                                 <a href="#" class=""><i class="fas fa-trash text-red-600"></i></a>
