@@ -1347,6 +1347,10 @@ video {
   max-height: 100vh;
 }
 
+.max-h-svh {
+  max-height: 100svh;
+}
+
 .min-h-svh {
   min-height: 100svh;
 }

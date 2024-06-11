@@ -182,7 +182,7 @@
 
 
                 <div class="w-full mt-3 bg-white ">
-                    <div class=" overflow-auto max-h-screen p-3 mx-2">
+                    <div class=" overflow-auto max-h-screen h-[400px] p-3 mx-2">
                         <table class="min-w-full bg-white " id="building_table">
                             <thead class="bg-white text-black ">
                                 <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm ">

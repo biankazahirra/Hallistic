@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Information</title>
-    <meta name="author" content="David Grzyb">
-    <meta name="description" content="">
 
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
@@ -140,10 +138,10 @@
                     <i class="fas fa-align-left mr-3"></i>
                     Payment
                 </a>
-                <a href="#" id="logoutButton"
+                <a href="#" onclick="logout()"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
-                    Sign Out
+                    Log-Out
                 </a>
             </nav>
         </header>
@@ -172,103 +170,55 @@
                 </div>
 
                 <!-- Content goes here! 😁 -->
-
-                <div class="bg-white overflow-auto">
-                    <table class="min-w-full bg-white p-6 table-auto">
-                        <thead class="bg-white text-black">
-                            <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
-                                <th class="text-center px-3 py-5 w-25 font-bold text-lg">Payment ID</th>
-                                <th class="text-center px-3 py-5  font-bold text-lg">Date</th>
-                                <th class="text-center px-3 py-5  font-bold text-lg">Check In</th>
-                                <th class="text-center px-3 py-5  font-bold text-lg">Check Out</th>
-                                <th class="text-center px-3 py-5  font-bold text-lg">Status</th>
-                                <th class="text-center px-3 py-5  font-bold text-lg">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b">
-                                <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum Terverifikasi
-                                </td>
-                                <td class="text-center">
-                                    <div class="flex items-center justify-center">
-                                        <button class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">
-                                            Verifikasi
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
-                                <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum Terverifikasi
-                                </td>
-                                <td class="text-center">
-                                    <div class="flex items-center justify-center">
-                                        <button
-                                            class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">Verifikasi
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-
-                        <!-- <tbody class="text-gray-700">
-                            <tr>
-                                <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr>
-                                <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr>
-                                <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr>
-                                <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                            </tr>
-                        </tbody> -->
-                    </table>
+                <div class="w-full mt-3 bg-white max-h-screen h-[400px]">
+                    <div class="overflow-auto">
+                        <table class="min-w-full bg-white p-6 table-auto" id="payment_table">
+                            <thead class="bg-white text-black">
+                                <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
+                                    <th class="text-center px-3 py-5 w-25 font-bold text-lg">Payment ID</th>
+                                    <th class="text-center px-3 py-5  font-bold text-lg">Date</th>
+                                    <th class="text-center px-3 py-5  font-bold text-lg">Check In</th>
+                                    <th class="text-center px-3 py-5  font-bold text-lg">Check Out</th>
+                                    <th class="text-center px-3 py-5  font-bold text-lg">Status</th>
+                                    <th class="text-center px-3 py-5  font-bold text-lg">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum
+                                        Terverifikasi
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center">
+                                            <button class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">
+                                                Verifikasi
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
+                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum
+                                        Terverifikasi
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="flex items-center justify-center">
+                                            <button
+                                                class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">Verifikasi
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </main>
@@ -281,6 +231,93 @@
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
+    <script>
+        //fungsi dropdown admin
+        document.getElementById('adminButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            var dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function (event) {
+            var isClickInside = document.getElementById('adminButton').contains(event.target) || document
+                .getElementById('dropdownMenu').contains(event.target);
+            if (!isClickInside) {
+                document.getElementById('dropdownMenu').classList.add('hidden');
+            }
+        });
+
+        document.getElementById('logoutButton').addEventListener('click', function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin keluar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, keluar!',
+                confirmButtonColor: 'red',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Arahkan ke halaman logout atau lakukan aksi logout di sini
+                    window.location.href = 'logout.php';
+                }
+            });
+        });
+    </script>
+
+    <!-- fungsi search -->
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("payment_table");
+            tr = table.getElementsByTagName("tr");
+
+            var found = false; // Menandakan apakah ada data yang ditemukan
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        found = true; // Setel ke true jika ada data yang ditemukan
+                    }
+                }
+            }
+
+            // Memperbarui tinggi tabel setelah hasil pencarian
+            adjustTableHeight();
+        }
+
+        function adjustTableHeight() {
+            var visibleRows = document.querySelectorAll("#payment_table tbody tr[style='']");
+            var tableHeight = visibleRows.length * 56; // Ganti dengan tinggi baris sesuai desain Anda
+
+            document.getElementById("payment_table").style.height = tableHeight + "px";
+        }
+    </script>
+
+    <script>
+        function logout() {
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin keluar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, keluar!',
+                confirmButtonColor: 'red',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Arahkan ke halaman logout atau lakukan aksi logout di sini
+                    window.location.href = 'logout.php';
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
