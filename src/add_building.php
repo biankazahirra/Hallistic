@@ -256,7 +256,7 @@
                         </div>
                     </div>
                 </section>
-    
+
                 <!-- <div class="flex my-10 items-center">
                     <div class="bg-green-800 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
                         <i class='bx bx-plus mr-2 text-lg'></i>
