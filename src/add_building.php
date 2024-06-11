@@ -227,8 +227,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div class="mb-4">
                                     <label for="id_gedung" class="block text-gray-700 font-semibold mb-2">ID</label>
                                     <input type="text" id="id_gedung" name="id_gedung" placeholder="Masukkan ID gedung"
-                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
-                                        required>
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700">
                                 </div>
                                 <div class="mb-4">
                                     <label for="nama_gedung" class="block text-gray-700 font-semibold mb-2">Nama</label>

@@ -267,7 +267,7 @@ $result = mysqli_query($koneksi, $query);
                     });
                     setTimeout(function () {
                         window.location.href = 'hapusgedung.php?id=' + id;
-                    }, 7000);
+                    }, 3000);
                 }
             });
         }
