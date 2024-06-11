@@ -150,8 +150,9 @@
 
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col mt-2 ">
             <main class="w-full flex-grow p-6">
-                <div class="flex items-center justify-between text-dla">
-                    <h1 class="text-3xl font-semibold pb-6">Building</h1>
+                <div
+                    class="flex items-center justify-between text-dla sticky top-0 z-10 bg-white bg-opacity-0 backdrop-blur-sm w-full ">
+                    <h1 class="text-3xl font-semibold mb-5 flex items-center">Building</h1>
                     <div class="relative">
                         <a href="#" id="adminButton" class="text-2xl font-semibold ">Admin</a>
                         <div id="dropdownMenu"
@@ -180,23 +181,23 @@
 
 
 
-                <div class="w-full mt-6 bg-white ">
-                    <div class=" overflow-auto h-[400px]">
-                        <table class="min-w-full bg-white" id="building_table">
+                <div class="w-full mt-3 bg-white ">
+                    <div class=" overflow-auto max-h-screen p-3 mx-2">
+                        <table class="min-w-full bg-white " id="building_table">
                             <thead class="bg-white text-black ">
-                                <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
-                                    <th class="text-center px-3 py-5 w-25 font-bold text-lg">Building ID
+                                <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm ">
+                                    <th class="text-center px-3 py-2 w-25 font-bold text-lg">Building ID
                                     </th>
-                                    <th class="text-center px-3 py-5  font-bold text-lg">Building Name</th>
-                                    <th class="text-center px-3 py-5  font-bold text-lg">Description</th>
-                                    <th class="text-center px-3 py-5  font-bold text-lg">Status</th>
-                                    <th class="text-center px-3 py-5  font-bold text-lg">Image</th>
-                                    <th class="text-center px-3 py-5  font-bold text-lg">Action</th>
+                                    <th class="text-center px-3 py-2 font-bold text-lg">Building Name</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Description</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Status</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Image</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700">
-                                <tr class="border-b">
-                                    <td class="text-center py-3 px-4 w-20 uppercase font-semibold text-sm">01</td>
+                                <tr class="border-b ">
+                                    <td class="text-center py-5 px-4 w-20 uppercase font-semibold text-sm">01</td>
                                     <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
                                     <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
                                         blablabla</td>
@@ -212,8 +213,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center py-3 px-4 w-20 uppercase font-semibold text-sm">01</td>
+                                <tr class="border-b">
+                                    <td class="text-center py-6 px-4 w-20 uppercase font-semibold text-sm">01</td>
                                     <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
                                     <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
                                         blablabla</td>

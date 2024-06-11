@@ -58,7 +58,7 @@
 <body class="bg-gray-100 font-family-karla flex">
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
-        <div class="p-7 flex items-center ">
+        <div class="p-8 flex items-center ">
             <a href="dashboard.html" class="text-black text-3xl font-semibold uppercase hover:text-gray-300">
                 <img src="../public/asset/logo.png" alt="">
             </a>
@@ -174,7 +174,7 @@
                 <!-- Content goes here! 😁 -->
 
                 <div class="bg-white overflow-auto">
-                    <table class="min-w-full bg-white">
+                    <table class="min-w-full bg-white p-6 table-auto">
                         <thead class="bg-white text-black">
                             <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
                                 <th class="text-center px-3 py-5 w-25 font-bold text-lg">Payment ID</th>
