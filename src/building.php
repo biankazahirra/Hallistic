@@ -221,10 +221,7 @@ $result = mysqli_query($koneksi, $query);
                                             <?php echo $row['status_gedung'] ?>
                                         </td>
                                         <td class="flex items-center justify-center py-3 px-4 ">
-                                            <?php
-
-
-                                            ?>
+                                            <img src="" alt="">
                                             <style>
                                                 .gambar {
                                                     width: 100px;

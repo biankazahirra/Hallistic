@@ -132,7 +132,7 @@
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
                 <a href="dashboard.php"
-                    class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    class="flex items-center text-white opacity-1    hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
                 </a>
@@ -158,7 +158,7 @@
             </nav>
         </header>
 
-        <div class="w-full border flex flex-col">
+        <div class="w-full border flex flex-col overflow-auto">
             <main class="w-full flex-grow p-6">
                 <div class="flex items-center justify-between text-dla mt-3 mx-2">
                     <h3 class="text-2xl font-semibold flex items-center">Building Information</h3>
@@ -175,8 +175,6 @@
                 <div class="flex items-center mt-14 text-3xl font-semibold text-dla ml-3">
                     Add A Building
                 </div>
-
-
 
                 <section class="u-clearfix u-section-1" id="sec-12fd">
                     <div class="u-clearfix u-sheet u-sheet-1 overflow-auto">
@@ -238,8 +236,8 @@
                                                 required="required">
                                         </div>
                                         <div class="u-align-left u-form-group u-form-submit">
-                                            <a href="#"
-                                                class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-radius u-btn-1">Tambah
+                                            <a href="upload.php"
+                                                class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-radius u-btn-1 flex w-40 items-center justify-center texl-lg font-semibold ">Tambah
                                                 Gedung</a>
                                             <input type="submit" value="submit" class="u-form-control-hidden">
                                         </div>
@@ -256,69 +254,6 @@
                         </div>
                     </div>
                 </section>
-    
-                <!-- <div class="flex my-10 items-center">
-                    <div class="bg-green-800 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
-                        <i class='bx bx-plus mr-2 text-lg'></i>
-                        Add A Building
-                    </div>
-                </div> -->
-
-
-
-                <!-- <div class="w-full mt-3 bg-white ">
-                    <div class=" overflow-auto max-h-screen h-[400px] p-3 mx-2">
-                        <table class="min-w-full bg-white " id="building_table">
-                            <thead class="bg-white text-black ">
-                                <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm ">
-                                    <th class="text-center px-3 py-2 w-25 font-bold text-lg">Building ID
-                                    </th>
-                                    <th class="text-center px-3 py-2 font-bold text-lg">Building Name</th>
-                                    <th class="text-center px-3 py-3 font-bold text-lg">Description</th>
-                                    <th class="text-center px-3 py-3 font-bold text-lg">Status</th>
-                                    <th class="text-center px-3 py-3 font-bold text-lg">Image</th>
-                                    <th class="text-center px-3 py-3 font-bold text-lg">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700">
-                                <tr class="border-b ">
-                                    <td class="text-center py-5 px-4 w-20 uppercase font-semibold text-sm">01</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
-                                        blablabla</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>
-                                    <td class="text-lg px-5">
-                                        <div class="flex items-center justify-center gap-x-2.5">
-                                            <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                    class="fas fa-edit text-blue-600"></i></a>
-                                            <a href="#" class="delete-btn"
-                                                data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                    class="fas fa-trash text-red-600"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="text-center py-6 px-4 w-20 uppercase font-semibold text-sm">01</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Monas adalahh
-                                        blablabla</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Available</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Image</td>
-                                    <td class="text-lg px-5">
-                                        <div class="flex items-center justify-center gap-x-2.5">
-                                            <a href="#" class="edit-btn" data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                    class="fas fa-edit text-blue-600"></i></a>
-                                            <a href="#" class="delete-btn"
-                                                data-id="<?php echo $row['id_penyewa']; ?>"><i
-                                                    class="fas fa-trash text-red-600"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div> -->
 
             </main>
         </div>
