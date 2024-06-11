@@ -245,7 +245,7 @@ if ($result3) {
                     </div>
 
                     <div>
-                        <a href="building.html" class="flex items-center">
+                        <a href="building.php" class="flex items-center">
                             <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
                                 <img src="../public/asset/building.svg" alt="">
                             </div>
@@ -257,7 +257,7 @@ if ($result3) {
                     </div>
 
                     <div>
-                        <a href=" payment.html" class="flex items-center">
+                        <a href=" payment.php" class="flex items-center">
                             <div class="bg-green-100 rounded-full p-4 hover:bg-green-200">
                                 <img src="../public/asset/payment.svg" alt="">
                             </div>

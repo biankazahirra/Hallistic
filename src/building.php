@@ -222,15 +222,18 @@ $result = mysqli_query($koneksi, $query);
                                         </td>
                                         </td>
                                         <td class="flex items-center justify-center py-3">
-                                            <img class="w-40 h-30 object-cover" src="uploads/<?php echo $row['gambar_gedung']; ?>"
+                                            <img class="w-40 h-30 object-cover"
+                                                src="uploads/<?php echo $row['gambar_gedung']; ?>"
                                                 alt="<?php echo $row['nama_gedung']; ?>" class="w-16 h-16 object-cover">
                                         </td>
                                         <td class="text-lg py-14 px-4 w-2">
                                             <div class="flex items-center justify-center gap-x-2.5">
-                                                <a href="edit.php"><i
+                                                <a href="edit_gedung.php?id=<?= $row['id_gedung'] ?> "><i
                                                         class="fas fa-edit text-blue-600"></i></a>
-                                                <a href="hapus_gedung.php"><i
-                                                        class="fas fa-trash text-red-600"></i></a>
+
+                                                <a href="javascript:void(0)"
+                                                    onclick="confirmDelete(<?= $row['id_gedung'] ?>)">
+                                                    <i class="fas fa-trash text-red-600"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -243,6 +246,32 @@ $result = mysqli_query($koneksi, $query);
             </main>
         </div>
     </div>
+
+    <script>
+        // fungsi delete confirm
+        function confirmDelete(id) {
+            Swal.fire({
+                title: "Apakah Anda yakin?",
+                text: "Anda tidak akan dapat mengembalikan ini!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Terhapus!",
+                        text: "Data sudah terhapus!.",
+                        icon: "success"
+                    });
+                    setTimeout(function () {
+                        window.location.href = 'hapusgedung.php?id=' + id;
+                    }, 7000);
+                }
+            });
+        }
+    </script>
 
     <script>
         //fungsi dropdown admin
