@@ -52,6 +52,7 @@
     <link rel="shortcut icon" href="../public/asset/admin.ico" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="output.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gray-100 font-family-karla flex">
@@ -63,7 +64,7 @@
             </a>
         </div>
         <nav class="text-black text-base font-semibold pt-3">
-            <a href="dashboard.html"
+            <a href="dashboard.php"
                 class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
@@ -72,12 +73,11 @@
                 <i class="fas fa-user mr-3"></i>
                 Members
             </a>
-            <a href="building.html"
-                class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="building.php" class="flex items-center text-black opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-building mr-3"></i>
                 Building
             </a>
-            <a href="payment.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="payment.php" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                 <i class="fas fa-money-check mr-3"></i>
                 Payment
             </a>
@@ -121,22 +121,22 @@
 
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-                <a href="dashboard.html"
+                <a href="dashboard.php"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-tachometer-alt mr-3"></i>
                     Dashboard
                 </a>
-                <a href="members.html"
+                <a href="members.php"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                     <i class="fas fa-sticky-note mr-3"></i>
                     Members
                 </a>
-                <a href="building.html"
+                <a href="building.php"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-table mr-3"></i>
                     Building
                 </a>
-                <a href="payment.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                <a href="payment.php" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
                     <i class="fas fa-align-left mr-3"></i>
                     Payment
                 </a>
@@ -156,7 +156,7 @@
                         <a href="#" id="adminButton" class="text-2xl font-semibold ">Admin</a>
                         <div id="dropdownMenu"
                             class="hidden absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg py-2 z-10">
-                            <a href="#" id="logoutButton"
+                            <a href="#" onclick="logout()"
                                 class="block px-4 py-2 text-lg font-semibold text-dla hover:bg-dla hover:rounded-xl hover:mx-2 hover:text-white">Log-Out</a>
                         </div>
                     </div>

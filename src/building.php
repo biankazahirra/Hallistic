@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,7 +135,7 @@
                     <i class="fas fa-building mr-3"></i>
                     Building
                 </a>
-                <a href="payment.html"
+                <a href="payment.php"
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-money-check mr-3"></i>
                     Payment
@@ -146,7 +143,7 @@
                 <a href="#" onclick="logout()"
                     class=" items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-sign-out-alt mr-3"></i>
-                    Sign Out
+                    Log-Out
                 </a>
             </nav>
         </header>
@@ -159,7 +156,7 @@
                         <a href="#" id="adminButton" class="text-2xl font-semibold ">Admin</a>
                         <div id="dropdownMenu"
                             class="hidden absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg py-2 z-10">
-                            <a href="#" id="logoutButton"
+                            <a href="#" onclick="logout()"
                                 class="block px-4 py-2 text-lg font-semibold text-dla hover:bg-dla hover:rounded-xl hover:mx-2 hover:text-white">Log-Out</a>
                         </div>
                     </div>
@@ -175,7 +172,7 @@
                 </div>
 
                 <div class="flex my-10 items-center">
-                    <div class="bg-green-600 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
+                    <div class="bg-green-800 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
                         <i class='bx bx-plus mr-2 text-lg'></i>
                         Add A Building
                     </div>
@@ -183,9 +180,9 @@
 
 
 
-                <div class="w-full mt-6">
-                    <div class="bg-white overflow-auto">
-                        <table class="min-w-full bg-white">
+                <div class="w-full mt-6 bg-white ">
+                    <div class=" overflow-auto h-[400px]">
+                        <table class="min-w-full bg-white" id="building_table">
                             <thead class="bg-white text-black ">
                                 <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm">
                                     <th class="text-center px-3 py-5 w-25 font-bold text-lg">Building ID
@@ -273,6 +270,41 @@
                 }
             });
         });
+    </script>
+
+    <!-- fungsi search -->
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("building_table");
+            tr = table.getElementsByTagName("tr");
+
+            var found = false; // Menandakan apakah ada data yang ditemukan
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        found = true; // Setel ke true jika ada data yang ditemukan
+                    }
+                }
+            }
+
+            // Memperbarui tinggi tabel setelah hasil pencarian
+            adjustTableHeight();
+        }
+
+        function adjustTableHeight() {
+            var visibleRows = document.querySelectorAll("#building_table tbody tr[style='']");
+            var tableHeight = visibleRows.length * 56; // Ganti dengan tinggi baris sesuai desain Anda
+
+            document.getElementById("building_table").style.height = tableHeight + "px";
+        }
     </script>
 
     <script>
