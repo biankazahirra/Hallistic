@@ -1,10 +1,16 @@
+<?php
+
+include "ceklogin.php";
+include 'koneksi.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TransactionAfterLogin</title>
+    <title>AboutAfterLogin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@400&display=swap" rel="stylesheet">
@@ -34,7 +40,7 @@
           font-family: 'Open Sans', sans-serif;
       }
         .bg-image {
-            background-image: url('../public/asset/searchbg.png');
+            background-image: url('../public/asset/aboutus.png');
             background-size:full;
             background-position: center;
             padding-top: 100px;
@@ -60,26 +66,29 @@
             <div class="flex items-center lg:order-2  mr-[90px] gap-[30px]">
                 
                 <!-- <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a> -->
-                <a href="login.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">HI, ERIC!</a>
+                <a href="home1.php"
+                  class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                  Hi, <?php 
+                  echo isset($_SESSION['nama_penyewa']) ? explode(' ', $_SESSION['nama_penyewa'])[0] : 'Pengguna'; ?>!</a>
                 <a href="login.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">LOGOUT</a>
                 
             </div>
             <div class="mr-[60px] items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                 <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
-                      <a href="home1.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">HOME</a>
+                      <a href="home1.php" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">HOME</a>
                     </li>
                     <li>
-                      <a href="about1.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">ABOUT US</a>
+                      <a href="about1.php" class="block py-2 pl-3 pr-4 opensans font-semibold text-white rounded lg:bg-transparent lg:p-0  tracking-widest" aria-current="page">ABOUT US</a>
                     </li>
                     <li>
-                        <a href="contact1.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" >CONTACT</a>
+                        <a href="contact1.php" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">CONTACT</a>
                     </li>
                     <li>
-                        <a href="search1.html" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">SEARCH</a>
+                        <a href="search1.php" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">SEARCH</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pl-3 pr-4 opensans font-semibold text-white rounded lg:bg-transparent lg:p-0  tracking-widest" aria-current="page">TRANSACTION</a>
+                        <a href="transaction1.php" class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">TRANSACTION</a>
                     </li>
                 </ul>
             </div>
@@ -87,145 +96,185 @@
     </nav>
 </header>
 
-<section class="bg-[#F3ECDC] flex flex-col items-center p-[0_0_48px_0] w-[1440px] box-sizing-border pt-[120px] mx-auto">
-    <div>
-      <div class="flex flex-col items-center w-[1440px] box-sizing-border">
-        <div class="m-[0_0_55px_0] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-big,400)] text-[45px] text-[var(--heading,#2D2D2D)]">
-          Riwayat Pemesanan
-        </div>
-        <div class="m-[0_0.6px_0_0] flex flex-row justify-between w-[199.4px] box-sizing-border">
-          <span class="m-[0_10px_0_0] w-[120px] break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[#000000]">
-            SEKARANG
+<section class="bg-image w-[1440px] pt-[20] ">
+        <div class="flex flex-col p-[110px_0_120px_100px] w-[fit-content] box-sizing-border">
+          <div class=" m-[0_0_22px_0] self-start w-[fit-content] box-sizing-border">
+            <div class=" flex flex-row box-sizing-border">
+              <p class="m-[0_24.6px_3px_0] inline-block break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[var(--secondary,#A3B18A)]">
+              HOMEPAGE
+              </p>
+              <span class="text-[20px] h-6 w-6 pt-1">
+                <img src="../public/asset/caret-right.svg"/>
+              </span>
+              <p class="m-[0_20.6px_3px_0] inline-block break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[var(--secondary,#A3B18A)]">
+                ABOUT US
+                </p>
+            </div>
+          </div>
+          <p class="m-[0_0_25px_0] self-start break-words font-['Abril_Fatface'] font-[var(--heading-very-big,400)] text-[55px] text-[#F3ECDC]">
+          <span class="tentang-kami-sub-0">Tentang </span><span class="text-[#A3B18A]">  Kami</span>
+          </p>
+          <span class="self-start break-words font-['Open_Sans'] font-[var(--body-1-font-weight,400)] text-[18px] leading-[var(--body-1-line-height,1.611)] text-[var(--white-transparent,rgba(255,255,255,0.75))]">
+          Sewa Gedung Impian Anda. Ruang Nyaman, Acara apapun pasti bahagia.<br> Temukan Geudng Terbaik di Indonesia Bersama Kami!
           </span>
-          <span class="break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[#588157]">
-            SELESAI
+        </div>
+</section>
+
+<section>
+  <div class="bg-[#F3ECDC] flex flex-row p-[123px_118.6px_88px_100px] w-[1440px] box-sizing-border">
+    <div class=" m-[144px_68px_0_0] flex w-[582px] h-[509px] box-sizing-border">
+      <div class="rounded-[30px] bg-[url('../public/asset/about1.png')] bg-[50%_50%] bg-cover bg-no-repeat w-[582px] h-[453px]">
+      </div>
+    </div>
+    <div class=" m-[123px_0_18.5px_0] flex p-[31.5px_0_0_0] box-sizing-border">
+      <div class=" flex flex-col box-sizing-border">
+        <div class="m-[0_0_30px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[var(--secondary,#A3B18A)]">
+        LAYANAN TERBAIK
+        </div>
+        <div class="m-[0_27.7px_30px_0] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-big,400)] text-[45px] text-[var(--heading,#2D2D2D)]">
+        Kami Berikan Gedung dan Layanan Terbaik
+        </div>
+        <div class="m-[0_0_30px_0] inline-block break-words font-['Open_Sans'] font-[var(--body-1-font-weight,400)] text-[18px] leading-[var(--body-1-line-height,1.611)] text-[var(--body,#6E6E6E)]">
+        Memberikan layanan terbaik sampai anda mendapatkan apartemen sesuai dengan impian
+        </div>
+        <div class="m-[0_0_24px_0] self-start w-[fit-content] box-sizing-border flex items-center">
+          <span class="break-words font-['Font_Awesome_6_Free','Roboto_Condensed'] font-[var(--icon-medium,900)] text-[35px] text-[var(--secondary,#A3B18A)]">
+            <img src="../public/asset/award.svg" alt="Award Icon">
+          </span>
+          <div class="flex flex-col box-sizing-border ml-[10px]">
+            <span class="break-words font-['Abril_Fatface'] font-[var(--heading-small,400)] text-[21px] text-[var(--heading,#2D2D2D)]">
+              No.1 Layanan Gedung Terbaik Di Indonesia
+            </span>
+          </div>
+        </div>
+        <div class="m-[0_0_24px_0] self-start w-[fit-content] box-sizing-border flex items-center">
+          <span class="break-words font-['Font_Awesome_6_Free','Roboto_Condensed'] font-[var(--icon-medium,900)] text-[35px] text-[var(--secondary,#A3B18A)]">
+            <img src="../public/asset/calendar-days.svg" alt="Calendar Icon">
+          </span>
+          <div class="ml-[10px]">
+            <span class="break-words font-['Abril_Fatface'] font-[var(--heading-small,400)] text-[21px] text-[var(--heading,#2D2D2D)]">
+              15 Tahun Lebih Kami Bersedia Layani Anda
+            </span>
+          </div>
+        </div>
+        
+        <div href="search1.php" class="rounded-[30px] bg-[var(--primary,#588157)] flex items-center justify-center p-[20px_0_17px_0] w-[308px] box-sizing-border">
+          <div class="m-[0_10.5px_3px_0] inline-block break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[#F3ECDC]">
+            LIHAT SELENGKAPNYA
+          </div>
+          <span class="break-words font-['Font_Awesome_6_Free','Roboto_Condensed'] font-[var(--icon-small,900)] text-[20px] text-[#F3ECDC]">
+            <img src="../public/asset/arrowwhite.svg" alt="Arrow Icon">
           </span>
         </div>
       </div>
+      <div class="bg-[url('../assets/images/dot_smoke_11.png')] bg-[50%_50%] bg-cover bg-no-repeat absolute top-[0px] right-[117.4px] w-[115px] h-[74px]">
+      </div>
     </div>
-    <div class="bg-[#F3ECDC] flex justify-center p-[46px_0_69px_0] w-full box-sizing-border">
-      <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[20px] bg-[#FFFFFF] flex flex-col items-center p-[36px_34px_35.8px_44px] box-sizing-border">
-        <div class="m-[0_18px_24px_0] flex flex-row justify-between w-full max-w-[796px] box-sizing-border">
-          <div class="m-[0_0_8.2px_0] flex flex-col box-sizing-border">
-            <div class="flex self-start box-sizing-border">
-              <span class="break-words font-['Inter'] font-normal text-[21.8px] tracking-[-0.2px] leading-[1.468] text-[#073937]">
-                Gedung Serba Guna Worshix
-              </span>
-            </div>
-            <div class=" m-[0_0_0_0px] w-[fit-content] box-sizing-border">
-              <div class=" flex p-[0_4.8px_0_0] box-sizing-border">
-                <div class=" flex flex-row box-sizing-border">
-                  <div class="m-[2.1px_3.8px_7.9px_0] flex w-[18.7px] h-[18px] box-sizing-border">
-                    <img class="w-[18.7px] h-[18px]" src="../public/asset/star.svg" />
-                  </div>
-                  <span class="m-[0_0.5px_0_0] break-words font-['Inter'] font-bold text-[16.6px] tracking-[0px] leading-[1.681] text-[#073937]">
-                    4.3
-                  </span>
-                  <span class="break-words font-['Inter'] font-normal text-[17.6px] tracking-[0px] leading-[1.587] text-[#073937]">
-                    /5 (
-                  </span>
-                  <div class="m-[3.9px_0_3.1px_0] flex box-sizing-border">
-                    <span class="break-words font-['Inter'] font-normal text-[16.5px] underline leading-[1.258] text-[#073937]">
-                      999+ reviews
-                    </span>
-                  </div>
-                </div>
-                <span class=" right-[0px] bottom-[0px] break-words font-['Inter'] font-normal text-[18px] tracking-[0px] leading-[1.55] text-[#073937]">
-                  )
-                </span>
-                <span class=" right-[0px] bottom-[0px] break-words font-['Inter'] font-normal text-[16.9px] tracking-[0px] leading-[1.653] text-[#073937]">
-                     | Kiaracondong, Bandung
-                  </span>
-              </div>
-              
-            </div>
+  </div>
+</section>
+
+<section>
+  <div class="bg-[#F3ECDC]  p-[100px_141.9px_100px_141.9px] w-[1440px] box-sizing-border">
+    <div class=" flex flex-col items-center box-sizing-border">
+      <div class="m-[0_0_35px_19.9px] flex flex-col items-center w-[fit-content] box-sizing-border">
+        <div class="m-[0_0_20px_0] inline-block break-words font-['Open_Sans'] font-[var(--accent-1-font-weight,600)] text-[15px] tracking-[var(--accent-1-letter-spacing,2.3px)] var(--accent-1-text-transform, uppercase) text-[var(--secondary,#A3B18A)]">
+        BAGAIMANA CARA KERJA LAYANAN KAMI
+        </div>
+        <span class="text-center break-words font-['Abril_Fatface'] font-[var(--heading-big,400)] text-[45px] text-[var(--heading,#2D2D2D)]">
+        Kami Memberikan Langkah<br />
+         Kerja Yang Mudah 
+        </span>
+      </div>
+      <div class="flex justify-center pl-10">
+        <div class="rounded-[30px] m-[35px_72.4px_35px_0] flex flex-col items-center box-sizing-border">
+          <div class="m-[0_0_25px_0.5px] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--secondary,#A3B18A)]">
+            01
           </div>
-          <div class="m-[0px_0_0_0] flex flex-col items-end box-sizing-border">
-            <div class="m-[0_0px_8px_0] flex flex-row w-[fit-content] box-sizing-border">
-              <div class="m-[0_12px_0_0] flex box-sizing-border">
-                <div class="rounded-[15px] bg-[#EAECE2] flex p-[0_16px_0_12px] box-sizing-border">
-                  <span class="break-words font-['Inter'] font-normal text-[11.6px] tracking-[0.1px] leading-[2.581] text-[#073937]">
-                    Sound System Umum
-                  </span>
-                </div>
-              </div>
-              <div class="flex box-sizing-border">
-                <div class="rounded-[15px] bg-[#EAECE2] flex p-[0_8.5px_0_12px] box-sizing-border">
-                  <span class="break-words font-['Inter'] font-normal text-[11.4px] tracking-[0.1px] leading-[2.623] text-[#073937]">
-                    Kapasitas 500 orang
-                  </span>
-                </div>
-              </div>
+          <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+            <div class="m-[0_0_10px_0.5px] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-small,400)] text-[21px] text-[var(--heading,#2D2D2D)]">
+              Check In
             </div>
-            <div class="flex flex-row w-[fit-content] box-sizing-border">
-              <div class="m-[0_11.1px_0_0] flex box-sizing-border">
-                <div class="rounded-[15px] bg-[#EAECE2] flex p-[0_15px_0_12px] box-sizing-border">
-                  <span class="break-words font-['Inter'] font-normal text-[11.6px] tracking-[0.1px] leading-[2.581] text-[#073937]">
-                    Ruangan Ber AC
-                  </span>
-                </div>
-              </div>
-              <div class="flex box-sizing-border">
-                <div class="rounded-[15px] bg-[#EAECE2] flex p-[7px_12px_7px_12px] box-sizing-border">
-                  <span class="break-words font-['Inter'] font-normal text-[11.1px] leading-[1.443] text-[#073937]">
-                    +2 lainnya
-                  </span>
-                </div>
-              </div>
-            </div>
+            <span class="text-center break-words font-['Open_Sans'] font-[var(--body-1-font-weight,400)] text-[18px] leading-[var(--body-1-line-height,1.611)] text-[var(--body,#6E6E6E)]">
+              Set tanggal check-in dan check-out sesuai keinginan
+            </span>
           </div>
         </div>
-        <div class="flex flex-row w-[fit-content] box-sizing-border">
-          <div class="rounded-[15px] m-[0_40px_0.2px_0] flex w-[500px] box-sizing-border">
-            <div class="bg-[url('../public/asset/worsix.png')]  flex flex-row gap-[0_6px] p-[276.6px_0_16.4px_0] w-[500px] h-[fit-content] box-sizing-border">
-            </div>
+        <div class="rounded-[30px] m-[35px_72.4px_35px_0] flex flex-col items-center box-sizing-border">
+          <div class="m-[0_0_25px_0.5px] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--secondary,#A3B18A)]">
+            02
           </div>
-          <div class="flex flex-col box-sizing-border">
-            <div class="m-[0_0_16px_0] flex self-start box-sizing-border">
-              <span class="break-words font-['Inter'] font-normal text-[9.5px] tracking-[0.6px] leading-[1.259] text-[#073937]">
-                HARGA SEWA GEDUNG
-              </span>
+          <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+            <div class="m-[0_0_10px_0.5px] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-small,400)] text-[21px] text-[var(--heading,#2D2D2D)]">
+              Pilih Tempat
             </div>
-            <div class="m-[0_0_176.2px_0] flex w-[274px] box-sizing-border">
-              <div class="border-b-[4px_solid_rgba(0,0,0,0.1)] flex flex-row justify-between p-[8px_1.2px_7.9px_0] w-[274px] h-[fit-content] box-sizing-border">
-                <div class="flex box-sizing-border">
-                  <span class="break-words font-['Inter'] font-normal text-[13.6px] tracking-[0.1px] leading-[1.474] text-[#073937]">
-                    Total Harga
-                  </span>
-                </div>
-                <div class="flex box-sizing-border">
-                  <span class="break-words font-['Inter'] font-bold text-[12.9px] tracking-[0.1px] leading-[1.549] text-[#073937]">
-                    Rp 700K
-                  </span>
-                </div>
-              </div>
-            </div>
-            
+            <span class="text-center break-words font-['Open_Sans'] font-[var(--body-1-font-weight,400)] text-[18px] leading-[var(--body-1-line-height,1.611)] text-[var(--body,#6E6E6E)]">
+              Pilih tempat gedung terbaik sesuai keinginan anda
+            </span>
           </div>
         </div>
-        <div class="m-[0_0_30px_0] flex flex-col w-[fit-content] box-sizing-border pt-[54px]">
-            <label class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
-                Rating (1-5)
-            </label>
-            <input type="text" class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_75px_20px] w-[800px] h-[20px] box-sizing-border" placeholder="1-5">
+        <div class="rounded-[30px] m-[35px_72.4px_35px_0] flex flex-col items-center box-sizing-border">
+          <div class="m-[0_0_25px_0.5px] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--secondary,#A3B18A)]">
+            03
+          </div>
+          <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+            <div class="m-[0_0_10px_0.5px] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-small,400)] text-[21px] text-[var(--heading,#2D2D2D)]">
+              Bayar
+            </div>
+            <span class="text-center break-words font-['Open_Sans'] font-[var(--body-1-font-weight,400)] text-[18px] leading-[var(--body-1-line-height,1.611)] text-[var(--body,#6E6E6E)]">
+              Lakukan pembayaran sesudah anda set tanggal check-in &amp; check-out
+            </span>
+          </div>
         </div>
-        <div class="m-[0_0_30px_0] flex flex-col w-[fit-content] box-sizing-border">
-            <label class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
-                Ulasan
-            </label>
-            <textarea class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_75px_20px] w-[800px] box-sizing-border" placeholder="Ketik ulasan disini..."></textarea>
-        </div>
-        <div class="flex justify-center w-full">
-            <a class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] flex justify-center items-center p-[12px_0_12px_0.7px] w-[91.6px] box-sizing-border transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800" href="#">
-                <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.561] text-[#F3ECDC]">
-                    Save
-                </span>
-            </a>
+        <div class="rounded-[30px] m-[35px_72.4px_35px_0] flex flex-col items-center box-sizing-border">
+          <div class="m-[0_0_25px_0.5px] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--secondary,#A3B18A)]">
+            04
+          </div>
+          <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+            <div class="m-[0_0_10px_0.5px] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-small,400)] text-[21px] text-[var(--heading,#2D2D2D)]">
+              Download Bukti
+            </div>
+            <span class="text-center break-words font-['Open_Sans'] font-[var(--body-1-font-weight,400)] text-[18px] leading-[var(--body-1-line-height,1.611)] text-[var(--body,#6E6E6E)]">
+              Kami akan segera kirimkan tiket/sewa gedung anda
+            </span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>
+
+<section class="flex flex-col">
+  <div
+    class="bg-[#F3ECDC] flex justify-center items-center p-[100px_100px_50px_100px] w-[1440px] box-sizing-border"
+  >
+    <div
+      class="rounded-[30px] bg-cover bg-no-repeat justify-center items-center p-[100px_0] w-[1240px]"
+      style="background-image: url('../public/asset/Box.png');"
+    >
+      <div class="flex flex-col items-center box-sizing-border text-center">
+        <div
+          class="m-[0_0_20px_0] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-very-big,400)] text-[55px] text-[#F3ECDC]"
+        >
+          Sewa Gedung Terbaik<br />
+          Sesuai Impian Anda
+        </div>
+        <div
+          class="m-[0_1.6px_20px_1.6px] inline-block break-words font-['Open_Sans'] font-[var(--body-1-font-weight,400)] text-[18px] leading-[var(--body-1-line-height,1.611)] text-[var(--white-transparent,rgba(255,255,255,0.75))]"
+        >
+          Tersedia banyak sekali apartemen terbaik yang siap anda tempati
+        </div>
+        <div class="flex justify-center items-center">
+          <a
+            href="#"
+            class="break-words tracking-widest text-white px-[40px] py-[20px] rounded-full bg-[#588157] transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800 opensans"
+          >
+            GET STARTED
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <footer>
@@ -399,3 +448,9 @@
           </div>          
       </div>
 </footer>
+    <script>
+        function redirectToHomePage() {
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
