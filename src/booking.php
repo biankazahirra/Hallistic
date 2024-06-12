@@ -3,6 +3,20 @@
 include "ceklogin.php";
 include 'koneksi.php';
 
+if (isset($_GET['id_gedung'])) {
+    $id_gedung = $_GET['id_gedung'];
+
+    // Lakukan query untuk mendapatkan data gedung sesuai dengan id_gedung
+    $query = "SELECT harga_sewa FROM daftar_gedung WHERE id_gedung = ?";
+    $stmt = $koneksi->prepare($query);
+    $stmt->bind_param($id_gedung);
+    $stmt->execute();
+    $stmt->bind_result($harga_sewa);
+
+    // Ambil hasil query
+    $stmt->fetch();
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -113,22 +127,22 @@ include 'koneksi.php';
               </div>
               <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
                 <div class="m-[0_0_30px_0] flex flex-row w-[fit-content] box-sizing-border">
-                  <div class="m-[0_30px_0_0] flex flex-col w-[555px] box-sizing-border">
+                  <div class="m-[0_30px_0_0] flex flex-col w-[1100px] box-sizing-border">
                     <div class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
-                      First Name
+                      Nama
                     </div>
                     <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[550px] box-sizing-border">
-                      <input type="text" placeholder="First Name" class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" />
+                      <input type="text" placeholder="Nama" class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" />
                     </div>
                   </div>
-                  <div class="flex flex-col w-[555px] box-sizing-border">
+                  <!-- <div class="flex flex-col w-[555px] box-sizing-border">
                     <div class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
                       Last Name
                     </div>
                     <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[550px] box-sizing-border">
                       <input type="text" placeholder="Last Name" class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" />
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="flex flex-row w-[fit-content] box-sizing-border">
                   <div class="m-[0_30px_0_0] flex flex-col w-[555px] box-sizing-border">
@@ -152,41 +166,42 @@ include 'koneksi.php';
             </div>
           </div>
           
-        <div class="bg-[#F3ECDC] p-[5px_100px_19px_100px] box-sizing-border">
-          <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[22px_0_41.9px_50px] box-sizing-border">
-            <div class="m-[0_0_20px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">
-            Order Detail
-            </div>
-            <div class="m-[0_0_20px_0] flex flex-row justify-between self-start w-[607.3px] box-sizing-border">
-              <div class="m-[3px_9.5px_0_0] inline-block w-[175.5px] break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
-              Order Date
+          <div class="bg-[#F3ECDC] p-[5px_100px_19px_100px] box-sizing-border">
+            <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[22px_0_41.9px_50px] box-sizing-border">
+              <div class="m-[0_0_20px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">
+                Order Detail
               </div>
-              <div class="m-[3px_0_0_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
-              Check In
+              <div class="m-[0_0_20px_0] flex flex-row justify-between self-start w-[607.3px] box-sizing-border">
+                <div class="m-[3px_9.5px_0_0] inline-block w-[175.5px] break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
+                  Order Date
+                </div>
+                <div class="m-[3px_0_0_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
+                  Check In
+                </div>
+                <div class="m-[3px_0_0_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
+                  Check Out
+                </div>
+                <div class="m-[0_0_3px_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
+                  Total
+                </div>
               </div>
-              <div class="m-[3px_0_0_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
-              Check Out
-              </div>
-              <div class="m-[0_0_3px_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
-              Total
-              </div>
-            </div>
-            <div class="flex flex-row justify-between self-start w-[633.2px] box-sizing-border">
-              <div class="m-[0_12px_0.1px_0] inline-block w-[157px] break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
-              20/09/2024
-              </div>
-              <div class=" m-[0_0_0.1px_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
-              23/09/2024
-              </div>
-              <div class=" m-[0_0_0.1px_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
-              24/09/2024
-              </div>
-              <div class=" m-[0.1px_0_0_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
-              Rp.700.000
+              <div class="flex flex-row justify-between self-start w-[633.2px] box-sizing-border">
+                <div class="m-[0_12px_0.1px_0] inline-block w-[157px] break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
+                  <span id="order-date"></span>
+                </div>
+                <div class="m-[0_0_0.1px_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
+                  <input type="date" id="check-in-date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent">
+                </div>
+                <div class="m-[0_0_0.1px_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
+                  <input type="date" id="check-out-date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent">
+                </div>
+                <div class="m-[0.1px_0_0_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
+                  Rp <?php echo number_format($harga_sewa, 0, ',', '.'); ?>K
+                </div>
               </div>
             </div>
           </div>
-        </div>
+
         <div class="bg-[#F3ECDC] p-[5px_100px_25px_100px] box-sizing-border">
             <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[22px_0_32px_50px] box-sizing-border">
               <div class="m-[0_0_21.5px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">
@@ -427,6 +442,18 @@ include 'koneksi.php';
     document.getElementById('cancelButton').addEventListener('click', function() {
       window.location.href = 'searchresult.php';
     });
+
+
+
+  // Mendapatkan tanggal saat ini
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+  var yyyy = today.getFullYear();
+  today = mm + '/' + dd + '/' + yyyy;
+
+  // Memasukkan tanggal saat ini ke dalam elemen
+  document.getElementById("order-date").innerHTML = today;
   </script>
 
 </body>
