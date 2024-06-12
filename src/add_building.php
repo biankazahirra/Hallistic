@@ -245,6 +245,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         required></textarea>
                                 </div>
                                 <div class="mb-4">
+                                    <label for="harga" class="block text-gray-700 font-semibold mb-2">Harga</label>
+                                    <input type="number" id="harga" name="harga" placeholder="Masukkan harga gedung"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
+                                        required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="kota" class="block text-gray-700 font-semibold mb-2">Kota</label>
+                                    <input type="text" id="kota" name="kota" placeholder="Masukkan kota gedung"
+                                        class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
+                                        required>
+                                        </div>
+                                <div class="mb-4">
                                     <label for="status_gedung"
                                         class="block text-gray-700 font-semibold mb-2">Status</label>
                                     <select id="status_gedung" name="status_gedung"

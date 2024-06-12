@@ -199,6 +199,8 @@ $result = mysqli_query($koneksi, $query);
                                     </th>
                                     <th class="text-center px-3 py-2 font-bold text-lg">Building Name</th>
                                     <th class="text-center px-3 py-3 font-bold text-lg">Description</th>
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Harga</th> <!-- New column -->
+                                    <th class="text-center px-3 py-3 font-bold text-lg">Kota</th>
                                     <th class="text-center px-3 py-3 font-bold text-lg">Status</th>
                                     <th class="text-center px-3 py-3 font-bold text-lg">Image</th>
                                     <th class="text-center px-3 py-3 font-bold text-lg">Action</th>
@@ -218,6 +220,11 @@ $result = mysqli_query($koneksi, $query);
                                             <?php echo $row['deskripsi_gedung'] ?>
                                         </td>
                                         <td class="text-center py-3 uppercase font-semibold text-sm">
+                                            <?php echo $row['harga'] ?> <!-- Value for Harga column -->
+                                        </td>
+                                        <td class="text-center py-3 uppercase font-semibold text-sm">
+                                            <?php echo $row['kota'] ?> <!-- Value for Kota column -->
+                                        </td>                                        <td class="text-center py-3 uppercase font-semibold text-sm">
                                             <?php echo $row['status_gedung'] ?>
                                         </td>
                                         </td>
