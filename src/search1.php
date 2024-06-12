@@ -167,7 +167,7 @@ include 'koneksi.php';
               <div class="flex items-center">
                 <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
                 <span id="guestCount" class="mx-[10px] break-words font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D]">0</span>
-                <button class="bg-[#4D4D4D] w-[24px] h-[24px] text-white" onclick="incrementGuests()">+</button>
+                <button class="bg-[#FFFBF2] w-[24px] h-[24px] text-black" onclick="incrementGuests()">+</button>
               </div>
             </div>
             <div class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center">

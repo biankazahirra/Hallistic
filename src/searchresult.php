@@ -151,7 +151,7 @@ include 'koneksi.php';
               <div class="flex items-center">
                 <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
                 <span id="guestCount" class="mx-[10px] break-words font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D]">0</span>
-                <button class="bg-[#4D4D4D] w-[24px] h-[24px] text-white" onclick="incrementGuests()">+</button>
+                <button class="bg-[#FFFBF2] w-[24px] h-[24px] text-black" onclick="incrementGuests()">+</button>
               </div>
             </div>
             <div class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center">
@@ -179,7 +179,139 @@ include 'koneksi.php';
           </script>
       </div>
     </div>
-    <div class="bg-[#F3ECDC] flex justify-center p-[46px_0_69px_0] w-full box-sizing-border">
+    <?php
+
+      $query = "SELECT id_gedung, nama_gedung, harga_sewa, kota_gedung FROM daftar_gedung";
+      $result = $koneksi->query($query);
+
+      if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+              $id_gedung = $row['id_gedung'];
+              $nama_gedung = $row['nama_gedung'];
+              $harga_sewa = $row['harga_sewa'];
+              $kota_gedung = $row['kota_gedung'];
+              ?>
+              <div class="bg-[#F3ECDC] flex justify-center p-[46px_0_69px_0] w-full box-sizing-border">
+                <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[20px] bg-[#FFFFFF] flex flex-col items-center p-[36px_34px_35.8px_44px] box-sizing-border">
+                  <div class="m-[0_18px_24px_0] flex flex-row justify-between w-full max-w-[796px] box-sizing-border">
+                    <div class="m-[0_0_8.2px_0] flex flex-col box-sizing-border">
+                      <div class="flex self-start box-sizing-border">
+                        <span class="break-words font-['Inter'] font-normal text-[21.8px] tracking-[-0.2px] leading-[1.468] text-[#073937]">
+                          <?php echo $nama_gedung; ?>
+                        </span>
+                      </div>
+                      <div class=" m-[0_0_0_0px] w-[fit-content] box-sizing-border">
+                        <div class=" flex p-[0_4.8px_0_0] box-sizing-border">
+                          <div class=" flex flex-row box-sizing-border">
+                            <div class="m-[2.1px_3.8px_7.9px_0] flex w-[18.7px] h-[18px] box-sizing-border">
+                              <img class="w-[18.7px] h-[18px]" src="../public/asset/star.svg" />
+                            </div>
+                            <span class="m-[0_0.5px_0_0] break-words font-['Inter'] font-bold text-[16.6px] tracking-[0px] leading-[1.681] text-[#073937]">
+                              4.3
+                            </span>
+                            <span class="break-words font-['Inter'] font-normal text-[17.6px] tracking-[0px] leading-[1.587] text-[#073937]">
+                              /5 (
+                            </span>
+                            <div class="m-[3.9px_0_3.1px_0] flex box-sizing-border">
+                              <span class="break-words font-['Inter'] font-normal text-[16.5px] underline leading-[1.258] text-[#073937]">
+                                999+ reviews
+                              </span>
+                            </div>
+                          </div>
+                          <span class=" right-[0px] bottom-[0px] break-words font-['Inter'] font-normal text-[18px] tracking-[0px] leading-[1.55] text-[#073937]">
+                            )
+                          </span>
+                          <span class=" right-[0px] bottom-[0px] break-words font-['Inter'] font-normal text-[16.9px] tracking-[0px] leading-[1.653] text-[#073937]">
+                            | <?php echo $kota_gedung; ?>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="m-[0px_0_0_0] flex flex-col items-end box-sizing-border">
+                      <div class="m-[0_0px_8px_0] flex flex-row w-[fit-content] box-sizing-border">
+                        <div class="m-[0_12px_0_0] flex box-sizing-border">
+                          <div class="rounded-[15px] bg-[#EAECE2] flex p-[0_16px_0_12px] box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[11.6px] tracking-[0.1px] leading-[2.581] text-[#073937]">
+                              Sound System Umum
+                            </span>
+                          </div>
+                        </div>
+                        <div class="flex box-sizing-border">
+                          <div class="rounded-[15px] bg-[#EAECE2] flex p-[0_8.5px_0_12px] box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[11.4px] tracking-[0.1px] leading-[2.623] text-[#073937]">
+                              Kapasitas 500 orang
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex flex-row w-[fit-content] box-sizing-border">
+                        <div class="m-[0_11.1px_0_0] flex box-sizing-border">
+                          <div class="rounded-[15px] bg-[#EAECE2] flex p-[0_15px_0_12px] box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[11.6px] tracking-[0.1px] leading-[2.581] text-[#073937]">
+                              Ruangan Ber AC
+                            </span>
+                          </div>
+                        </div>
+                        <div class="flex box-sizing-border">
+                          <div class="rounded-[15px] bg-[#EAECE2] flex p-[7px_12px_7px_12px] box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[11.1px] leading-[1.443] text-[#073937]">
+                              +2 lainnya
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row w-[fit-content] box-sizing-border">
+                    <div class="rounded-[15px] m-[0_40px_0.2px_0] flex w-[500px] box-sizing-border">
+                    <img src="show_image.php?id_gedung=<?php echo $id_gedung; ?>" alt="<?php echo $nama_gedung; ?>" class="w-full h-auto"/>
+                    </div>
+                    </div>
+                    <div class="flex flex-col box-sizing-border">
+                      <div class="m-[0_0_16px_0] flex self-start box-sizing-border">
+                        <span class="break-words font-['Inter'] font-normal text-[9.5px] tracking-[0.6px] leading-[1.259] text-[#073937]">
+                          HARGA SEWA GEDUNG
+                        </span>
+                      </div>
+                      <div class="m-[0_0_176.2px_0] flex w-[274px] box-sizing-border">
+                        <div class="border-b-[4px_solid_rgba(0,0,0,0.1)] flex flex-row justify-between p-[8px_1.2px_7.9px_0] w-[274px] h-[fit-content] box-sizing-border">
+                          <div class="flex box-sizing-border">
+                            <span class="break-words font-['Inter'] font-normal text-[13.6px] tracking-[0.1px] leading-[1.474] text-[#073937]">
+                              Total Harga
+                            </span>
+                          </div>
+                          <div class="flex box-sizing-border">
+                            <span class="break-words font-['Inter'] font-bold text-[12.9px] tracking-[0.1px] leading-[1.549] text-[#073937]">
+                              Rp <?php echo number_format($harga_sewa, 0, ',', '.'); ?>K
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="m-[0_9.4px_0_0] flex flex-col self-center w-[150.6px] box-sizing-border">
+                          <div class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] flex justify-center items-center p-[2px_0] w-[108.6px] h-[40px] box-sizing-border transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800" style="margin-left: 20px">
+                            <a href="booking.php" class="break-words font-['Inter'] font-normal text-center leading-[1.561] text-[#F3ECDC] hover:text-[#EAECE2]">
+                              Book Now
+                            </a>
+                          </div>
+                          <a href="detail.php" class="break-words font-['Inter'] font-normal text-center  text-[#588157] hover:text-green-800">
+                              Lihat Selengkapnya
+                            </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php
+          }
+      } else {
+          echo "No gedung found.";
+      }
+
+      $koneksi->close();
+      ?>
+
+
+    <!-- <div class="bg-[#F3ECDC] flex justify-center p-[46px_0_69px_0] w-full box-sizing-border">
       <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[20px] bg-[#FFFFFF] flex flex-col items-center p-[36px_34px_35.8px_44px] box-sizing-border">
         <div class="m-[0_18px_24px_0] flex flex-row justify-between w-full max-w-[796px] box-sizing-border">
           <div class="m-[0_0_8.2px_0] flex flex-col box-sizing-border">
@@ -289,7 +421,7 @@ include 'koneksi.php';
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
   
 
