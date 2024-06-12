@@ -74,8 +74,11 @@ CREATE TABLE `daftar_pembayaran` (
   `tgl_pembayaran` date NOT NULL,
   `tgl_checkin` date NOT NULL,
   `tgl_checkout` date NOT NULL,
-  `status_pembayaran` enum('Sudah Terverifikasi','Belum Terverifikasi','','') NOT NULL
+  `nama_penyewa` varchar(255) NOT NULL, -- Kolom untuk nama penyewa
+  `telpon` varchar(20) NOT NULL, -- Kolom untuk nomor telepon
+  `status_pembayaran` enum('Sudah Terverifikasi','Belum Terverifikasi') NOT NULL DEFAULT 'Belum Terverifikasi' -- Kolom status_pembayaran tidak memerlukan nilai kosong yang tidak dibutuhkan
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 -- --------------------------------------------------------
 

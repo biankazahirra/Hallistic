@@ -188,8 +188,10 @@ $result = mysqli_query($koneksi, $query);
                                     <th class="text-center px-3 py-5  font-bold text-lg">Date</th>
                                     <th class="text-center px-3 py-5  font-bold text-lg">Check In</th>
                                     <th class="text-center px-3 py-5  font-bold text-lg">Check Out</th>
+                                    <th class="text-center px-3 py-5 font-bold text-lg">Nama Penyewa</th>
+                                    <th class="text-center px-3 py-5 font-bold text-lg">Telepon</th>
                                     <th class="text-center px-3 py-5  font-bold text-lg">Status</th>
-                                    <th class="text-center px-3 py-5  font-bold text-lg">Action</th>
+         
                                 </tr>
                             </thead>
                             <tbody>
@@ -210,6 +212,12 @@ $result = mysqli_query($koneksi, $query);
                                             <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
                                                 <?php echo $row['tgl_checkout'] ?>
                                             </td>
+                                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                                <?php echo $row['nama_penyewa'] ?>
+                                            </td>
+                                            <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
+                                                <?php echo $row['telpon'] ?>
+                                             </td>
                                             <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
                                                 <?php echo $row['status_pembayaran'] ?>
                                             </td>
