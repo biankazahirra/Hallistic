@@ -127,7 +127,7 @@ include 'koneksi.php';
               <img class="w-[22.5px] h-[22.5px]" src="../public/asset/search1.svg" />
             </div>
             <div class="m-[10px_14px_10px_0] inline-block w-[180px] break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
-              <input type="text" placeholder="Pilih Kota yang dituju" class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" />
+              <input type="text" name="kota_gedung" placeholder="Pilih Kota yang dituju" class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" />
             </div>
           </div>
         

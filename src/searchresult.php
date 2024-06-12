@@ -101,7 +101,7 @@ include 'koneksi.php';
     <div>
       <div class="flex flex-col items-center w-[1440px] box-sizing-border">
         <div class="m-[0_0_55px_0] inline-block break-words font-['Abril_Fatface'] font-[var(--heading-big,400)] text-[45px] text-[var(--heading,#2D2D2D)]">
-          Hasil Pencarian
+          Pencarian Gedung
         </div>
         <div class="rounded-t-[30px] border-[1px_solid_#9C9C9C] bg-[#FFFBF2] m-[0_107px_0_107px] flex flex-row justify-between p-[9px_24px_9px_27.8px] w-[1226px] box-sizing-border">
   
@@ -293,9 +293,9 @@ include 'koneksi.php';
                               Book Now
                             </a>
                           </div>
-                          <a href="detail.php" class="break-words font-['Inter'] font-normal text-center  text-[#588157] hover:text-green-800">
+                          <a href="detail.php?id_gedung=<?php echo $id_gedung; ?>" class="break-words font-['Inter'] font-normal text-center text-[#588157] hover:text-green-800">
                               Lihat Selengkapnya
-                            </a>
+                          </a>
                       </div>
                     </div>
                   </div>

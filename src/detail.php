@@ -3,6 +3,18 @@
 include "ceklogin.php";
 include 'koneksi.php';
 
+if (isset($_GET['id_gedung'])) {
+  $id_gedung = $_GET['id_gedung'];
+
+  // Lakukan query untuk mendapatkan data gedung sesuai dengan id_gedung
+  $query = "SELECT nama_gedung, deskripsi_gedung, kota_gedung FROM daftar_gedung WHERE id_gedung = ?";
+  $stmt = $koneksi->prepare($query);
+  $stmt->bind_param("i", $id_gedung);
+  $stmt->execute();
+  $stmt->bind_result($nama_gedung, $deskripsi_gedung, $kota_gedung);
+  $stmt->fetch();
+  $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -211,49 +223,45 @@ include 'koneksi.php';
 </header>
 
 <div class="container mt-[100px]">
-  <div class="conten">
-      <div class="image-container">
-          <img src="../public/asset/foto1.jpg.png" class="main-image" alt="Gedung Serba Guna Worshix Main Image">
-          <div class="thumbnail-container">
-              <img src="../public/asset/foto2.jpg.png" class="thumbnail" alt="Gedung Serba Guna Worshix Thumbnail 1">
-              <img src="../public/asset/foto3.jpg.png" class="thumbnail" alt="Gedung Serba Guna Worshix Thumbnail 2">
-          </div>
-      </div>
-      <div class="container">
-          <div class="content-header">
-              <h1 class="text-[#073937] font-['Abril_Fatface']">Gedung Serba Guna Worshix</h1>
-              <div class="rating">
-                  <span>⭐ 4.3/5</span>
-                  <span>Superb (<a href="#">999+ reviews</a>)</span>
-              </div>
-              <p>Jakarta Pusat</p>
-          </div>
-          <div class="main-content">
-              <div class="description">
-                  <p>Welcome to "Gedung Worshix," a luxurious building in the heart of the city offering modern and comfortable experiences.</p>
-                  <p>With elegant interior design, each room in our building is designed to blend aesthetic beauty with optimal functionality.</p>
-                  <p>From cutting-edge designs to event equipment equipped with the latest technology, "Gedung Worshix" indulges visitors with a modern lifestyle without compromise.</p>
-              </div>
-              <div class="facilities">
-                  <ul>
-                      <li>Top Facilities</li>
-                      <li><img src="../public/asset/pemanas.png" alt=""> Heating and workspace</li>
-                      <li><img src="../public/asset/AC.png" alt=""> Air-conditioned rooms</li>
-                      <li><img src="../public/asset/Elevator.png" alt=""> Elevator</li>
-                      <li><img src="../public/asset/Layanan.png" alt=""> 24/7 Service</li>
-                  </ul>
-                  <ul>
-                      <li>The Sonder standard</li>
-                      <li><img src="../public/asset/Check.png" alt=""> Password Check-in</li>
-                      <li><img src="../public/asset/Wifi.png" alt=""> Fast WIFI</li>
-                      <li><img src="../public/asset/Kebersihan.png" alt=""> Professional Cleaning</li>
-                      <li><img src="../public/asset/Perlengkapan.png" alt=""> Full Equipment</li>
-                  </ul>
-              </div>
-          </div>        
-          <a href="#" class="book-button">Book Now</a>    
-      </div>
-  </div>
+<div class="conten">
+    <div class="image-container">
+        <img src="show_image.php?id_gedung=<?php echo $id_gedung; ?>" class="w-full h-auto" alt="<?php echo $nama_gedung; ?>">
+    </div>
+    <div class="container">
+        <div class="content-header">
+            <h1 class="text-[#073937] font-['Abril_Fatface']"><?php echo $nama_gedung; ?></h1>
+            <div class="rating">
+                <span>⭐ 4.3/5</span>
+                <span>Superb (<a href="#">999+ reviews</a>)</span>
+            </div>
+            <?php if ($kota_gedung): ?>
+                <p><?php echo $kota_gedung; ?></p>
+            <?php endif; ?>
+        </div>
+        <div class="main-content">
+            <div class="description">
+                <p><?php echo $deskripsi_gedung; ?></p>
+            </div>
+            <div class="facilities">
+                <ul>
+                    <li>Top Facilities</li>
+                    <li><img src="../public/asset/pemanas.png" alt=""> Heating and workspace</li>
+                    <li><img src="../public/asset/AC.png" alt=""> Air-conditioned rooms</li>
+                    <li><img src="../public/asset/Elevator.png" alt=""> Elevator</li>
+                    <li><img src="../public/asset/Layanan.png" alt=""> 24/7 Service</li>
+                </ul>
+                <ul>
+                    <li>The Sonder standard</li>
+                    <li><img src="../public/asset/Check.png" alt=""> Password Check-in</li>
+                    <li><img src="../public/asset/Wifi.png" alt=""> Fast WIFI</li>
+                    <li><img src="../public/asset/Kebersihan.png" alt=""> Professional Cleaning</li>
+                    <li><img src="../public/asset/Perlengkapan.png" alt=""> Full Equipment</li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" class="book-button">Book Now</a>
+    </div>
+</div>
   <div class="Maps">
       <h2>Location Map</h2>
       <div class="map-container">
