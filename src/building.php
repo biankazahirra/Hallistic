@@ -220,11 +220,12 @@ $result = mysqli_query($koneksi, $query);
                                             <?php echo $row['deskripsi_gedung'] ?>
                                         </td>
                                         <td class="text-center py-3 uppercase font-semibold text-sm">
-                                            <?php echo $row['harga'] ?> <!-- Value for Harga column -->
+                                            <?php echo $row['harga_sewa'] ?> <!-- Value for Harga column -->
                                         </td>
                                         <td class="text-center py-3 uppercase font-semibold text-sm">
-                                            <?php echo $row['kota'] ?> <!-- Value for Kota column -->
-                                        </td>                                        <td class="text-center py-3 uppercase font-semibold text-sm">
+                                            <?php echo $row['kota_gedung'] ?> <!-- Value for Kota column -->
+                                        </td>
+                                        <td class="text-center py-3 uppercase font-semibold text-sm">
                                             <?php echo $row['status_gedung'] ?>
                                         </td>
                                         </td>

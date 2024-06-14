@@ -305,6 +305,7 @@
                                             row.querySelector(".cancel-btn").addEventListener("click", function () {
                                                 row.innerHTML = originalContent;
                                                 attachEditEvents();
+                                                location.reload();
                                             });
                                         }
 
