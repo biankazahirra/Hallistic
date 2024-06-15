@@ -117,9 +117,9 @@ $result = mysqli_query($koneksi, $query);
         </header> -->
 
         <!-- Mobile Header & Nav -->
-        <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
+        <header x-data="{ isOpen: false }" class="w-full bg-slate-500 py-5 px-6 sm:hidden">
             <div class="flex items-center justify-between">
-                <a href="dashboard.html"
+                <a href="dashboard.php"
                     class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
                 <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
                     <i x-show="!isOpen" class="fas fa-bars"></i>
@@ -179,9 +179,10 @@ $result = mysqli_query($koneksi, $query);
                         class="border pl-12 pr-2 py-3 rounded-lg w-full" onkeyup="searchTable()">
                 </div>
 
+                <!-- add building -->
                 <div class="flex my-10 items-center">
                     <a href="add_building.php">
-                        <div class="bg-green-800 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
+                        <div class="bg-green-700 hover:bg-green-900 px-2 w-40 py-2 rounded-md flex items-center justify-center text-white">
                             <i class='bx bx-plus mr-2 text-lg'></i>
                             Add A Building
                         </div>
@@ -189,12 +190,12 @@ $result = mysqli_query($koneksi, $query);
                 </div>
 
 
-
-                <div class="w-full mt-3 bg-white">
-                    <div class=" overflow-auto max-h-[50rem] h-[30rem]  mx-2">
-                        <table class="min-w-full bg-white " id="building_table">
-                            <thead class="bg-white text-black ">
-                                <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm ">
+                <!-- view building -->
+                <div class="w-full mt-3 overflow-auto">
+                    <div class="max-h-[200rem] mx-2">
+                        <table class="w-full bg-white " id="building_table ">
+                            <thead class="bg-white text-black w-full ">
+                                <tr class="border-b border-collapse sticky top-0 bg-transparent backdrop-blur-sm  ">
                                     <th class="text-center px-3 py-2 w-25 font-bold text-lg">Building ID
                                     </th>
                                     <th class="text-center px-3 py-2 font-bold text-lg">Building Name</th>
@@ -229,16 +230,13 @@ $result = mysqli_query($koneksi, $query);
                                             <?php echo $row['status_gedung'] ?>
                                         </td>
                                         </td>
-                                        <td class="flex items-center justify-center py-3">
-                                            <img class="w-40 h-30 object-cover"
-                                                src="uploads/<?php echo $row['gambar_gedung']; ?>"
-                                                alt="<?php echo $row['nama_gedung']; ?>" class="w-16 h-16 object-cover">
+                                        <td class="flex items-center justify-center mx-auto my-7">
+                                            <img class="w-44 h-44" src="uploads/<?php echo $row['gambar_gedung']; ?>">
                                         </td>
                                         <td class="text-lg py-14 px-4 w-2">
                                             <div class="flex items-center justify-center gap-x-2.5">
                                                 <a href="edit_gedung.php?id=<?= $row['id_gedung'] ?> "><i
                                                         class="fas fa-edit text-blue-600"></i></a>
-
                                                 <a href="javascript:void(0)"
                                                     onclick="confirmDelete(<?= $row['id_gedung'] ?>)">
                                                     <i class="fas fa-trash text-red-600"></i></a>

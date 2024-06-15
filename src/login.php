@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Password: $password<br>";
 
     // Cek di tabel admin
-    $stmt_admin = $koneksi->prepare("SELECT email,' password', nama FROM admin WHERE email = ?");
+    $stmt_admin = $koneksi->prepare("SELECT email, password, nama FROM admin WHERE email = ?");
     $stmt_admin->bind_param("s", $email);
     $stmt_admin->execute();
     $stmt_admin->store_result();
@@ -25,8 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Verifikasi password admin
         if (password_verify($password, $stored_password)) {
-            $_SESSION['email_admin'] = $stored_email;
-            $_SESSION['nama_admin'] = $stored_nama;
+            $_SESSION['email'] = $stored_email;
+            $_SESSION['nama'] = $stored_nama;
+            $_SESSION['role'] = 'admin'; // Menambahkan peran admin ke sesi
             header("Location: dashboard.php");
             exit();
         } else {
@@ -50,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (password_verify($password, $stored_password)) {
                 $_SESSION['email_penyewa'] = $stored_email;
                 $_SESSION['nama_penyewa'] = $stored_nama;
+                $_SESSION['role'] = 'user'; // Menambahkan peran user ke sesi
                 header("Location: home1.php");
                 exit();
             } else {
@@ -64,5 +66,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: login1.html?error=1");
     exit();
 }
-
 ?>

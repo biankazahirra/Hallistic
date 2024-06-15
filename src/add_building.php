@@ -14,13 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image = $_FILES['image']['name'];
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($image);
-
+    $kota_gedung = $_POST['kota_gedung'];
+    $status_gedung = $_POST['status_gedung'];
+    $harga_sewa = $_POST['harga'];
 
     // Pindahkan file yang diunggah ke direktori tujuan
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
         // Query untuk menambah data ke database
-        $sql = "INSERT INTO daftar_gedung (id_gedung, nama_gedung, deskripsi_gedung, status_gedung, gambar_gedung)
-            VALUES ('$id_gedung', '$nama_gedung', '$deskripsi_gedung', '$status_gedung', '$image')";
+        $sql = "INSERT INTO daftar_gedung (id_gedung, nama_gedung, deskripsi_gedung, status_gedung, gambar_gedung,kota_gedung,harga_sewa)
+            VALUES ('$id_gedung', '$nama_gedung', '$deskripsi_gedung', '$status_gedung', '$image','$kota_gedung','$harga_sewa')";
 
         if ($koneksi->query($sql) === TRUE) {
             $pesan = "sukses";
@@ -252,10 +254,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                                 <div class="mb-4">
                                     <label for="kota" class="block text-gray-700 font-semibold mb-2">Kota</label>
-                                    <input type="text" id="kota" name="kota" placeholder="Masukkan kota gedung"
+                                    <select id="kota" name="kota_gedung"
                                         class="w-full border-2 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-700"
                                         required>
-                                        </div>
+                                        <option value="" disabled selected>Pilih Kota</option>
+                                        <option value="Jakarta">Jakarta</option>
+                                        <option value="Bandung">Bandung</option>
+                                        <option value="Surabaya">Surabaya</option>
+                                        <option value="Bandar Lampung">Bandar Lampung</option>
+                                        <option value="Bali">Bali</option>
+                                        <option value="Medan">Medan</option>
+                                        <option value="Riau">Riau</option>
+                                        <option value="Palembang">Palembang</option>
+                                        <option value="Jawa Timur">Jawa Timur</option>
+                                        <option value="Papua">Papua</option>
+                                        <option value="Kalimantan Timur">Kalimantan Timur</option>
+                                        <option value="Kalimantan Barat">Kalimantan Barat</option>
+                                        <option value="Sulawesi Utara">Sulawesi Utara</option>
+                                        <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                                    </select>
+                                </div>
+
                                 <div class="mb-4">
                                     <label for="status_gedung"
                                         class="block text-gray-700 font-semibold mb-2">Status</label>

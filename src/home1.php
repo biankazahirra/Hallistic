@@ -26,6 +26,8 @@ include 'koneksi.php';
   <link href="path/to/tailwind.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="shortcut icon" href="../public/Logo Hallistic/logo.png" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
   <style>
     /* Kustomisasi warna dan font family */
@@ -72,7 +74,7 @@ include 'koneksi.php';
   <header class="fixed w-full">
     <nav class="bg-[#588157] border-dlr-200 py-4 navbar fixed top-0 w-full">
       <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto ml-[90px]">
-        <a href="#" class="flex items-center">
+        <a href="home1.php" class="flex items-center">
           <img src="../public/asset/logobar.svg" class="h-6 mr-3 sm:h-9" alt="Halistic Logo" />
         </a>
         <div class="flex items-center lg:order-2  mr-[90px] gap-[30px]">
@@ -80,9 +82,9 @@ include 'koneksi.php';
           <!-- <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a> -->
           <a href="home1.php"
             class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-            Hi, <?php 
+            Hi, <?php
             echo isset($_SESSION['nama_penyewa']) ? explode(' ', $_SESSION['nama_penyewa'])[0] : 'Pengguna'; ?>!</a>
-          <a href="login.html"
+          <a href="#" onclick="logout()"
             class="block py-2 pl-3 pr-4 opensans font-semibold tracking-widest text-white text-opacity-75 border-b hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">LOG
             OUT</a>
 
@@ -538,4 +540,25 @@ include 'koneksi.php';
       window.location.href = 'home.php';
     }
   </script>
+
+  <script>
+    function logout() {
+      Swal.fire({
+        title: 'Apakah Anda yakin ingin keluar?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, keluar!',
+        confirmButtonColor: 'red',
+        cancelButtonText: 'Tidak'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Arahkan ke halaman logout atau lakukan aksi logout di sini
+          window.location.href = 'logout.php';
+        }
+      });
+    }
+  </script>
+
 </body>
+
+</html>

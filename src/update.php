@@ -7,8 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Lakukan sanitasi dan validasi data di sini jika perlu
-
+ 
     // Update data di database
     $sql = "UPDATE daftar_akun SET nama_penyewa='$nama', email_penyewa='$email' WHERE id_penyewa=$id";
     $result = mysqli_query($koneksi, $sql);

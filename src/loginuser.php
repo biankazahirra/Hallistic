@@ -1,3 +1,8 @@
+<?php
+include "ceklogout.php";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +13,7 @@
     <link rel="stylesheet" href="../dist/output.css">
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@400;600&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" href="../public/asset/admin.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../public/Logo Hallistic/logo.png" type="image/x-icon">
     <style>
         .bg-green {
             background-color: #344E41;

@@ -1,3 +1,25 @@
+<?php
+include "koneksi.php";
+
+if (isset($_POST['verifikasi'])) {
+    $id_pembayaran = $_POST['id_pembayaran'];
+
+    $pesan = 'yakin';
+
+}
+
+// Jika terdapat ID pembayaran di URL, maka lakukan verifikasi
+if (isset($_GET['id_pembayaran'])) {
+    $id_pembayaran = $_GET['id_pembayaran'];
+    $sql = "UPDATE daftar_pembayaran SET status_pembayaran='Sudah Terverifikasi' WHERE id_pembayaran='$id_pembayaran'";
+    mysqli_query($koneksi, $sql);
+
+    $pesan2 = 'sukses';
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +79,7 @@
 
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-8 flex items-center ">
-            <a href="dashboard.html" class="text-black text-3xl font-semibold uppercase hover:text-gray-300">
+            <a href="dashboard.php" class="text-black text-3xl font-semibold uppercase hover:text-gray-300">
                 <img src="../public/asset/logo.png" alt="">
             </a>
         </div>
@@ -108,15 +130,15 @@
         </header> -->
 
         <!-- Mobile Header & Nav -->
-        <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
+        <header x-data="{ isOpen: false }" class="w-full bg-slate-600 py-5 px-6 sm:hidden">
             <div class="flex items-center justify-between">
-                <a href="dashboard.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300"></a>
+                <a href="dashboard.php"
+                    class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
                 <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
                     <i x-show="!isOpen" class="fas fa-bars"></i>
                     <i x-show="isOpen" class="fas fa-times"></i>
                 </button>
             </div>
-
             <!-- Dropdown Nav -->
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
                 <a href="dashboard.php"
@@ -182,14 +204,17 @@
                                     <th class="text-center px-3 py-5 font-bold text-lg">Nama Penyewa</th>
                                     <th class="text-center px-3 py-5 font-bold text-lg">Telepon</th>
                                     <th class="text-center px-3 py-5  font-bold text-lg">Status</th>
-         
+                                    <th class="text-center px-3 py-5  font-bold text-lg">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                                <?php
+                                include "koneksi.php";
+                                $s = "SELECT * FROM daftar_pembayaran";
+                                $result = mysqli_query($koneksi, $s);
+                                while ($row = mysqli_fetch_assoc($result)): ?>
                                     <tr class="border-b">
-                                        <form action="verifikasi_pembayaran.php" method="post">
+                                        <form method="post">
                                             <input type="hidden" name="id_pembayaran"
                                                 value="<?php echo $row['id_pembayaran']; ?>">
                                             <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">
@@ -208,13 +233,13 @@
                                                 <?php echo $row['nama_penyewa'] ?>
                                             </td>
                                             <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
-                                                <?php echo $row['telpon'] ?>
-                                             </td>
+                                                <?php echo $row['no_telp'] ?>
+                                            </td>
                                             <td class="text-center py-3 px-4 uppercase font-semibold text-sm">
                                                 <?php echo $row['status_pembayaran'] ?>
                                             </td>
                                             <td class="text-center">
-                                                <?php if ($row['status_pembayaran'] !== 'Terverifikasi'): ?>
+                                                <?php if ($row['status_pembayaran'] !== 'Sudah Terverifikasi'): ?>
                                                     <button type="submit" name="verifikasi"
                                                         class="bg-green-800 rounded-md py-2 px-3 text-white uppercase hover:bg-green-900">
                                                         Verifikasi
@@ -226,39 +251,6 @@
                                         </form>
                                     </tr>
                                 <?php endwhile; ?>
-
-                                <tr class="border-b">
-                                    <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum
-                                        Terverifikasi
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="flex items-center justify-center">
-                                            <button class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">
-                                                Verifikasi
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center py-5 px-3 w-25 uppercase font-semibold text-sm">01</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">20/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">21/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">25/09/2020</td>
-                                    <td class="text-center py-3 px-4 uppercase font-semibold text-sm">Belum
-                                        Terverifikasi
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="flex items-center justify-center">
-                                            <button
-                                                class="bg-green-600 rounded-md py-2 px-3 text-white uppercase">Verifikasi
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -274,6 +266,55 @@
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
+    <?php if (isset($pesan) && $pesan == 'yakin'): ?>
+        <script>
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: 'Anda tidak dapat mengubah ini setelah terverifikasi!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, verifikasi!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // kalo admin mengkonfirmasi
+                    window.location.href = 'payment.php?id_pembayaran=<?php echo $id_pembayaran; ?>';
+                }
+                else {
+                    // admin membatalkan
+                    Swal.fire({
+                        title: 'Dibatalkan',
+                        text: 'Pembayaran tidak diverifikasi.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'payment.php';
+                        }
+                    });
+                }
+            });
+        </script>;
+    <?php endif; ?>
+
+    <?php if (isset($pesan2) && $pesan2 == 'sukses'): ?>
+        <script>
+            Swal.fire({
+                title: 'Berhasil!',
+                text: 'Pembayaran telah terverifikasi.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'payment.php';
+                }
+            });
+        </script>";
+    <?php endif; ?>
+
 
     <script>
         //fungsi dropdown admin
