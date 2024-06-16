@@ -11,7 +11,7 @@ include 'koneksi.php';
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SearchtAfterLogin</title>
+  <title>Search Building</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@400&display=swap" rel="stylesheet">
@@ -203,6 +203,7 @@ include 'koneksi.php';
             <button class="bg-[#FFFBF2] w-[24px] h-[24px] text-black" onclick="incrementGuests()">+</button>
           </div>
         </div>
+        
         <div
           class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center">
           <a href="searchresult.php"
