@@ -458,7 +458,7 @@
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     // Arahkan ke halaman logout atau lakukan aksi logout di sini
-                                    window.location.href = 'logout.php';
+                                    window.location.href = 'logoutadmin.php';
                                 }
                             });
                         });
@@ -476,7 +476,7 @@
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     // Arahkan ke halaman logout atau lakukan aksi logout di sini
-                                    window.location.href = 'logout.php';
+                                    window.location.href = 'logoutadmin.php';
                                 }
                             });
                         }

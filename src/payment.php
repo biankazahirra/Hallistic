@@ -344,7 +344,7 @@ if (isset($_GET['id_pembayaran'])) {
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Arahkan ke halaman logout atau lakukan aksi logout di sini
-                    window.location.href = 'logout.php';
+                    window.location.href = 'logoutadmin.php';
                 }
             });
         });
@@ -397,7 +397,7 @@ if (isset($_GET['id_pembayaran'])) {
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Arahkan ke halaman logout atau lakukan aksi logout di sini
-                    window.location.href = 'logout.php';
+                    window.location.href = 'logoutadmin.php';
                 }
             });
         }

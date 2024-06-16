@@ -23,15 +23,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Stored Email (Admin): $stored_email<br>";
         echo "Stored Password (Admin): $stored_password<br>";
 
-        // Verifikasi password admin
-        if (password_verify($password, $stored_password)) {
+        // // Verifikasi password admin
+        // if (password_verify($password, $stored_password)) {
+        //     $_SESSION['email'] = $stored_email;
+        //     $_SESSION['nama'] = $stored_nama;
+        //     $_SESSION['role'] = 'admin'; // Menambahkan peran admin ke sesi
+        //     header("Location: dashboard.php");
+        //     exit();
+        // } else {
+        //     echo "Password admin salah";
+        // }
+
+        //verifikasi admin yg sudah ada di database
+        if ($password == $stored_password) {
             $_SESSION['email'] = $stored_email;
             $_SESSION['nama'] = $stored_nama;
-            $_SESSION['role'] = 'admin'; // Menambahkan peran admin ke sesi
+            $_SESSION['role'] = 'admin';
             header("Location: dashboard.php");
             exit();
         } else {
             echo "Password admin salah";
+            exit();
         }
     } else {
         // Cek di tabel pengguna biasa

@@ -1,6 +1,6 @@
 <?php
 include "koneksi.php";
-
+include "sessionloginadmin/cekloginadmin.php";
 
 $query = "SELECT COUNT(*) AS total_user FROM daftar_akun";
 $result = mysqli_query($koneksi, $query);
@@ -340,7 +340,7 @@ if ($result3) {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Arahkan ke halaman logout atau lakukan aksi logout di sini
-                        window.location.href = 'logout.php';
+                        window.location.href = 'logoutadmin.php';
                     }
                 });
             });
@@ -358,7 +358,7 @@ if ($result3) {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Arahkan ke halaman logout atau lakukan aksi logout di sini
-                        window.location.href = 'logout.php';
+                        window.location.href = 'logoutadmin.php';
                     }
                 });
             }
