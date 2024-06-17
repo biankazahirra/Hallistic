@@ -137,7 +137,7 @@ include 'koneksi.php';
       </p>
       <div class="flex flex-row self-start w-[535px] box-sizing-border gap-[30px] pb-[20px]">
         <div class="flex items-center justify-center">
-          <a href="#"
+          <a href="about1.php"
             class="break-words tracking-widest text-white px-[40px] py-[20px] rounded-full bg-[#588157] transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800 opensans">
             LIHAT SELENGKAPNYA
           </a>

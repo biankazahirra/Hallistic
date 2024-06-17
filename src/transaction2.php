@@ -11,7 +11,7 @@ include 'koneksi.php';
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TransactionNowAfterLogin</title>
+    <title>Transaction</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@400&display=swap" rel="stylesheet">
@@ -23,7 +23,9 @@ include 'koneksi.php';
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     <link href="path/to/tailwind.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="../public/Logo Hallistic/logo.png" type="image/x-icon">
     <style>
+
         /* Kustomisasi warna dan font family */
         .bg-green {
             background-color: #344E41;
