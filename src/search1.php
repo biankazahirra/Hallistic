@@ -149,74 +149,74 @@ include 'koneksi.php';
       class="rounded-t-[30px] border-[1px_solid_#9C9C9C] bg-[#FFFBF2] m-[0_107px_0_107px] flex flex-row justify-between p-[9px_24px_9px_27.8px] w-[1226px] box-sizing-border">
 
       <!-- Kota Dituju -->
-      <div class="flex flex-row items-center">
-        <div class="m-[12.8px_22.8px_12.8px_0] flex w-[22.5px] h-[22.5px] box-sizing-border">
-          <img class="w-[22.5px] h-[22.5px]" src="../public/asset/search1.svg" />
+      <form action="searchresult.php" method="get" class="flex items-center justify-center">
+        <div class="flex flex-row items-center">
+          <div class="m-[12.8px_22.8px_12.8px_0] flex w-[22.5px] h-[22.5px] box-sizing-border">
+            <img class="w-[22.5px] h-[22.5px]" src="../public/asset/search1.svg" />
+          </div>
+          <div
+            class="m-[10px_14px_10px_0] inline-block w-[180px] break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
+            <input type="text" name="kota_gedung" placeholder="Pilih Kota yang dituju"
+              class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" />
+          </div>
         </div>
+
+        <!-- Separator -->
+        <div class="flex items-center justify-center mx-[10px]">
+          <span class="text-[12px] text-[#4D4D4D]">|</span>
+        </div>
+
+        <!-- Check-in/Check-out -->
         <div
-          class="m-[10px_14px_10px_0] inline-block w-[180px] break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
-          <input type="text" name="kota_gedung" placeholder="Pilih Kota yang dituju"
-            class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" />
-        </div>
-      </div>
-
-      <!-- Separator -->
-      <div class="flex items-center justify-center mx-[10px]">
-        <span class="text-[12px] text-[#4D4D4D]">|</span>
-      </div>
-
-      <!-- Check-in/Check-out -->
-      <div
-        class="flex flex-row items-center border-l-[1px_solid_#A3B18A] border-r-[1px_solid_#A3B18A] p-[10px_10.2px_9px_0] box-sizing-border">
-        <div class="flex items-center mr-[20px]">
-          <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
-          <label for="checkin-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-in:</label>
-          <input id="checkin-date" type="date"
-            class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent cursor-pointer" />
-        </div>
-        <div class="flex items-center">
-          <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
-          <label for="checkout-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-out:</label>
-          <input id="checkout-date" type="date"
-            class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent cursor-pointer" />
-        </div>
-      </div>
-
-      <!-- Separator -->
-      <div class="flex items-center justify-center mx-[10px]">
-        <span class="text-[12px] text-[#4D4D4D]">|</span>
-      </div>
-
-      <!-- Jumlah Orang -->
-      <div class="flex flex-row items-center">
-        <div class="m-[15px_52px_15px_0] flex flex-row box-sizing-border items-center">
-          <div class="flex items-center mr-1">
-            <img class="w-[24px] h-[24px]" src="../public/asset/profiluser.svg" />
+          class="flex flex-row items-center border-l-[1px_solid_#A3B18A] border-r-[1px_solid_#A3B18A] p-[10px_10.2px_9px_0] box-sizing-border">
+          <div class="flex items-center mr-[20px]">
+            <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
+            <label for="checkin-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-in:</label>
+            <input id="checkin-date" type="date" name="checkin_date"
+              class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent cursor-pointer" />
           </div>
-          <div class="mr-[25.1px]">
-            <span
-              class="break-words font-['Inter'] font-normal text-[15px] leading-[2.325] text-[#4D4D4D]">Orang:</span>
+          <div class="flex items-center">
+            <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
+            <label for="checkout-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-out:</label>
+            <input id="checkout-date" type="date"  name="checkout_date"
+              class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent cursor-pointer" />
           </div>
-          <div class="flex items-center -ml-3">
-            <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
-            <input id="guestCount" type="number" value="0"
-              class="mx-[10px] w-[50px] text-center font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D] border border-[#4D4D4D]" />
-            <button
-              class="bg-[#FFFBF2] w-[12px] h-[1.5px] text-2xl text-[#4D4D4D] flex items-center justify-center mb-1"
-              onclick="incrementGuests()">+</button>
-          </div>
-
         </div>
-        <a href="searchresult.php">
-          <div class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center text-[#F3ECDC] text-[15px] font-bold font-['Inter'] text-center break-words">
-            Cari
+
+        <!-- Separator -->
+        <div class="flex items-center justify-center mx-[10px]">
+          <span class="text-[12px] text-[#4D4D4D]">|</span>
+        </div>
+
+        <!-- Jumlah Orang -->
+        <div class="flex flex-row items-center">
+          <div class="m-[15px_52px_15px_0] flex flex-row box-sizing-border items-center">
+            <div class="flex items-center mr-1">
+              <img class="w-[24px] h-[24px]" src="../public/asset/profiluser.svg" />
             </div>
-        </a>
-      
-    </div>
+            <div class="mr-[25.1px]">
+              <span
+                class="break-words font-['Inter'] font-normal text-[15px] leading-[2.325] text-[#4D4D4D]">Orang:</span>
+            </div>
+            <div class="flex items-center -ml-3">
+              <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
+              <input id="guestCount" type="number" value="0" nsme="jumlah_orang"
+                class="mx-[10px] w-[50px] text-center font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D] border border-[#4D4D4D]" />
+              <button
+                class="bg-[#FFFBF2] w-[12px] h-[1.5px] text-2xl text-[#4D4D4D] flex items-center justify-center mb-1"
+                onclick="incrementGuests()">+</button>
+            </div>
 
+          </div>
+          <a href="#">
+            <div
+              class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center text-[#F3ECDC] text-[15px] font-bold font-['Inter'] text-center break-words">
+              Cari
+            </div>
+          </a>
+        </div>
+      </form>
     </div>
-
 
 
     <script>
@@ -239,7 +239,6 @@ include 'koneksi.php';
         }
       });
     </script>
-
   </section>
 
 

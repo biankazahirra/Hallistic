@@ -132,96 +132,105 @@ include 'koneksi.php';
 
           <!-- Kota Dituju -->
           <div class="flex flex-row items-center">
-            <div class="m-[12.8px_22.8px_12.8px_0] flex w-[22.5px] h-[22.5px] box-sizing-border">
-              <img class="w-[22.5px] h-[22.5px]" src="../public/asset/search1.svg" />
-            </div>
-            <div
-              class="m-[10px_14px_10px_0] inline-block w-[180px] break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
-              <input type="text" placeholder="Pilih Kota yang dituju"
-                class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" />
-            </div>
+          <div class="m-[12.8px_22.8px_12.8px_0] flex w-[22.5px] h-[22.5px] box-sizing-border">
+            <img class="w-[22.5px] h-[22.5px]" src="../public/asset/search1.svg" />
           </div>
-
-          <!-- Separator -->
-          <div class="flex items-center justify-center mx-[10px]">
-            <span class="text-[12px] text-[#4D4D4D]">|</span>
-          </div>
-
-          <!-- Check-in/Check-out -->
           <div
-            class="flex flex-row items-center border-l-[1px_solid_#A3B18A] border-r-[1px_solid_#A3B18A] p-[10px_10.2px_9px_0] box-sizing-border">
-            <div class="flex items-center mr-[20px]">
-              <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
-              <label for="checkin-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-in:</label>
-              <input id="checkin-date" type="date"
-                class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent" />
+            class="m-[10px_14px_10px_0] inline-block w-[180px] break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">
+            <input type="text" name="kota_gedung" placeholder="Pilih Kota yang dituju"
+              class="w-full p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" />
+          </div>
+        </div>
+
+        <!-- Separator -->
+        <div class="flex items-center justify-center mx-[10px]">
+          <span class="text-[12px] text-[#4D4D4D]">|</span>
+        </div>
+
+        <!-- Check-in/Check-out -->
+        <div
+          class="flex flex-row items-center border-l-[1px_solid_#A3B18A] border-r-[1px_solid_#A3B18A] p-[10px_10.2px_9px_0] box-sizing-border">
+          <div class="flex items-center mr-[20px]">
+            <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
+            <label for="checkin-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-in:</label>
+            <input id="checkin-date" type="date" name="checkin_date"
+              class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent cursor-pointer" />
+          </div>
+          <div class="flex items-center">
+            <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
+            <label for="checkout-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-out:</label>
+            <input id="checkout-date" type="date"  name="checkout_date"
+              class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent cursor-pointer" />
+          </div>
+        </div>
+
+        <!-- Separator -->
+        <div class="flex items-center justify-center mx-[10px]">
+          <span class="text-[12px] text-[#4D4D4D]">|</span>
+        </div>
+
+        <!-- Jumlah Orang -->
+        <div class="flex flex-row items-center">
+          <div class="m-[15px_52px_15px_0] flex flex-row box-sizing-border items-center">
+            <div class="flex items-center mr-1">
+              <img class="w-[24px] h-[24px]" src="../public/asset/profiluser.svg" />
             </div>
-            <div class="flex items-center">
-              <img class="w-[22.5px] h-[22.5px] mr-[5px]" src="../public/asset/calseacrh.svg">
-              <label for="checkout-date" class="mr-[5px] text-[#4D4D4D] whitespace-nowrap">Check-out:</label>
-              <input id="checkout-date" type="date"
-                class="p-[5px] border-[1px_solid_#9C9C9C] rounded w-[150px] bg-transparent" />
+            <div class="mr-[25.1px]">
+              <span
+                class="break-words font-['Inter'] font-normal text-[15px] leading-[2.325] text-[#4D4D4D]">Orang:</span>
+            </div>
+            <div class="flex items-center -ml-3">
+              <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
+              <input id="guestCount" type="number" value="0" nsme="jumlah_orang"
+                class="mx-[10px] w-[50px] text-center font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D] border border-[#4D4D4D]" />
+              <button
+                class="bg-[#FFFBF2] w-[12px] h-[1.5px] text-2xl text-[#4D4D4D] flex items-center justify-center mb-1"
+                onclick="incrementGuests()">+</button>
             </div>
           </div>
-
-          <!-- Separator -->
-          <div class="flex items-center justify-center mx-[10px]">
-            <span class="text-[12px] text-[#4D4D4D]">|</span>
-          </div>
-
-          <!-- Jumlah Orang -->
-          <div class="flex flex-row items-center">
-            <div class="m-[15px_52px_15px_0] flex flex-row box-sizing-border items-center">
-              <div class="flex items-center mr-[19.1px]">
-                <img class="w-[24px] h-[24px]" src="../public/asset/profiluser.svg" />
-              </div>
-              <div class="mr-[25.1px]">
-                <span
-                  class="break-words font-['Inter'] font-normal text-[12px] leading-[2.325] text-[#4D4D4D]">Orang</span>
-              </div>
-              <div class="flex items-center">
-                <button class="bg-[#4D4D4D] w-[12px] h-[1.5px] text-white" onclick="decrementGuests()">-</button>
-                <span id="guestCount"
-                  class="mx-[10px] break-words font-['Inter'] font-normal text-[20px] leading-[1.395] text-[#4D4D4D]">0</span>
-                <button class="bg-[#FFFBF2] w-[24px] h-[24px] text-black" onclick="incrementGuests()">+</button>
-              </div>
-            </div>
+          <a href="#">
             <div
-              class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center">
-              <a href="searchresult.php"
-                class="text-center break-words font-['Inter'] font-bold text-[15px] text-[#F3ECDC]">Cari</a>
+              class="rounded-[98px] border-[1px_solid_#9C9C9C] bg-[#588157] flex p-[14px_0_14px_0] w-[121px] box-sizing-border justify-center items-center text-[#F3ECDC] text-[15px] font-bold font-['Inter'] text-center break-words">
+              Cari
             </div>
-          </div>
-
+          </a>
+        </div>
         </div>
 
 
         <script>
-          let guestCount = 0;
+      function decrementGuests() {
+        let guestCount = document.getElementById('guestCount');
+        if (guestCount.value > 0) {
+          guestCount.value = parseInt(guestCount.value) - 1;
+        }
+      }
 
-          function incrementGuests() {
-            guestCount++;
-            document.getElementById('guestCount').innerText = guestCount;
-          }
+      function incrementGuests() {
+        let guestCount = document.getElementById('guestCount');
+        guestCount.value = parseInt(guestCount.value) + 1;
+      }
 
-          function decrementGuests() {
-            if (guestCount > 1) {
-              guestCount--;
-              document.getElementById('guestCount').innerText = guestCount;
-            }
-          }
-        </script>
+      // Optional: Prevent manual input of negative numbers
+      document.getElementById('guestCount').addEventListener('input', function () {
+        if (this.value < 0) {
+          this.value = 0;
+        }
+      });
+    </script>
       </div>
     </div>
 
     <?php
-    $query = "SELECT id_gedung, nama_gedung, harga_sewa, kota_gedung,gambar_gedung FROM daftar_gedung";
+    $query = "SELECT * FROM daftar_gedung";
     $result = $koneksi->query($query);
 
     if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
         $id_gedung = $row['id_gedung'];
         $nama_gedung = $row['nama_gedung'];
+        $deskripsi_gedung = $row['deskripsi_gedung'];
+        $status_gedung = $row['status_gedung'];
         $harga_sewa = $row['harga_sewa'];
         $kota_gedung = $row['kota_gedung'];
         $gambar_gedung = $row['gambar_gedung'];
@@ -307,16 +316,16 @@ include 'koneksi.php';
                 </div>
               </div>
             </div>
-            <div class="flex flex-row w-[fit-content] box-sizing-border">
-              <div class="rounded-[15px] m-[0_40px_0.2px_0] flex w-[500px] box-sizing-border">
-                <img src="show_image.php?id_gedung=<?php echo $id_gedung; ?>" alt="<?php echo $nama_gedung; ?>"
-                  class="w-full h-auto" />
+            <div class="flex flex-row w-[fit-content] box-sizing-border ">
+              <div class="rounded-[15px] m-[0_40px_0.2px_0] flex w-[500px] box-sizing-border items-center justify-center">
+                <img src="uploads/<?php echo $gambar_gedung; ?>" alt="<?php echo $nama_gedung; ?>"
+                  class="w-full h-[20rem]" />
               </div>
             </div>
-            <div class="flex flex-col box-sizing-border">
-              <div class="m-[0_0_16px_0] flex self-start box-sizing-border">
+            <div class="flex flex-col box-sizing-border justify-center items-center">
+              <div class="m-[0_0_16px_0] flex items-center mt-1 box-sizing-border">
                 <span
-                  class="break-words font-['Inter'] font-normal text-[9.5px] tracking-[0.6px] leading-[1.259] text-[#073937]">
+                  class="break-words font-['Inter'] font-bold text-xl tracking-[0.6px] leading-[1.259] text-[#073937]">
                   HARGA SEWA GEDUNG
                 </span>
               </div>
@@ -325,13 +334,13 @@ include 'koneksi.php';
                   class="border-b-[4px_solid_rgba(0,0,0,0.1)] flex flex-row justify-between p-[8px_1.2px_7.9px_0] w-[274px] h-[fit-content] box-sizing-border">
                   <div class="flex box-sizing-border">
                     <span
-                      class="break-words font-['Inter'] font-normal text-[13.6px] tracking-[0.1px] leading-[1.474] text-[#073937]">
+                      class="break-words font-['Inter'] font-normal text-xl tracking-[0.1px] leading-[1.474] text-[#073937]">
                       Total Harga
                     </span>
                   </div>
                   <div class="flex box-sizing-border">
                     <span
-                      class="break-words font-['Inter'] font-bold text-[12.9px] tracking-[0.1px] leading-[1.549] text-[#073937]">
+                      class="break-words font-['Inter'] font-bold text-xl tracking-[0.1px] leading-[1.549] text-[#073937]">
                       Rp <?php echo number_format($harga_sewa, 0, ',', '.'); ?>K
                     </span>
                   </div>

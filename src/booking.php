@@ -8,8 +8,9 @@ if (isset($_GET['id_gedung'])) {
 
   // Lakukan query untuk mendapatkan data gedung sesuai dengan id_gedung
   $query = "SELECT harga_sewa FROM daftar_gedung WHERE id_gedung = ?";
+  
   $stmt = $koneksi->prepare($query);
-  $stmt->bind_param($id_gedung);
+  $stmt->bind_param("i",$id_gedung);
   $stmt->execute();
   $stmt->bind_result($harga_sewa);
 
