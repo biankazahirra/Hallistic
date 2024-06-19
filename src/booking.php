@@ -1,5 +1,4 @@
 <?php
-
 include "ceklogin.php";
 include 'koneksi.php';
 
@@ -10,7 +9,7 @@ if (isset($_GET['id_gedung'])) {
   $query = "SELECT harga_sewa FROM daftar_gedung WHERE id_gedung = ?";
   
   $stmt = $koneksi->prepare($query);
-  $stmt->bind_param("i",$id_gedung);
+  $stmt->bind_param("i", $id_gedung);
   $stmt->execute();
   $stmt->bind_result($harga_sewa);
 
@@ -133,175 +132,115 @@ if (isset($_GET['id_gedung'])) {
     </nav>
   </header>
 
-  <section
-    class="bg-[#F3ECDC] flex flex-col items-center p-[0_0_48px_0] w-[1440px] box-sizing-border pt-[120px] mx-auto">
-    <div>
-      <div class="flex flex-col items-center w-[1440px] box-sizing-border">
-        <div class="flex box-sizing-border">
-          <span
-            class="break-words font-['Abril_Fatface'] font-[var(--heading-big,400)] text-[45px] text-[var(--heading,#2D2D2D)]">
-            Book Confirmation
-          </span>
-        </div>
-      </div>
-      <div class="bg-[#F3ECDC] flex p-[36px_100px_18px_100px] box-sizing-border">
-        <div
-          class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[50px_50px_75px_50px] box-sizing-border">
-          <div
-            class="m-[0_0_20px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">
-            Your Information
-          </div>
-          <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
-            <div class="m-[0_0_30px_0] flex flex-row w-[fit-content] box-sizing-border">
-              <div class="m-[0_30px_0_0] flex flex-col w-[1100px] box-sizing-border">
-                <div
-                  class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
-                  Nama
+  <section class="bg-[#F3ECDC] flex flex-col items-center p-[0_0_48px_0] w-[1440px] box-sizing-border pt-[120px] mx-auto">
+    <form id="bookingForm" action="submit_booking.php" method="POST">
+        <div>
+            <div class="flex flex-col items-center w-[1440px] box-sizing-border">
+                <div class="flex box-sizing-border">
+                    <span class="break-words font-['Abril_Fatface'] font-[var(--heading-big,400)] text-[45px] text-[var(--heading,#2D2D2D)]">Book Confirmation</span>
                 </div>
-                <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[550px] box-sizing-border">
-                  <input type="text" placeholder="Nama"
-                    class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" />
-                </div>
-              </div>
-              <!-- <div class="flex flex-col w-[555px] box-sizing-border">
-                    <div class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
-                      Last Name
+            </div>
+            <div class="bg-[#F3ECDC] flex p-[36px_100px_18px_100px] box-sizing-border">
+                <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[50px_50px_75px_50px] box-sizing-border">
+                    <div class="m-[0_0_20px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">Your Information</div>
+                    <div class="flex flex-col items-center w-[fit-content] box-sizing-border">
+                        <div class="m-[0_0_30px_0] flex flex-row w-[fit-content] box-sizing-border">
+                            <div class="m-[0_30px_0_0] flex flex-col w-[1100px] box-sizing-border">
+                                <div class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">Nama</div>
+                                <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[1100px] box-sizing-border">
+                                    <input type="text" name="nama" placeholder="Nama" class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-row w-[fit-content] box-sizing-border">
+                            <div class="m-[0_30px_0_0] flex flex-col w-[555px] box-sizing-border">
+                                <div class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">Alamat Email</div>
+                                <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[550px] box-sizing-border">
+                                    <input type="email" name="email" placeholder="Hello@email.com" class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" required />
+                                </div>
+                            </div>
+                            <div class="flex flex-col w-[555px] box-sizing-border">
+                                <div class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">No. Telepon</div>
+                                <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[550px] box-sizing-border">
+                                    <input type="tel" name="telepon" placeholder="Phone Number" class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" required />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[550px] box-sizing-border">
-                      <input type="text" placeholder="Last Name" class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" />
+                </div>
+            </div>
+
+            <div class="bg-[#F3ECDC] p-[5px_100px_19px_100px] box-sizing-border">
+                <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[22px_0_41.9px_50px] box-sizing-border">
+                    <div class="m-[0_0_20px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">Order Detail</div>
+                    <div class="m-[0_0_20px_0] flex flex-row justify-between self-start w-[607.3px] box-sizing-border">
+                        <div class="m-[3px_9.5px_0_0] inline-block w-[175.5px] break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">Order Date</div>
+                        <div class="m-[3px_0_0_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">Check In</div>
+                        <div class="m-[3px_0_0_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">Check Out</div>
+                        <div class="m-[0_0_3px_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">Total</div>
                     </div>
-                  </div> -->
-            </div>
-            <div class="flex flex-row w-[fit-content] box-sizing-border">
-              <div class="m-[0_30px_0_0] flex flex-col w-[555px] box-sizing-border">
-                <div
-                  class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
-                  Email Address
+                    <div class="flex flex-row justify-between self-start w-[633.2px] box-sizing-border">
+                        <div class="m-[0_12px_0.1px_0] inline-block w-[157px] break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
+                            <span id="order-date"></span>
+                        </div>
+                        <div class="m-[0_0_0.1px_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
+                            <input type="date" name="check_in_date" id="check-in-date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" required>
+                        </div>
+                        <div class="m-[0_0_0.1px_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
+                            <input type="date" name="check_out_date" id="check-out-date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent" required>
+                        </div>
+                        <div class="m-[0.1px_0_0_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
+                            Rp <span id="total"><?php echo number_format($harga_sewa, 0, ',', '.'); ?></span>K
+                        </div>
+                    </div>
                 </div>
-                <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[550px] box-sizing-border">
-                  <input type="email" placeholder="Hello@email.com"
-                    class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" />
+            </div>
+
+            <div class="bg-[#F3ECDC] p-[5px_100px_25px_100px] box-sizing-border">
+                <div class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[22px_0_32px_50px] box-sizing-border">
+                    <div class="m-[0_0_21.5px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">Payment Method</div>
+
+                    <!-- Payment on Arrival -->
+                    <div class="m-[0_4.1px_21.5px_4.1px] flex flex-row self-start w-[fit-content] box-sizing-border">
+                        <input type="radio" id="payment-on-arrival" name="payment_method" value="on-arrival" class="m-[6.5px_13.1px_51px_0] w-[14.9px] h-[14.9px] box-sizing-border rounded-full" required />
+                        <div class="flex box-sizing-border">
+                            <label for="payment-on-arrival" class="m-[0_9.6px_9px_0] inline-block break-words font-['Inter'] font-extrabold text-[16px] leading-[1.5] text-[#073937]">
+                                Payment on Arrival <br>
+                                <span class="break-words font-['Inter'] font-normal text-[16px] leading-[1.5] text-[#073937]">Metode payment ini dilakukan ketika penyewa gedung datang langsung ke tempat lalu menunjukkan bukti pemesanan kepada pegawai dan melakukan pembayaran secara cash.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Payment via Bank -->
+                    <div class="m-[0_4.1px_0_4.1px] flex flex-row self-start w-[fit-content] box-sizing-border">
+                        <input type="radio" id="payment-via-bank" name="payment_method" value="via-bank" class="m-[8px_13.1px_60.5px_0] w-[14.9px] h-[14.9px] box-sizing-border rounded-full" required />
+                        <div class="flex flex-col items-center box-sizing-border">
+                            <label for="payment-via-bank" class="m-[0_30px_9px_0] inline-block break-words font-['Inter'] font-extrabold text-[16px] leading-[1.5] text-[#073937]">
+                                Payment Via Bank
+                            </label>
+                            <div class="flex flex-row w-[152px] box-sizing-border">
+                                <img class="m-[0_13px_0_0] w-[59px] h-[47px]" src="../public/asset/logos_mastercard.png" />
+                                <div class="m-[0px_0_23.1px_0] flex w-[80px] h-[23.9px] box-sizing-border">
+                                    <img class="w-[80px] h-[23.9px]" src="../public/asset/logos_visa.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="flex flex-col w-[555px] box-sizing-border">
-                <div
-                  class="m-[0_0_10px_0] inline-block self-start break-words font-['Open_Sans'] font-[var(--form-label-font-weight,600)] text-[17px] leading-[var(--form-label-line-height,1.706)] text-[var(--heading,#2D2D2D)]">
-                  Phone
-                </div>
-                <div class="rounded-[30px] bg-[#F1F1F1] p-[20px_20px_20px_20px] w-[550px] box-sizing-border">
-                  <input type="tel" placeholder="Phone Number"
-                    class="w-full bg-transparent border-none outline-none font-['Open_Sans'] font-[var(--body-small,400)] text-[15px] text-[var(--body,#6E6E6E)]" />
-                </div>
-              </div>
             </div>
-          </div>
+
+            <div class="bg-[#F3ECDC] flex flex-row p-[5px_0_44px_100px] w-[1440px]">
+                <button type="submit" id="bookButton" class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] m-[0_15px_0_0] flex justify-center items-center w-[92.6px] h-[40px] box-sizing-border cursor-pointer transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800">
+                    <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.561] text-[#F3ECDC]">Book</span>
+                </button>
+                <button type="reset" id="cancelButton" class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] flex justify-center items-center w-[106.6px] h-[40px] box-sizing-border cursor-pointer transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800">
+                    <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.561] text-[#F3ECDC]">Cancel</span>
+                </button>
+            </div>
         </div>
-      </div>
+    </form>
+</section>
 
-      <div class="bg-[#F3ECDC] p-[5px_100px_19px_100px] box-sizing-border">
-        <div
-          class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[22px_0_41.9px_50px] box-sizing-border">
-          <div
-            class="m-[0_0_20px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">
-            Order Detail
-          </div>
-          <div class="m-[0_0_20px_0] flex flex-row justify-between self-start w-[607.3px] box-sizing-border">
-            <div
-              class="m-[3px_9.5px_0_0] inline-block w-[175.5px] break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
-              Order Date
-            </div>
-            <div class="m-[3px_0_0_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
-              Check In
-            </div>
-            <div class="m-[3px_0_0_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
-              Check Out
-            </div>
-            <div class="m-[0_0_3px_0] inline-block break-words font-['Lato'] font-semibold text-[16px] text-[#000000]">
-              Total
-            </div>
-          </div>
-          <div class="flex flex-row justify-between self-start w-[633.2px] box-sizing-border">
-            <div
-              class="m-[0_12px_0.1px_0] inline-block w-[157px] break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
-              <span id="order-date"></span>
-            </div>
-            <div
-              class="m-[0_0_0.1px_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
-              <input type="date" id="check-in-date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent">
-            </div>
-            <div
-              class="m-[0_0_0.1px_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
-              <input type="date" id="check-out-date" class="p-[5px] border-[1px_solid_#9C9C9C] rounded bg-transparent">
-            </div>
-            <div
-              class="m-[0.1px_0_0_0] inline-block break-words font-['Poppins'] font-normal text-[16px] text-[#000000]">
-              Rp <?php echo number_format($harga_sewa, 0, ',', '.'); ?>K
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-[#F3ECDC] p-[5px_100px_25px_100px] box-sizing-border">
-        <div
-          class="shadow-[var(--shadow-shape,0px_10px_25px_0px_rgba(0,0,0,0.07))] rounded-[30px] bg-[var(--white-smoke,#F9F9F9)] flex flex-col p-[22px_0_32px_50px] box-sizing-border">
-          <div
-            class="m-[0_0_21.5px_0] inline-block self-start break-words font-['Abril_Fatface'] font-[var(--heading-medium,400)] text-[35px] text-[var(--heading,#2D2D2D)]">
-            Payment Method
-          </div>
-
-          <!-- Payment on Arrival -->
-          <div class="m-[0_4.1px_21.5px_4.1px] flex flex-row self-start w-[fit-content] box-sizing-border">
-            <input type="radio" id="payment-on-arrival" name="payment-method" value="on-arrival"
-              class="m-[6.5px_13.1px_51px_0] w-[14.9px] h-[14.9px] box-sizing-border rounded-full" />
-            <div class="flex box-sizing-border">
-              <label for="payment-on-arrival"
-                class="m-[0_9.6px_9px_0] inline-block break-words font-['Inter'] font-extrabold text-[16px] leading-[1.5] text-[#073937]">
-                Payment on Arrival <br>
-                <span class="break-words font-['Inter'] font-normal text-[16px] leading-[1.5] text-[#073937]">Metode
-                  payment ini dilakukan ketika penyewa gedung datang langsung ke tempat lalu menunjukkan bukti pemesanan
-                  kepada pegawai dan melakukan pembayaran secara cash.</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Payment via Bank -->
-          <div class="m-[0_4.1px_0_4.1px] flex flex-row self-start w-[fit-content] box-sizing-border">
-            <input type="radio" id="payment-via-bank" name="payment-method" value="via-bank"
-              class="m-[8px_13.1px_60.5px_0] w-[14.9px] h-[14.9px] box-sizing-border rounded-full" />
-            <div class="flex flex-col items-center box-sizing-border">
-              <label for="payment-via-bank"
-                class="m-[0_30px_9px_0] inline-block break-words font-['Inter'] font-extrabold text-[16px] leading-[1.5] text-[#073937]">
-                Payment Via Bank
-              </label>
-              <div class="flex flex-row w-[152px] box-sizing-border">
-                <img class="m-[0_13px_0_0] w-[59px] h-[47px]" src="../public/asset/logos_mastercard.png" />
-                <div class="m-[0px_0_23.1px_0] flex w-[80px] h-[23.9px] box-sizing-border">
-                  <img class="w-[80px] h-[23.9px]" src="../public/asset/logos_visa.png" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="bg-[#F3ECDC] flex flex-row p-[5px_0_44px_100px] w-[1440px]">
-        <div id="bookButton"
-          class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] m-[0_15px_0_0] flex justify-center items-center w-[92.6px] h-[40px] box-sizing-border cursor-pointer transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800">
-          <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.561] text-[#F3ECDC]">
-            Book
-          </span>
-        </div>
-        <div id="cancelButton"
-          class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] flex justify-center items-center w-[106.6px] h-[40px] box-sizing-border cursor-pointer transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800">
-          <span class="break-words font-['Inter'] font-normal text-[15.4px] leading-[1.561] text-[#F3ECDC]">
-            Cancel
-          </span>
-        </div>
-      </div>
-
-  </section>
 
 
 
@@ -568,5 +507,32 @@ if (isset($_GET['id_gedung'])) {
       });
     }
   </script>
+
+<script>
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Gather form data
+    const formData = new FormData(this);
+
+    // Send the form data using Fetch API
+    fetch(this.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Booking confirmed!');
+            // You can also redirect or update the UI as needed
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+</script>
 
 </body>

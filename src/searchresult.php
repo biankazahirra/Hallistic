@@ -350,7 +350,7 @@ include 'koneksi.php';
                 <div
                   class="rounded-[1000px] border-[4px_solid_#588157] bg-[#588157] flex justify-center items-center p-[2px_0] w-[108.6px] h-[40px] box-sizing-border transition hover:bg-green-600 focus:bg-green-600 active:bg-green-800"
                   style="margin-left: 20px">
-                  <a href="booking.php"
+                  <a href="booking.php?id_gedung=<?php echo $id_gedung; ?>"
                     class="break-words font-['Inter'] font-normal text-center leading-[1.561] text-[#F3ECDC] hover:text-[#EAECE2]">
                     Book Now
                   </a>

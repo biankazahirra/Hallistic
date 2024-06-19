@@ -300,7 +300,7 @@ if (isset($_GET['id_gedung'])) {
             </ul>
           </div>
         </div>
-        <a href="#" class="book-button">Book Now</a>
+        <a href="booking.php?id_gedung=<?php echo $id_gedung; ?>" class="book-button">Book Now</a>
       </div>
     </div>
     <div class="Maps">
